@@ -1,0 +1,19 @@
+@import url("https://fonts.googleapis.com/css2?family=Mr+Dafoe");
+@import url("https://fonts.googleapis.com/css2?family=Fjalla+One");
+@import url("https://fonts.googleapis.com/css2?family=Fredoka+One");
+@import url("https://fonts.googleapis.com/css2?family=Permanent+Marker");
+
+body {
+  margin-top: 50px;
+  margin-left: 50px;
+  background: #000;
+  color: #fff;
+
+}
+
+.one {
+  position: relative;
+  color: #F975F7;
+  font-size: 200px;
+  font-family: 'Fjalla One';
+}
