@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Mr+Dafoe");
 @import url("https://fonts.googleapis.com/css2?family=Fjalla+One");
+@import url("https://fonts.googleapis.com/css2?family=Monoton");
 @import url("https://fonts.googleapis.com/css2?family=Fredoka+One");
 @import url("https://fonts.googleapis.com/css2?family=Permanent+Marker");
 
@@ -8,12 +9,56 @@ body {
   margin-left: 50px;
   background: #000;
   color: #fff;
-
 }
 
 .one {
   position: relative;
-  color: #F975F7;
+  color: #f975f7;
   font-size: 200px;
-  font-family: 'Fjalla One';
+  font-family: "Monoton";
+  margin: 0;
+  line-height: 1;
+  -webkit-text-stroke: 1px #f008b7;
+  -webkit-filter: drop-shadow(1px 1px 12px #f008b7);
+}
+
+.two {
+  position: absolute;
+  margin: 0px;
+  font-family: "Mr Dafoe";
+  font-size: 160px;
+  color: aqua;
+  transform: rotate(-15deg);
+  margin-left: 1000px;
+  margin-top: -80px;
+  -webkit-text-stroke: 0.1px #00b3b3;
+  -webkit-filter: drop-shadow(1px 1px 20px #00b3b3);
+  z-index: 20;
+}
+
+.three {
+  position: relative;
+  font-family: "Fredoka One";
+  font-size: 120px;
+  margin: 170px 0 50px 0;
+  -webkit-text-stroke: 0.1px #f1f1f1;
+  -webkit-text-fill-color: transparent;  
+}
+
+.four {
+  font-style: italic;
+  font-size: 140px;
+  -webkit-text-stroke: 0;
+  -webkit-text-fill-color: #00ff00;
+  -webkit-filter: drop-shadow(1px 1px 12px #ee00ee);    
+}
+
+
+.five {
+  position: relative;
+  color: #ff7f00;
+  font-family: 'Permanent Marker';
+  font-style: normal;
+  font-weight: bold;
+  font-size: 120px;
 }
