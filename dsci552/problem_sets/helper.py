@@ -1,3 +1,6 @@
+import sklearn
+import warnings
+
 def get_feature_names(column_transformer):
     """Get feature names from all transformers.
     Returns
