@@ -56,39 +56,40 @@ h2 {
   font-family: Arial, sans-serif;
 }
 
-/* Change the color of links on hover */
-/* .topnav a:hover {
-  background-color: #ddd;
-  color: black;
-} */
+.topnav a:hover {
+  cursor: pointer;
+  color: blue;
+}
+
 
 /* Add a color to the active/current link */
-.topnav a.active {
+.topnav a:active {
+  color: red;
+}
+
+.topnav a:visited {
   color: purple;
 }
 
-/* Main img */
-/* TODO: fix image size. Fix text and button placement so it is more nearer the upper left corner */
+/* TODO: Restaurant image: fix scrolling so the scroll bar scrolls down inside the image while it remains fixed */
 .rest-img {
   display: block;
   margin-top: 3%;
   width: 90%;
 }
 
-/* Container holding the image and the text */
 .container {
   position: relative;
   text-align: center;
   color: white;
 }
 
-/* Centered text */
 .centered {
   position: absolute;
   top: 40%;
   left: 20%;
   right: 20%;
-  transform: translate(1%, -60%);
+  transform: translate(1%, -50%);
   color: #FFF6DA;
   font-size: 3em;
   font-weight: bold;
@@ -99,11 +100,12 @@ h2 {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50  %, -50%);
-  -ms-transform: translate(-100%, -90%);
+  transform: translate(40%, 24%);
+  /* -ms-transform: translate(-50%, -90%); */
   padding: 8px 20px;
+  border-color: black;
   border-style: double;
-  border-width: 3 px;
+  border-width: 3px;
   cursor: pointer;
 }
 
@@ -118,8 +120,6 @@ h2 {
 .img-small-right {
   display: inline-block;
   margin-top: 2%;
-  /* margin-left: 50%;
-  margin-right: 50%; */
   width: 400px;
   height: 300px;
   border: 10px solid #ADD9E3;
@@ -139,21 +139,27 @@ h2 {
 .col-left{
   float: left;
   display: inline-block;
-  width: 350px;
+  text-align: left;
+  width: 300px;
   height: 300px;
-  margin: 0;
+  margin-left: 0;
+  margin-right: 50px;
   padding-top: 80px;
-  padding-left: 50px;
-  padding-right: 50px;
+  padding-left: 10px;
+  padding-right: 100px;
 }
 
 .cuisine {
-  /* color: navy; */
   color: #355B9A;
   font-weight: bolder;
   margin-bottom:0;
 }
 
 .desc {
+  margin:0
+}
+
+.desc2 {
   margin:0;
+  width: 250px;
 }
