@@ -1,9 +1,22 @@
-.div1 {
-    text-align: center;
-  }
+#wrapper {
+  margin-left: auto;
+  margin-right: auto;
+  /* width: 2000px; */
+  width: 1000px;
+}
+
+.content {
+    display: block;
+    /* width: 100%; */
+    /* margin-top: 3%; */
+    margin-left: 8%;
+    margin-right: auto;
+    /* margin-right: auto; */
+}
 
 h1 {
   color: #030A6A;
+  text-align: center;
 }
 
 h2 {
@@ -11,13 +24,19 @@ h2 {
   text-decoration-style: double;
   font-family: "Comic Sans MS", "Comic Sans", cursive;
   color: purple;
+  text-align: center;
 }
+
 /* Nav bar  */
 /* TODO: Fix left padding and scroll bar width to fill page width */
 .topnav {
   background-color: #FAEBD8;
-  overflow: scroll;
-  display: block;
+  overflow: hidden;
+  width: 100%;
+  /* min-height: 100vh; */
+  /* max-height: 100%; */
+  /* margin-left: auto;
+  margin-right: auto; */
 }
 
 .links {
@@ -44,19 +63,16 @@ h2 {
 } */
 
 /* Add a color to the active/current link */
-/* .topnav a.active {
-  background-color: purple;
-  color: white;
-} */
+.topnav a.active {
+  color: purple;
+}
 
 /* Main img */
 /* TODO: fix image size. Fix text and button placement so it is more nearer the upper left corner */
 .rest-img {
   display: block;
   margin-top: 3%;
-  margin-left: 8%;
-  /* margin-right: auto; */
-  width: 80%;
+  width: 90%;
 }
 
 /* Container holding the image and the text */
@@ -69,9 +85,10 @@ h2 {
 /* Centered text */
 .centered {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-45%, -140%);
+  top: 40%;
+  left: 20%;
+  right: 20%;
+  transform: translate(1%, -60%);
   color: #FFF6DA;
   font-size: 3em;
   font-weight: bold;
@@ -84,21 +101,59 @@ h2 {
   left: 50%;
   transform: translate(-50  %, -50%);
   -ms-transform: translate(-100%, -90%);
-  /* background-color: #555; */
-  /* color: white; */
-  /* font-size: 16px; */
   padding: 8px 20px;
   border-style: double;
   border-width: 3 px;
-  /* outline: 2px double gray; */
   cursor: pointer;
-  /* border-radius: 5px; */
 }
 
-.content {
-    display: block;
-    /* margin-top: 3%; */
-    margin-left: 8%;
-    /* margin-right: auto; */
-    width: 80%;
+.img-small-left {
+  display: inline-block;
+  margin-top: 2%;
+  width: 400px;
+  height: 300px;
+  border: 10px solid #FEE3E6;
+}
+
+.img-small-right {
+  display: inline-block;
+  margin-top: 2%;
+  /* margin-left: 50%;
+  margin-right: 50%; */
+  width: 400px;
+  height: 300px;
+  border: 10px solid #ADD9E3;
+}
+
+.col-right {
+  float: right;
+  display: inline-block;
+  width: 300px;
+  height: 300px;
+  margin: 0;
+  padding-top: 80px;
+  padding-left: 30px;
+  padding-right: 80px;
+}
+
+.col-left{
+  float: left;
+  display: inline-block;
+  width: 350px;
+  height: 300px;
+  margin: 0;
+  padding-top: 80px;
+  padding-left: 50px;
+  padding-right: 50px;
+}
+
+.cuisine {
+  /* color: navy; */
+  color: #355B9A;
+  font-weight: bolder;
+  margin-bottom:0;
+}
+
+.desc {
+  margin:0;
 }
