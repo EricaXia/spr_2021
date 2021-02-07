@@ -1,3 +1,12 @@
+"""
+Code used from
+
+https://johaupt.github.io/scikit-
+learn/tutorial/python/data%20processing/ml%20pipeline/model%20interpretation/columnTransformer_feature_names.html
+
+See reference in technical report for full citation.
+"""
+
 import sklearn
 import warnings
 
