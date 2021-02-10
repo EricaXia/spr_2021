@@ -2,17 +2,20 @@ body, html {
   overflow-x: hidden !important;
   /* height: 100%; */
   background-color: transparent;
+  background-image: url('../images/Restaurant.jpeg');
+  background-attachment: fixed;
+  background-position: center ;
+  background-repeat: no-repeat;  
+  background-size: 70%
 }
 
 /* TODO: Restaurant image: fix scrolling so the scroll bar scrolls down inside the image while it remains fixed */
-.rest-img {
+/* .rest-img {
   background-image: url('../images/Restaurant.jpeg');
   background-attachment: fixed;
-  background-repeat: no-repeat; 
-  background-position: center;
-  /* background-size: 70%; */
-
-}
+  background-position: absolute;
+  background-repeat: no-repeat;
+  position: fixed; } */
 
 .rest-img2 {
   display: block;
@@ -28,9 +31,23 @@ body, html {
 
 .content {
     display: block;
-    margin-left: 8%;
+    width: 1000px;
+    margin-left: 2%;
     margin-right: auto;
+    background-color: white;
+    position: absolute;
+    transform: translate(0px, 480px);
+    padding-left: 140px;
+    padding-right: 300px;
 }
+
+.subtitle {
+  position: fixed;
+  transform: translate(300px, 0px);
+  /* text-align: center; */
+  margin-bottom: -1%;
+}
+
 
 h1 {
   color: #030A6A;
@@ -43,6 +60,7 @@ h2 {
   font-family: "Comic Sans MS", "Comic Sans", cursive;
   color: purple;
   text-align: center;
+  transform: translate(-20px, 10px);
 }
 
 /* Nav bar  */
@@ -90,7 +108,7 @@ h2 {
   color: purple;
 }
 
-.container {
+.rest-container {
   position: relative;
   text-align: center;
 }
@@ -139,7 +157,7 @@ h2 {
 
 .col-right {
   float: right;
-  display: inline-block;
+  /* display: inline-block; */
   width: 300px;
   height: 300px;
   margin: 0;
@@ -150,7 +168,7 @@ h2 {
 
 .col-left{
   float: left;
-  display: inline-block;
+  /* display: inline-block; */
   text-align: left;
   width: 300px;
   height: 300px;
@@ -177,6 +195,5 @@ h2 {
   width: 250px;
 }
 
-.subtitle {
-  margin-bottom: -1%;
-}
+
+
