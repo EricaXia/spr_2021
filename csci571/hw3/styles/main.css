@@ -119,6 +119,7 @@ h2 {
 .img-small-left {
   display: inline-block;
   margin-top: 2%;
+  margin-bottom: 4%;
   width: 400px;
   height: 300px;
   border: 10px solid #FEE3E6;
@@ -127,6 +128,7 @@ h2 {
 .img-small-right {
   display: inline-block;
   margin-top: 2%;
+  margin-bottom: 4%;
   width: 400px;
   height: 300px;
   border: 10px solid #ADD9E3;
@@ -138,7 +140,7 @@ h2 {
   width: 300px;
   height: 300px;
   margin: 0;
-  padding-top: 80px;
+  padding-top: 100px;
   padding-left: 30px;
   padding-right: 80px;
 }
@@ -151,9 +153,14 @@ h2 {
   height: 300px;
   margin-left: 0;
   margin-right: 50px;
-  padding-top: 80px;
+  margin-bottom: 0px;
+  /* padding-top: 90px;
   padding-left: 10px;
   padding-right: 100px;
+  padding-bottom: 0px; */
+  padding-top: 100px;
+  padding-left: 30px;
+  padding-right: 80px;
 }
 
 .cuisine {
@@ -169,4 +176,8 @@ h2 {
 .desc2 {
   margin:0;
   width: 250px;
+}
+
+.subtitle {
+  margin-bottom: -1%;
 }
