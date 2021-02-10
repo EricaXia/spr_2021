@@ -81,6 +81,7 @@ h2 {
   display: block;
   margin-top: 3%;
   width: 90%;
+  background-attachment: fixed;
 }
 
 .container {
