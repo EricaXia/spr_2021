@@ -1,22 +1,35 @@
-body {
+body, html {
   overflow-x: hidden !important;
+  /* height: 100%; */
+  background-color: transparent;
+}
+
+/* TODO: Restaurant image: fix scrolling so the scroll bar scrolls down inside the image while it remains fixed */
+.rest-img {
+  background-image: url('../images/Restaurant.jpeg');
+  background-attachment: fixed;
+  background-repeat: no-repeat; 
+  background-position: center;
+  /* background-size: 70%; */
+
+}
+
+.rest-img2 {
+  display: block;
+  margin-top: 3%;
+  width: 90%;
 }
 
 #wrapper {
   margin-left: auto;
   margin-right: auto;
-  /* width: 2000px; */
   width: 1000px;
-  
 }
 
 .content {
     display: block;
-    /* width: 100%; */
-    /* margin-top: 3%; */
     margin-left: 8%;
     margin-right: auto;
-    /* margin-right: auto; */
 }
 
 h1 {
@@ -77,18 +90,9 @@ h2 {
   color: purple;
 }
 
-/* TODO: Restaurant image: fix scrolling so the scroll bar scrolls down inside the image while it remains fixed */
-.rest-img {
-  display: block;
-  margin-top: 3%;
-  width: 90%;
-  background-attachment: fixed;
-}
-
 .container {
   position: relative;
   text-align: center;
-  color: white;
 }
 
 .centered {
@@ -108,7 +112,6 @@ h2 {
   top: 50%;
   left: 50%;
   transform: translate(40%, 24%);
-  /* -ms-transform: translate(-50%, -90%); */
   padding: 8px 20px;
   border-color: black;
   border-style: double;
@@ -154,10 +157,6 @@ h2 {
   margin-left: 0;
   margin-right: 50px;
   margin-bottom: 0px;
-  /* padding-top: 90px;
-  padding-left: 10px;
-  padding-right: 100px;
-  padding-bottom: 0px; */
   padding-top: 100px;
   padding-left: 30px;
   padding-right: 80px;
