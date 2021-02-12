@@ -1,3 +1,16 @@
+let person = {
+  name: "Erica",
+  age: 24,
+  favorite_food: "pizza",
+  favorite_drink: "mimosas"
+};
+
+let pet = {
+  name: "Chloe",
+  type: "mixed",
+  desc: ["cute", "beautiful", "angelic", "adorable"]
+};
+
 let messages = [
   "You are worthy of good things.",
   "Every part of you is beautiful.",
@@ -16,4 +29,51 @@ function getRandomInt(max) {
 
 function showMessage() {
   alert(messages[getRandomInt(messages.length)]);
+}
+
+function changeP() {
+  document.getElementById("changep").innerHTML = "Secret message: You're incredible!";
+}
+
+function checkAge() {
+  let x;
+  let text;
+  // Get value of input field
+  x = document.getElementById("age_entry").value;
+  if (x == "") {
+    text = "Enter something";
+  }
+  else if (x == person.age) {
+    text = "You are the same age as me";
+  }
+  else if (x<person.age) {
+    text = "You are younger than me";
+    }
+  else if (x>person.age) {
+    text = "You are older than me";
+  }
+  else {
+    text = "Enter a valid age!";
+  }
+  // Change the text of the <p> element with id="age_text"
+  document.getElementById("age_text").innerHTML = text;
+}
+
+function checkPet() {
+  let x;
+  let text;
+
+  x = document.getElementById("pet_entry").value;
+  // console.log(x)
+  if (x == "") {
+    text = "Enter something";
+  }
+  else if (x == pet.name) {
+    text = "Correct!";
+  }
+  else {
+    text = "Sorry, guess again";
+  }
+  // console.log(text)
+  document.getElementById("pet_text").innerHTML = text;
 }
