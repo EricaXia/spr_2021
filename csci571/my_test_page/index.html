@@ -1,18 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+  
+<head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>My Awesome Page</title>
     <link rel="stylesheet" href="styles/styles.css">
   </head>
+
+  <!-- <body onload="yourName()"> -->
   <body>
     <div class="center">
-      <h1 class="title">Welcome to My Test Project Page</h1>
-      <!-- displays the javascript msg -->
-      <p id="myelement"></p>  
+      <h1>Hello!</h1>
+      <!-- <h1 id="welcome_msg"></h1> -->
+      <h2 class="title">Welcome to My Test Project Page</h1>
 
-    </br>
+      <p>Today's date is:</p>
+      <p id="todays_date"></p>
+  
+
+    
 
       <button class="button" onclick="showMessage()">Press Here for Positivity</button>
 
@@ -56,5 +63,6 @@
   </div>
     <!-- Import JS scripts -->
     <script src="scripts/main.js"></script>
+    <script src="scripts/user_interact.js"></script>
   </body>
 </html>

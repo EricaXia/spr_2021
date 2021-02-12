@@ -1,3 +1,6 @@
+let todays_date = new Date();
+document.getElementById("todays_date").innerHTML = todays_date;
+
 let person = {
   name: "Erica",
   age: 24,

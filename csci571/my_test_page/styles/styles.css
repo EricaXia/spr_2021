@@ -1,7 +1,12 @@
 @import url("https://fonts.googleapis.com/css2?family=Lobster+Two:wght@700&family=Noto+Serif&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono&display=swap');
 
 h1 {
   font-family: "Lobster Two";
+}
+
+h2 {
+  font-family: "DM Mono";
 }
 
 body {
