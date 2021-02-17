@@ -1,0 +1,134 @@
+<!-- ENTER THIS CODE in MAGIC SHELL -->
+<!-- https://bytes.usc.edu/~saty/tools/xem/run.html# -->
+<!-- ------------------------------------ -->
+<!-- ------------------------------------ -->
+<pre style="font-size:15px; width:99%; height:400px; border:1px solid black; overflow:auto" id="tester"></pre>
+<script src="c/prtt.js"></script>
+<!-- ------------------------------------ -->
+<!-- add HTML+CSS above, JS below...      -->
+<!-- ------------------------------------ -->
+
+<!-- to run this, delete the following script block... -->
+<script>
+    
+// parse the XML (whose format we'd need to know ahead of doing this),
+// create appropriate HTML elements, NOT via the document.createElement()
+// method, but instead, by appending element names to a string, then
+// doing document.write() on the string. EXERCISE: replace the string-based
+// technique we're using, with document.createElement() calls [which is a cleaner
+// way to do it]
+function displayXML(xmlDoc) {
+    ELEMENT_NODE = 1;
+    html_text = "<html><head><title>XML->HTML</title></head><body>";
+    html_text += "<table border='2'>";
+    caption = xmlDoc.getElementsByTagName("title").item(0).firstChild.nodeValue;
+    html_text += "<caption align='left'><h1>" + caption + "</h1></caption>";
+    planes = xmlDoc.getElementsByTagName("aircraft");
+    planeNodeList = planes.item(0).childNodes;
+    html_text += "<tbody>";
+    html_text += "<tr>";
+    x = 0;
+    y = 0;
+    // output the headers
+    for (i = 0; i < planeNodeList.length; i++) {
+        if (planeNodeList.item(i).nodeType == ELEMENT_NODE) {
+            header = planeNodeList.item(i).nodeName;
+            if (header == "Airbus") {
+                header = "Family";
+                x = 120;
+                y = 55;
+            }
+            if (header == "Boeing") {
+                header = "Family";
+                x = 100;
+                y = 67;
+            }
+            if (header == "seats")
+                header = "Seats";
+            if (header == "Wingspan") header = "Wing Span";
+            if (header == "height") header = "Height";
+            html_text += "<th>" + header + "</th>";
+        }
+    }
+    html_text += "</tr>";
+    // output out the values
+    for (i = 0; i < planes.length; i++) //do for all planes
+    {
+        planeNodeList = planes.item(i).childNodes; //get properties of a plane
+        html_text += "<tr>"; //start a new row of the output table
+        for (j = 0; j < planeNodeList.length; j++) {
+            if (planeNodeList.item(j).nodeType == ELEMENT_NODE) {
+                if (planeNodeList.item(j).nodeName == "Image") { //handle images separately
+                    html_text += "<td><img src='" + planeNodeList.item(j).firstChild.nodeValue + "' width='" + x + "' height='" + y + "'></td>";
+                } else {
+                    html_text += "<td>" + planeNodeList.item(j).firstChild.nodeValue + "</td>";
+                }
+            }
+        }
+        html_text += "</tr>";
+    }
+    html_text += "</tbody>";
+    html_text += "</table>";
+    html_text += "</body></html>";
+
+    document.write(html_text);
+} //displayXML()
+  
+// XMLHttpRequest, ie 'XHR' is a popular way to fetch data from the server
+// try these one at a time, comment out others - use the approp display method,
+// inside the if() below 
+myData = "https://bytes.usc.edu/cs571/s21_JSwasm00/lectures/DOM/ex/data/airbus.xml";
+//myData = "https://bytes.usc.edu/cs571/s21_JSwasm00/lectures/JSON/data/teapot.json";
+myData = "https://bytes.usc.edu/cs571/s21_JSwasm00/lectures/DOM/index.html";
+  
+(function loadData() {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      //displayXML(this.responseXML); // for the airplanes
+      document.write(this.responseText+ "<hr>"); // for the teapot, slides
+      
+      // print out the response's headers sent by the server
+      // as a string, and as an array of split strings
+      var headers = xhttp.getAllResponseHeaders();
+      document.write(headers + "<hr>");
+      var hdrs = headers.trim().split(/[\n]+/); //?
+      hdrs.forEach(function (l) {
+        document.write(l+ "<hr>");
+      });
+    }
+  };
+  xhttp.open("GET", myData, true);
+  xhttp.send();
+}()); //loadData(), immediate exec
+</script>
+
+<!-- to run this, delete the previous script block... -->
+<script>
+  // fetch() is an alternate/better/newer way to fetch data
+  // also try 'national-parks' :)
+  let DATA = 'https://bytes.usc.edu/~saty/sampledata/GeoJSON/cats.geojson';  
+  //DATA='https://api.github.com/repos/javascript-tutorial/en.javascript.info/commits';
+  
+  async function fetchData() {
+   const response = await fetch(DATA); 
+    
+    // prtt all response headers
+    for (let [key, value] of response.headers) {
+      prtt(`${key} = ${value}`);
+    }
+     
+   let gd = await response.text(); // also try .json()
+   //prtt(gd);
+   return gd;
+  }// fetchData() 
+
+  fetchData().then(
+    d=>prtt(d) // 'arrow function', eqvt to the following anonymous fn
+    /*function (d) {
+      prtt(d);
+    }*/
+  );//.then()  
+  
+  // exercise: make the .then() part of immediately executed fetchData() :)
+</script> 
