@@ -1,0 +1,8 @@
+AJAX stands for Asynchronous JavaScript And XML (but it can also fetch JSON objects).
+
+AJAX is a technique for accessing web servers from a web page, after the page has already loaded.
+
+AJAX is not a programming language but rather a group of technologies.
+
+AJAX is a combination of the XMLHTTPRequest object (or fetch()) and Javascript/HTML DOM to display the data
+
