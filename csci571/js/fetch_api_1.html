@@ -8,7 +8,15 @@
              async function getText(file) {
                 let myObject = await fetch(file);
                 let myText = await myObject.text();
+                var lines = myText.split('\n');
+                // console.log(lines);
+                for (var line = 0; line < lines.length; line++) {
+                    console.log(lines[line]);
+                    // document.write(lines[line]);
+                    // document.write(<p>\n</p>);
+                }
                 document.getElementById("demo").innerHTML = myText;
+
              }
              
         </script>
