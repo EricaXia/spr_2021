@@ -1,0 +1,23 @@
+<html>
+    <head>
+
+    <script>
+    function handleAllTags()
+    { var arrayOfDocFonts;
+    if (document.all || document.getElementById)
+    { arrayOfDocFonts = document.getElementsByTagName("font"); }
+    else { document.write("Unrecognized Browser Detected"); }
+    alert("You have " + arrayOfDocFonts.length + " font tags in this document.");
+    }
+    </script> 
+    </head>
+
+    <body>
+        <h1><font COLOR="#0000cc">Font1</font></h1>
+        <h2><font COLOR="#00cc00">Font2</font></h2>
+        <h3><font COLOR="#cc0000">Font3</font></h3>
+        <h3><font COLOR="#cccccc">Font4</font></h4>
+        <input type=button onclick="handleAllTags()"
+        value="Count Font Tags">
+    </body>
+</html>
