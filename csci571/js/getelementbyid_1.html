@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Page Title</title>
+</head>
+
+
+<body>
+  <h1>Hi</h1>
+  <p id="myid">What up yo</p>
+
+<h2>My Favorite Drinks</h2>
+  <ul>
+  	<li>Coffee</li>
+  	<li>Boba</li>
+  	<li>Green tea</li>
+  </ul>
+  
+</body>
+
+<script>
+  
+var myvar = document.getElementById("myid");
+myvar.style.color = "rgb(155, 102, 102)";
+
+var listitems = document.getElementsByTagName("li");
+
+for (var i = 0; i < listitems.length; i++) {
+	listitems[i].style.color = "rgb(255, 0, 255)";
+	listitems[i].style.backgroundColor = 'lime';
+	// make the odd elements bold font
+	if (i % 2 != 0) {
+		listitems[i].style.fontWeight = "900";
+	}
+	// underline the even elements
+	else {
+		listitems[i].style.textDecoration = "underline";
+	}
+}
+//listitems.style.color = "rgb(255, 0, 255)";
+
+</script>
+
+</html>
