@@ -1,5 +1,6 @@
 from flask import Blueprint, render_template, Flask, request, make_response, redirect, url_for
 import requests
+import json
 
 main = Blueprint('main', __name__)
 
@@ -13,4 +14,5 @@ def index():
     # write any relevant py code here
     url = f'https://api.themoviedb.org/3/movie/550?api_key={api_key}'
     r = requests.get(url)
-    return render_template('index.html', content=r.content)
+    r_data = json.loads(r.text)
+    return render_template('index.html', content=)
