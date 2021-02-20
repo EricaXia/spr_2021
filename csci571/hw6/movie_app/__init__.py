@@ -1,5 +1,5 @@
 from flask import Flask 
-from .main import main
+from .app import app
 
 def create_app(config_object='movie_app.settings'):
     ## initialize Flask app
@@ -7,5 +7,5 @@ def create_app(config_object='movie_app.settings'):
     ## load config file
     app.config.from_object(config_object)
 
-    app.register_blueprint(main)
+    # app.register_blueprint(main)
     return app
