@@ -1,0 +1,2 @@
+FLASK_APP=hw6
+FLASK_ENV=development
