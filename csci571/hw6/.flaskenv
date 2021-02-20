@@ -1,2 +1,2 @@
-FLASK_APP=hw6
+FLASK_APP=movie_app
 FLASK_ENV=development
