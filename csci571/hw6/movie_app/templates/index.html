@@ -1,12 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+    <script src="../static/js/xhr_1.js"></script>
 </head>
 
 <body>
-    <h1>Test</h1>
+    <h1>Movie App</h1>
+    <p>Enter your search query here</p>
 
-    <p>{{ content }}</p>
+    <form action="index" method="post">
+        <label>Enter Your Query: <input type="text" id="query" value="" /></label>
+        <button type="button" id="btn-post" onclick="do_ajax();">Search</button>
+        <!-- This is where result shows: -->
+        <div id="result"></div>
+    </form>
+
+    <p>Test test test</p>
+
+    <!-- <p>{{ content }}</p> -->
+
 </body>
 
 </html>

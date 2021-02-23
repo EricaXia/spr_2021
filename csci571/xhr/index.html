@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Practice XHR</title>
+  </head>
+  <body>
+      <h1>Test XMLHTTPRequest page</h1>
+
+
+    <script type="text/javascript">
+        const req = new XMLHttpRequest();
+        req.onreadystatechange = function() {
+            if (req.readyState == 4) {
+                if (req.status == 200) {
+                    console.log(req.responseText);
+                }
+                if (req.status == 404) {
+                    console.log('File not found');
+                }
+            }
+        };
+
+        req.open('get', 'mytext.txt', true);
+        console.log('finished');
+        req.send();
+
+
+        // function do_ajax() {
+        //   var req = new XMLHttpRequest();
+        //   var result = document.getElementById('result');
+        //   req.onreadystatechange = function()
+        //   {
+        //     if(this.readyState == 4 && this.status == 200) {
+        //       result.innerHTML = this.responseText;
+        //     } else {
+        //       result.innerHTML = "処理中...";
+        //     }
+        //   }
+  
+        //   req.open('POST', '/', true);
+        //   req.setRequestHeader('content-type', 'application/x-www-form-urlencoded;charset=UTF-8');
+        //   req.send("name=" + document.getElementById('name').value);
+        // }
+      </script>
+
+
+  </body>
+</html>

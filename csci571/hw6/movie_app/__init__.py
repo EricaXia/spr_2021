@@ -7,5 +7,4 @@ def create_app(config_object='movie_app.settings'):
     ## load config file
     app.config.from_object(config_object)
 
-    # app.register_blueprint(main)
     return app
