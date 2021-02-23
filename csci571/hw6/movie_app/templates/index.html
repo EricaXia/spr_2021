@@ -2,27 +2,49 @@
 <html lang="en">
 
 <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>The Movie DB</title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/styles.css') }}"
+    />
 </head>
 
 <body>
-    <h1>Movie App</h1>
-    <p>Enter your search query here</p>
+    <div class="container-1">
+            <div class="title-box">
+                <h1>THE MOVIE DB</h1>
+            </div>
 
-    <form action="index" method="post">
+        </div>
+
+    <div class="container-2">
+        <div class="menu-box">
+            <p>Movies     &#8594; </p>
+            <p>Search     &#8594; </p>
+
+        </div>
+
+            <div class="box-2">
+                <p>Trending Movies</p>
+
+                <p>TV Shows On-Air Today</p>
+
+            </div>
+
+        </div>
+
+    <!-- <form action="index" method="post">
         <label>Enter Your Query: <input type="text" id="query" value="" /></label>
         <button type="button" id="btn-post" onclick="do_ajax();">Search</button>
-        <!-- This is where result shows: -->
         <div id="result"></div>
-    </form>
+    </form> -->
 
-    <p>Test test test</p>
-
-    <!-- <p>{{ content }}</p> -->
-
-    <!-- <script src="../static/js/xhr_1.js"></script> -->
-    <script>
+    <!-- <script>
         function do_ajax() {
-
             var req = new XMLHttpRequest();
             var result = document.getElementById('result');
             req.onreadystatechange = function () {
@@ -33,15 +55,11 @@
                     console.log("Somethings happened");
                 }
             }
-
             req.open('POST', '/', true);
             req.setRequestHeader('content-type', 'application/x-www-form-urlencoded;charset=UTF-8');
             req.send("query=" + document.getElementById('query').value);
-
         }
-
-
-    </script>
+    </script> -->
 </body>
 
 </html>

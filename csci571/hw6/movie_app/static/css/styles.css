@@ -1,13 +1,45 @@
-/* body {
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;800&display=swap');
+
+body {
   background-color: black;
 }
 
 h1 {
-    color: white;   
-  }
- */
+  font-family: "Raleway";
+  font-weight: 800;
+  color: red;
+}
 
- /* Flexbox stuff */
- .container {
+p {
+  font-family: "Raleway";
+  font-weight: 400;
+  color: white;
+}
+
+/* Flexbox stuff */
+
+.container-1 {
   display: flex; /* or inline-flex */
+  padding: 5px;
+  justify-content: left;
+}
+
+.container-2 {
+  display: flex;
+  padding: 10px;
+  justify-content: right;
+}
+
+.title-box {
+  flex: 1;
+}
+
+.menu-box {
+  flex: 1;
+  justify-content: right;
+}
+
+.box-2 {
+  flex: 2;
+  justify-content:center;
 }
