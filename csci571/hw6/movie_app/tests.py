@@ -24,38 +24,37 @@ Types of API calls to make
 import requests
 import json
 import pprint
+from random import randint
 
 ## my TMDB api key
 api_key = "a0f44b5888d8f94e608f47c1eb5575a4"
-# url = f"https://api.themoviedb.org/3/movie/550?api_key={api_key}"
 
 base_url = "https://api.themoviedb.org/3/"
 
 ## Part 1. Get Trending Movies this WEEK
-media_type = "movie"
-time_window = "week"
-url_1 = f"https://api.themoviedb.org/3/trending/{media_type}/{time_window}?api_key={api_key}"
-# print(url_1)
+def get_trending_movie(page=1): # always gets first page for now
+    media_type = "movie"
+    time_window = "week"
+    url = f"https://api.themoviedb.org/3/trending/{media_type}/{time_window}?api_key={api_key}&page={page}"
+    r1 = requests.get(url)
+    r1_data = json.loads(r1.text)
+    # print('Total Results:', r1_data['total_results'])
+    # print(len(r1_data['results']))
 
-r1 = requests.get(url_1)
-r1_data = json.loads(r1.text) # dict of k:v
-# print(r1_data.keys())
+    ## 'results' is an array of dicts, each dict is a movie's info
+    # pprint.pprint(r1_data['results'])
 
-# print(r1_data['results'])  # array of dicts, each dict is a movie's info
-# pprint.pprint(r1_data['results'])
+    ## Try getting one 
+    idx = randint(0, 20)
+    movie = r1_data['results'][idx]
+    # pprint.pprint(movie)
 
-## Try getting first one as a test
-movie = r1_data['results'][1]
+    movie_title = movie['title']
+    movie_date = movie['release_date']
+    movie_year = movie_date.split('-')[0]
+    movie_image_endpath = movie['backdrop_path']
 
-pprint.pprint(movie)
+    movie_text = f"{movie_title} ({movie_year})"
+    movie_image_path = f"https://image.tmdb.org/t/p/w500{movie_image_endpath}"
 
-movie_title = movie['title']
-movie_date = movie['release_date']
-movie_year = movie_date.split('-')[0]
-# print(movie_title)
-# print(movie_year)
-print(f"{movie_title} ({movie_year})")
-# movie_image_path = movie['poster_path']
-movie_image_path = movie['backdrop_path']
-movie_image = f"https://image.tmdb.org/t/p/w500{movie_image_path}"
-print(movie_image)
+    return (movie_text, movie_image_path)
