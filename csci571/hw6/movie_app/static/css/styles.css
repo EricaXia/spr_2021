@@ -1,3 +1,13 @@
+/* body {
+  background-color: black;
+}
+
 h1 {
-    color: red;   
+    color: white;   
   }
+ */
+
+ /* Flexbox stuff */
+ .container {
+  display: flex; /* or inline-flex */
+}
