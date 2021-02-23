@@ -10,16 +10,22 @@ h1 {
   color: red;
 }
 
+h3 {
+  font-family: "Raleway";
+  font-weight: 400;
+  color: white;
+  /* text-align: center; */
+}
+
 p {
   font-family: "Raleway";
   font-weight: 400;
   color: white;
 }
 
-/* Flexbox stuff */
 
 .container-1 {
-  display: flex; /* or inline-flex */
+  display: flex; 
   padding: 5px;
   justify-content: left;
 }
@@ -39,7 +45,19 @@ p {
   justify-content: right;
 }
 
-.box-2 {
+.main-content-box {
   flex: 2;
-  justify-content:center;
+  /* justify-content: left; */
+}
+
+.main_img {
+    /* display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 60%; */
+}
+
+.caption {
+  /* text-align: center; */
+
 }
