@@ -55,7 +55,7 @@ def search_for_tv_show(api_key=api_key, search_query=search_query):
     pprint.pprint(r_data['results'])
 
 def search_for_movie_and_tv_show(api_key=api_key, search_query=search_query):
-    # TODO: implement this
+    # TODO: implement being able to search for BOTH in one function call
     pass 
 
 ## TODO: implement getting details
