@@ -37,6 +37,44 @@ def get_tv_show_airing_today(api_key=api_key, page=1):
     show_image_path = f"https://image.tmdb.org/t/p/w500{show_image_endpath}"
     return (show_text, show_image_path)
 
+# TODO: implement search
+## make list of what details I need to return (including images)
+def search_for_movie(api_key=api_key, search_query=search_query):
+    search_query = search_query.replace(' ', '%20')
+    url = f"https://api.themoviedb.org/3/search/movie?api_key={api_key}&language=en-US&query={search_query}&page=1"
+    r = requests.get(url)
+    r_data = json.loads(r.text)
+    pprint.pprint(r_data['results'])
+
+
+def search_for_tv_show(api_key=api_key, search_query=search_query):
+    search_query = search_query.replace(' ', '%20')
+    url = f"https://api.themoviedb.org/3/search/tv?api_key={api_key}&language=en-US&query={search_query}&page=1"
+    r = requests.get(url)
+    r_data = json.loads(r.text)
+    pprint.pprint(r_data['results'])
+
+def search_for_movie_and_tv_show(api_key=api_key, search_query=search_query):
+    # TODO: implement this
+    pass 
+
+## TODO: implement getting details
+def get_movie_data(api_key=api_key, movie_id):
+    ## details
+    url_details = f"https://api.themoviedb.org/3/movie/{movie_id}?api_key={api_key}&language=en-US"
+    ## credits (cast)
+    url_credits = f"https://api.themoviedb.org/3/movie/{movie_id}/credits?api_key={api_key}&language=en-US"
+    ## reviews
+    url_reviews = f"https://api.themoviedb.org/3/movie/{movie_id}/reviews?api_key={api_key}&language=en-US&page=1"
+
+
+
+# def get_tv_show_data():
+
+def get_cast_member(api_key=api_key, person_id):
+    url = f"https://api.themoviedb.org/3/person/{person_id}?api_key={api_key}&language=en-US"
+
+    # returns image / other details of cast member
 
 
 
