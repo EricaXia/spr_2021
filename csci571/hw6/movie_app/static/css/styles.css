@@ -24,31 +24,16 @@ p {
 }
 
 
-.container-1 {
+.container-title {
   display: flex; 
   padding: 5px;
   justify-content: left;
-}
-
-.container-2 {
-  display: flex;
-  padding: 10px;
-  justify-content: right;
 }
 
 .title-box {
   flex: 1;
 }
 
-.menu-box {
-  flex: 1;
-  justify-content: right;
-}
-
-.main-content-box {
-  flex: 2;
-  /* justify-content: left; */
-}
 
 .main_img {
     /* display: block;
@@ -59,5 +44,49 @@ p {
 
 .caption {
   /* text-align: center; */
+}
 
+
+/* Show hide tab logic */
+.tabContainer {
+  width: 90%;
+  height: 100%;
+}
+
+.container-menu {
+  display: flex;
+  padding: 10px;
+  justify-content: right;
+}
+
+.tabContainer .buttonContainer {
+  flex: 50%;
+  height: 15%;
+}
+.tabContainer .buttonContainer button{
+  width: 10%;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+.tabContainer .tabPanel {
+  height: 100%;
+  padding-top: 10px;
+  box-sizing: border-box;
+  display: none;
+}
+
+.content {
+  display: grid;
+  position: relative;
+}
+
+.item {
+  padding: 100px;
+  text-align: center;
+  grid-column-start: 1;
+  grid-column-end: 10 ;
+  /* margin: 10%; */
+  /* position: absolute; */
 }

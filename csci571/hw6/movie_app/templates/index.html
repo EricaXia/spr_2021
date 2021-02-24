@@ -14,40 +14,60 @@
 </head>
 
 <body>
-    <div class="container-1">
+    <div class="container-title">
             <div class="title-box">
                 <h1>THE MOVIE DB</h1>
             </div>
-
+    </div>
+    <!-- Container that wraps everything to show/hide INCLUDING the menu-->
+    <div class=tabContainer>
+        <div class="container-menu">
+                <div class="buttonContainer">
+                    <button onclick="showPanel(0)">Movies  &#8594; </button>
+                    <button onclick="showPanel(1)">Search  &#8594; </button>
+                </div>
         </div>
 
-    <div class="container-2">
-        <div class="menu-box">
-            <p>Movies     &#8594; </p>
-            <p>Search     &#8594; </p>
+    
 
-        </div>
+        <!-- Panel 1: Welcome page with trending stuff -->
+        <div class="tabPanel">
+            <div class="content">
 
-            <div class="main-content-box">
-                <h3>Trending Movies</h3>
-                <img class="main_img" src="{{ movie_image_path }}">
-                <p class="caption">{{ movie_text }}</p>
-
-            </br>
-
-                <h3>TV Shows On-Air Today</h3>
-                <img class="main_img" src="{{ show_image_path }}">
-                <p class="caption">{{ show_text }}</p>
+                <div class="item">
+                    <h3>Trending Movies</h3>
+                    <img class="main_img" src="{{ movie_image_path }}">
+                    <p class="caption">{{ movie_text }}</p>
+                </div>
+                
+                <div class="item">
+                    <h3>TV Shows On-Air Today</h3>
+                    <img class="main_img" src="{{ show_image_path }}">
+                    <p class="caption">{{ show_text }}</p>
+                </div>
 
             </div>
-
         </div>
 
-    <!-- <form action="index" method="post">
-        <label>Enter Your Query: <input type="text" id="query" value="" /></label>
-        <button type="button" id="btn-post" onclick="do_ajax();">Search</button>
-        <div id="result"></div>
-    </form> -->
+        <!-- Panel 2: Search feature -->
+        <div class="tabPanel">
+                <p>SEARCH BOX GOES HERE</p>
+            <!-- <form action="index" method="post">
+            <label>Enter Your Query: <input type="text" id="query" value="" /></label>
+            <button type="button" id="btn-post" onclick="do_ajax();">Search</button>
+            <div id="result"></div>
+            </form> -->
+                <p>results go here</p>
+        </div>
+
+
+
+    <!-- Ends the shown/hidden content container -->
+    </div>
+
+
+
+
 
     <!-- <script>
         function do_ajax() {
@@ -66,6 +86,7 @@
             req.send("query=" + document.getElementById('query').value);
         }
     </script> -->
+    <script src="{{ url_for('static', filename='js/tabs.js') }}"></script>
 </body>
 
 </html>
