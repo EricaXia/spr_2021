@@ -1,0 +1,49 @@
+h1 {
+    color: blue;
+    text-align: center;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+
+.tabContainer {
+    width: 100%;
+    height: 900px;
+}
+
+.tabContainer .buttonContainer {
+    height: 15%
+}
+
+.tabContainer .buttonContainer button{
+    width: 25%;
+    height: 50%;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 10px;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 18px;
+    background-color: lavender;
+}
+
+.tabContainer .buttonContainer button:hover {
+    background-color: indigo;
+}
+
+.tabContainer .tabPanel {
+    height: 100%;
+    background-color: lightblue;
+    color: white; 
+    text-align: center;
+    padding-top: 80px;
+    box-sizing: border-box;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 22px;
+    display: none;
+}
+
+img {
+    max-width: 50%;
+    max-height: 80%;
+}
