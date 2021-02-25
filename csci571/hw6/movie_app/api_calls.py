@@ -38,7 +38,7 @@ def get_tv_show_airing_today(api_key=api_key, page=1):
     show_image_path = f"https://image.tmdb.org/t/p/w500{show_image_endpath}"
     return (show_text, show_image_path)
 
-
+## Part 2: Search Feature
 def search_for_movie(api_key, search_query, page=1):
     search_query_f = search_query.replace(' ', '%20')
     url = f"https://api.themoviedb.org/3/search/movie?api_key={api_key}&language=en-US&query={search_query_f}&page={page}"
@@ -46,7 +46,10 @@ def search_for_movie(api_key, search_query, page=1):
     r_data = json.loads(r.text)
     # array of movie dicts
     movie_results = r_data['results']
-    return movie_results   # returns a dict of movie details
+    if movie_results:
+        return movie_results  # returns a dict of movie details
+    else:
+        return "No results found."
 
 
 def search_for_tv_show(api_key, search_query, page=1):
@@ -55,7 +58,10 @@ def search_for_tv_show(api_key, search_query, page=1):
     r = requests.get(url)
     r_data = json.loads(r.text)
     tv_show_results = r_data['results']
-    return tv_show_results  # returns dict of tv show details
+    if tv_show_results:
+        return tv_show_results
+    else:
+        return "No results found."
 
 
 def search_for_movie_and_tv_show(api_key, search_query, page=1):
@@ -64,20 +70,23 @@ def search_for_movie_and_tv_show(api_key, search_query, page=1):
     r = requests.get(url)
     r_data = json.loads(r.text)
     all_results = r_data['results']
-    return all_results
-
-
-# TODO: Why review url only returns just 1 review and not all of them?
+    if all_results:
+        return all_results
+    else:
+        return "No results found."
 
 def get_movie_data(api_key, movie_id, page=1):
     # details of movie
     url_details = f"https://api.themoviedb.org/3/movie/{movie_id}?api_key={api_key}&language=en-US"
     r1 = requests.get(url_details)
     r1_data = json.loads(r1.text)  # dict of movie details
-    # get tmdb url
+    ## get tmdb url
     movie_name = r1_data['title'].lower().replace(' ', '-')
-    print(movie_name)
     r1_data['tmdb_url'] = f"https://www.themoviedb.org/movie/{movie_id}-{movie_name}"
+    ## get genres
+    r1_data['genre_names'] = [g['name'] for g in r1_data['genres']]
+    # get lang names
+    r1_data['spoken_language_names'] = [l['english_name'] for l in r1_data['spoken_languages']]
 
     ## credits (cast)
     url_credits = f"https://api.themoviedb.org/3/movie/{movie_id}/credits?api_key={api_key}&language=en-US"
@@ -103,6 +112,10 @@ def get_tv_show_data(api_key, tv_id, page=1):
     # get tmdb url
     tv_name = r1_data['title'].lower().replace(' ', '-')
     r1_data['tmdb_url'] = f"https://www.themoviedb.org/tv/{tv_id}-{tv_name}"
+    # get genres
+    r1_data['genre_names'] = [g['name'] for g in r1_data['genres']]
+    # get lang names
+    r1_data['spoken_language_names'] = [l['english_name'] for l in r1_data['spoken_languages']]
 
     ## credits (cast)
     url_credits = f"https://api.themoviedb.org/3/tv/{tv_id}/credits?api_key={api_key}&language=en-US"
@@ -126,6 +139,13 @@ def get_actor_details(cast_dict):
     image_path = f"https://image.tmdb.org/t/p/w500{cast_dict['profile_path']}"
     return real_name, role_name, image_path
 
+def get_review_details(review_dict):
+    reviewer = review_dict['author']
+    review_date = review_dict['created_at']
+    rating = review_dict['author_details']['rating']
+    review_text = 
+    return
+
 
 if __name__ == "__main__":
     # movie_text, movie_image_path = get_trending_movie()
@@ -136,21 +156,29 @@ if __name__ == "__main__":
     # search_for_tv_show(api_key, 'the office')
     # pprint.pprint(search_for_movie_and_tv_show(api_key, 'the office'))
 
-    print("Search for a TV Show")
-    res1 = search_for_tv_show(api_key, 'riverdale')[0]
-    res1_details, res1_cast, res1_reviews = get_tv_show_data(
-        api_key, res1['id'])
-    pprint.pprint(res1_details)
-    # actor1 = res1_cast[1]
-    # print(get_actor_details(actor1))
+    # res = search_for_movie(api_key, 'dawsfsergertdshgrtfh')
+    # print(res)
 
-    # print("Search for a movie")
-    # movie1 = search_for_movie(api_key, 'the dark knight')[0]
-    # pprint.pprint(movie1)
-    # movie1details, movie1cast, movie1reviews = get_movie_data(api_key, movie1['id'])
+
+    print("Search for a movie")
+    movie1 = search_for_movie(api_key, 'the dark knight')[0]
+    # movie1 = search_for_movie(api_key, 'toy story 4')[0]
+    pprint.pprint(movie1)
+        
+    # movie1 = search_for_movie(api_key, 'asdsafasgdfhfd')
+    # print(movie1)
+
+    movie1details, movie1cast, movie1reviews = get_movie_data(api_key, movie1['id'])
     # pprint.pprint(movie1details)
-    # pprint.pprint(movie1reviews)
+    pprint.pprint(movie1reviews)
     # actor1 = movie1cast[0]
     # print(get_actor_details(actor1))
 
+    # print("Search for a TV Show")
+    # res1 = search_for_tv_show(api_key, 'riverdale')[0]
+    # res1_details, res1_cast, res1_reviews = get_tv_show_data(
+    #     api_key, res1['id'])
+    # pprint.pprint(res1_details)
+    # actor1 = res1_cast[1]
+    # print(get_actor_details(actor1))
 
