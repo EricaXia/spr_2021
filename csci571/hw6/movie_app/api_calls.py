@@ -74,6 +74,10 @@ def get_movie_data(api_key, movie_id, page=1):
     url_details = f"https://api.themoviedb.org/3/movie/{movie_id}?api_key={api_key}&language=en-US"
     r1 = requests.get(url_details)
     r1_data = json.loads(r1.text)  # dict of movie details
+    # get tmdb url
+    movie_name = r1_data['title'].lower().replace(' ', '-')
+    print(movie_name)
+    r1_data['tmdb_url'] = f"https://www.themoviedb.org/movie/{movie_id}-{movie_name}"
 
     ## credits (cast)
     url_credits = f"https://api.themoviedb.org/3/movie/{movie_id}/credits?api_key={api_key}&language=en-US"
@@ -96,6 +100,9 @@ def get_tv_show_data(api_key, tv_id, page=1):
     url_details = f"https://api.themoviedb.org/3/tv/{tv_id}?api_key={api_key}&language=en-US"
     r1 = requests.get(url_details)
     r1_data = json.loads(r1.text)  # dict of show details
+    # get tmdb url
+    tv_name = r1_data['title'].lower().replace(' ', '-')
+    r1_data['tmdb_url'] = f"https://www.themoviedb.org/tv/{tv_id}-{tv_name}"
 
     ## credits (cast)
     url_credits = f"https://api.themoviedb.org/3/tv/{tv_id}/credits?api_key={api_key}&language=en-US"
@@ -120,20 +127,26 @@ def get_actor_details(cast_dict):
     return real_name, role_name, image_path
 
 
-# if __name__ == "__main__":
+if __name__ == "__main__":
     # movie_text, movie_image_path = get_trending_movie()
     # res = get_tv_show_airing_today(api_key=api_key, page=1)
     # print(res)
+
     # pprint.pprint(search_for_movie(api_key=api_key, search_query='batman'))
     # search_for_tv_show(api_key, 'the office')
     # pprint.pprint(search_for_movie_and_tv_show(api_key, 'the office'))
-    # res1 = search_for_tv_show(api_key, 'riverdale')[0]
-    # res1_details, res1_cast, res1_reviews = get_tv_show_data(
-    #     api_key, res1['id'])
+
+    print("Search for a TV Show")
+    res1 = search_for_tv_show(api_key, 'riverdale')[0]
+    res1_details, res1_cast, res1_reviews = get_tv_show_data(
+        api_key, res1['id'])
+    pprint.pprint(res1_details)
     # actor1 = res1_cast[1]
     # print(get_actor_details(actor1))
-    # movie1 = search_for_movie(api_key, 'little women')[0]
 
+    # print("Search for a movie")
+    # movie1 = search_for_movie(api_key, 'the dark knight')[0]
+    # pprint.pprint(movie1)
     # movie1details, movie1cast, movie1reviews = get_movie_data(api_key, movie1['id'])
     # pprint.pprint(movie1details)
     # pprint.pprint(movie1reviews)
