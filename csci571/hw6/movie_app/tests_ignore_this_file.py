@@ -27,9 +27,8 @@ import pprint
 from random import randint
 
 ## my TMDB api key
-api_key = "a0f44b5888d8f94e608f47c1eb5575a4"
-
-base_url = "https://api.themoviedb.org/3/"
+# api_key = "a0f44b5888d8f94e608f47c1eb5575a4"
+# base_url = "https://api.themoviedb.org/3/"
 
 ## Part 1. Get Trending Movies this WEEK
 def get_trending_movie(page=1): # always gets first page for now
@@ -40,21 +39,22 @@ def get_trending_movie(page=1): # always gets first page for now
     r1_data = json.loads(r1.text)
     # print('Total Results:', r1_data['total_results'])
     # print(len(r1_data['results']))
-
     ## 'results' is an array of dicts, each dict is a movie's info
     # pprint.pprint(r1_data['results'])
-
     ## Try getting one 
     idx = randint(0, 20)
     movie = r1_data['results'][idx]
     # pprint.pprint(movie)
-
     movie_title = movie['title']
     movie_date = movie['release_date']
     movie_year = movie_date.split('-')[0]
     movie_image_endpath = movie['backdrop_path']
-
     movie_text = f"{movie_title} ({movie_year})"
     movie_image_path = f"https://image.tmdb.org/t/p/w500{movie_image_endpath}"
-
     return (movie_text, movie_image_path)
+
+
+num1 = 9
+num2 = 10
+newnum2 = 5
+print(9/2)

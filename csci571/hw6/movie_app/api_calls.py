@@ -3,6 +3,7 @@ import json
 import pprint
 from random import randint
 from settings import api_key
+from datetime import datetime
 
 # base_url = "https://api.themoviedb.org/3/"
 
@@ -110,7 +111,7 @@ def get_tv_show_data(api_key, tv_id, page=1):
     r1 = requests.get(url_details)
     r1_data = json.loads(r1.text)  # dict of show details
     # get tmdb url
-    tv_name = r1_data['title'].lower().replace(' ', '-')
+    tv_name = r1_data['name'].lower().replace(' ', '-')
     r1_data['tmdb_url'] = f"https://www.themoviedb.org/tv/{tv_id}-{tv_name}"
     # get genres
     r1_data['genre_names'] = [g['name'] for g in r1_data['genres']]
@@ -134,17 +135,28 @@ def get_tv_show_data(api_key, tv_id, page=1):
 
 # return info for one cast member
 def get_actor_details(cast_dict):
-    real_name = cast_dict['name']
-    role_name = cast_dict['character']
-    image_path = f"https://image.tmdb.org/t/p/w500{cast_dict['profile_path']}"
-    return real_name, role_name, image_path
+    actor = {
+        'real_name': cast_dict['name'],
+        'role_name': cast_dict['character'],
+        'image_path': f"https://image.tmdb.org/t/p/w500{cast_dict['profile_path']}"
+    }
+    return actor
+
+# return info for one review
 
 def get_review_details(review_dict):
-    reviewer = review_dict['author']
-    review_date = review_dict['created_at']
-    rating = review_dict['author_details']['rating']
-    review_text = 
-    return
+    # use created_at for the review date
+    review_date1 = datetime.strptime(review_dict['created_at'], "%Y-%m-%dT%H:%M:%S.%f%z")
+    review_date2 = review_date1.strftime("%m/%d/%Y")
+    # convert to rating out of 5
+    rating = round(review_dict['author_details']['rating'] / 2, 1)
+    review = {
+        'reviewer': review_dict['author'],
+        'review_date': review_date2,
+        'rating': rating,
+        'review_text': review_dict['content']
+    }
+    return review
 
 
 if __name__ == "__main__":
@@ -161,23 +173,22 @@ if __name__ == "__main__":
 
 
     print("Search for a movie")
-    movie1 = search_for_movie(api_key, 'the dark knight')[0]
+    # movie1 = search_for_movie(api_key, 'the dark knight')[0]
     # movie1 = search_for_movie(api_key, 'toy story 4')[0]
-    pprint.pprint(movie1)
-        
+    movie1 = search_for_movie(api_key, 'the shawshank redemption')[0]
     # movie1 = search_for_movie(api_key, 'asdsafasgdfhfd')
-    # print(movie1)
-
+    pprint.pprint(movie1)
     movie1details, movie1cast, movie1reviews = get_movie_data(api_key, movie1['id'])
     # pprint.pprint(movie1details)
-    pprint.pprint(movie1reviews)
+    # pprint.pprint(movie1reviews)
     # actor1 = movie1cast[0]
     # print(get_actor_details(actor1))
+    review1 = get_review_details(movie1reviews[2])
+    pprint.pprint(review1)
 
     # print("Search for a TV Show")
     # res1 = search_for_tv_show(api_key, 'riverdale')[0]
-    # res1_details, res1_cast, res1_reviews = get_tv_show_data(
-    #     api_key, res1['id'])
+    # res1_details, res1_cast, res1_reviews = get_tv_show_data(api_key, res1['id'])
     # pprint.pprint(res1_details)
     # actor1 = res1_cast[1]
     # print(get_actor_details(actor1))
