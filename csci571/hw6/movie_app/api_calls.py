@@ -65,7 +65,9 @@ def search_for_movie_and_tv_show(api_key, search_query, page=1):
     return all_results
 
 
-## TODO: implement getting details
+## TODO: Why review url only returns just 1 review and not all of them?
+
+
 def get_movie_data(api_key, movie_id, page=1):
     ## details
     url_details = f"https://api.themoviedb.org/3/movie/{movie_id}?api_key={api_key}&language=en-US"
@@ -73,9 +75,9 @@ def get_movie_data(api_key, movie_id, page=1):
     r1_data = json.loads(r1.text)
     pprint.pprint(r1_data)
     ## credits (cast)
-    # url_credits = f"https://api.themoviedb.org/3/movie/{movie_id}/credits?api_key={api_key}&language=en-US"
+    url_credits = f"https://api.themoviedb.org/3/movie/{movie_id}/credits?api_key={api_key}&language=en-US"
     ## reviews
-    # url_reviews = f"https://api.themoviedb.org/3/movie/{movie_id}/reviews?api_key={api_key}&language=en-US&page=1"
+    url_reviews = f"https://api.themoviedb.org/3/movie/{movie_id}/reviews?api_key={api_key}&language=en-US&page={page}"
 
 
 
