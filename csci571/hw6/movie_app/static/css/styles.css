@@ -47,46 +47,88 @@ p {
 }
 
 
-/* Show hide tab logic */
-.tabContainer {
-  width: 90%;
-  height: 100%;
+/* Show/Hide Tabs */
+
+.tabs {
+  /* width: 90%;
+  height: 100%; */
+  display: flex;
 }
 
-.container-menu {
+.tabs__sidebar {
+  /* width: 25%; */
+  width: 125px;
+  flex-shrink: 0;
+}
+
+.tabs__button {
+  display: block;
+  padding: 10px;
+  border: none;
+  background: none;
+  width: 100%;
+  outline: none;
+  cursor: pointer;
+}
+
+/* When hover over button font color should turn red */
+.tabs__button:active {
+  color: red;
+}
+
+/*When button is selectd, the text should be bold & red, and the bottom border should be a white line  */
+.tabs__button--active {
+  color: red;
+  font-weight: bold;
+  border-bottom: 1px solid white;
+}
+
+.tabs__content {
+  padding: 15px;
+  display: none;
+}
+
+.tabs__content--active {
+  display: block;
+}
+
+.tabs__content > :first-child {
+  margin-top: 0;
+}
+
+/* .container-menu {
   display: flex;
   padding: 10px;
   justify-content: right;
-}
+} */
 
-.tabContainer .buttonContainer {
+/* .tabContainer .buttonContainer {
   flex: 50%;
   height: 15%;
-}
-.tabContainer .buttonContainer button{
+} */
+
+/* .tabContainer .buttonContainer button{
   width: 10%;
   float: left;
   border: none;
   outline: none;
   cursor: pointer;
-}
-.tabContainer .tabPanel {
+} */
+/* .tabContainer .tabPanel {
   height: 100%;
   padding-top: 10px;
   box-sizing: border-box;
   display: none;
-}
+} */
 
-.content {
+/* .content {
   display: grid;
   position: relative;
-}
+} */
 
-.item {
+/* .item {
   padding: 100px;
   text-align: center;
   grid-column-start: 1;
   grid-column-end: 10 ;
-  /* margin: 10%; */
-  /* position: absolute; */
-}
+} */

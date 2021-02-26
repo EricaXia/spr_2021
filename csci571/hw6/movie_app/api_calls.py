@@ -2,7 +2,8 @@ import requests
 import json
 import pprint
 from random import randint
-from settings import api_key
+from .settings import api_key
+# from settings import api_key
 from datetime import datetime
 
 # base_url = "https://api.themoviedb.org/3/"

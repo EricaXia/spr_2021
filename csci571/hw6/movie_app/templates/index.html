@@ -20,44 +20,40 @@
             </div>
     </div>
     <!-- Container that wraps everything to show/hide INCLUDING the menu-->
-    <div class=tabContainer>
-        <div class="container-menu">
-                <div class="buttonContainer">
-                    <button onclick="showPanel(0)">Movies  &#8594; </button>
-                    <button onclick="showPanel(1)">Search  &#8594; </button>
-                </div>
+    <div class=tabs>
+        <div class="tabs__sidebar">
+                <button class="tabs__button" data-for-tab="1">Movies  &#8594; </button>
+                <button class="tabs__button" data-for-tab="2">Search  &#8594; </button>
         </div>
 
-    
+        <!-- Panel 1: Home tab with trending stuff -->
+        <div class="tabs__content tabs__content--active" data-tab="1">
+            <!-- <div class="content"> -->
 
-        <!-- Panel 1: Welcome page with trending stuff -->
-        <div class="tabPanel">
-            <div class="content">
-
+                <!-- TODO: convert to slideshow -->
                 <div class="item">
                     <h3>Trending Movies</h3>
                     <img class="main_img" src="{{ movie_image_path }}">
                     <p class="caption">{{ movie_text }}</p>
                 </div>
-                
                 <div class="item">
                     <h3>TV Shows On-Air Today</h3>
                     <img class="main_img" src="{{ show_image_path }}">
                     <p class="caption">{{ show_text }}</p>
                 </div>
 
-            </div>
+            <!-- </div> -->
         </div>
 
-        <!-- Panel 2: Search feature -->
-        <div class="tabPanel">
-                <p>SEARCH BOX GOES HERE</p>
+        <!-- Panel 2: Search feature tab-->
+        <div class="tabs__content" data-tab="2">
+            <p>SEARCH BOX GOES HERE</p>
             <!-- <form action="index" method="post">
             <label>Enter Your Query: <input type="text" id="query" value="" /></label>
             <button type="button" id="btn-post" onclick="do_ajax();">Search</button>
             <div id="result"></div>
             </form> -->
-                <p>results go here</p>
+            <p>results go here</p>
         </div>
 
 
