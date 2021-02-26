@@ -101,20 +101,20 @@ p {
 }
 
 .tabs__content {
-  /* padding-top: %; */
+  padding-top: 20px;
+  height: 100%;
   padding-left: 10%;
   display: none;
 }
 
 .tabs__content--active {
+  height: 100%;
   display: block;
 }
 
 /* .tabs__content > :first-child {
   margin-top: 0;
 } */
-
-
 
 /* .container-menu {
   display: flex;
@@ -146,9 +146,10 @@ p {
   position: relative;
 } */
 
-/* .item {
-  padding: 100px;
+/* For each item on homepage */
+.item {
+  /* padding: 100px; */
   text-align: center;
-  grid-column-start: 1;
-  grid-column-end: 10 ;
-} */
+  /* grid-column-start: 1;
+  grid-column-end: 10 ; */
+}
