@@ -15,9 +15,14 @@ function showTabs() {
     document.querySelectorAll(".tabs__button").forEach(button => {
         button.addEventListener("click", () => {
             const sideBar = button.parentElement;
-            const tabsContainer = sidebar.parentElement;
+            const tabsContainer = sideBar.parentElement;
             const tabNumber = button.dataset.forTab;
             const tabToActivate = tabsContainer.querySelector(`.tabs__content[data-tab="${tabNumber}"]`);
+
+            console.log(sideBar);
+            console.log(tabsContainer);
+            console.log(tabNumber);
+            console.log(tabToActivate);
 
             sideBar.querySelectorAll(".tabs__button").forEach(button => {
                 button.classList.remove("tabs__button--active");
@@ -41,4 +46,4 @@ document.addEventListener("DOMContentLoaded", () => {
         tabsContainer.querySelector(".tabs__sidebar .tabs__button").click();
     })
 
-})
+});
