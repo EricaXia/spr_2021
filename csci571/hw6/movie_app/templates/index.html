@@ -48,26 +48,29 @@
         <!-- Panel 2: Search feature tab-->
         <div class="tabs__content" data-tab="2">
 
-            <form name="searchForm" action="index" onsubmit="return validateInput()" method="post">
+            <form class="search-form" name="searchForm" action="index" onsubmit="return validateInput()" method="post">
 
-            <label>Keyword* <input type="text" name="keyword" id="keyword" value="" /></label>
+                <label for="keyword">Keyword* </label>
+                <input type="text" name="keyword" id="keyword" value="" />
 
-            <label for="category">Category*</label>
-                <select id="category" name="category">
-                <option value=""></option>
-                <option value="movies">Movies</option>
-                <option value="tv-shows">TV Shows</option>
-                <option value="movies-and-tv-shows">Movies and TV Shows</option>
-                </select>
+            </br>
+            
+                <label for="category">Category*</label>
+                    <select id="category" name="category">
+                        <option value=""></option>
+                        <option value="movies">Movies</option>
+                        <option value="tv-shows">TV Shows</option>
+                        <option value="movies-and-tv-shows">Movies and TV Shows</option>
+                    </select>
 
-            <input type="submit" value="Search" onclick="do_ajax();">
+                <input type="submit" value="Search" class="search-btn" onclick="do_ajax();">
 
-            <!-- <button type="button" id="btn-post" onclick="do_ajax();">Search</button> -->
+                <!-- <button type="button" id="btn-post" onclick="do_ajax();">Search</button> -->
 
-            <!-- TODO: add clear button -->
-            <!-- TODO: implement 'invalid input' alert -->
+                <!-- TODO: add clear button -->
 
-            <div id="result"></div>
+                <div id="result"></div>
+                
             </form>
         </div>
 
@@ -81,6 +84,8 @@
 
 <div class="footer"><p>Erica Xia - CSCI 571</p></div>
 
+
+<!-- Javascript here -->
     <script>
         function do_ajax() {
             var req = new XMLHttpRequest();
@@ -102,5 +107,4 @@
     <script src="{{ url_for('static', filename='js/validateform.js') }}"></script>
 
 </body>
-
 </html>
