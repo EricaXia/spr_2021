@@ -23,7 +23,9 @@ def get_trending_movie(api_key=api_key, page=1):  # always gets first page for n
     movie_year = movie_date.split('-')[0]
     movie_image_endpath = movie['backdrop_path']
     movie_text = f"{movie_title} ({movie_year})"
-    movie_image_path = f"https://image.tmdb.org/t/p/w500{movie_image_endpath}"
+    # movie_image_path = f"https://image.tmdb.org/t/p/w500{movie_image_endpath}"
+    movie_image_path = f"https://image.tmdb.org/t/p/w780{movie_image_endpath}"
+
     return (movie_text, movie_image_path)
 
 
@@ -37,7 +39,8 @@ def get_tv_show_airing_today(api_key=api_key, page=1):
     show_year = show['first_air_date'].split('-')[0]
     show_text = f"{show_title} ({show_year})"
     show_image_endpath = show['backdrop_path']
-    show_image_path = f"https://image.tmdb.org/t/p/w500{show_image_endpath}"
+    # show_image_path = f"https://image.tmdb.org/t/p/w500{show_image_endpath}"
+    show_image_path = f"https://image.tmdb.org/t/p/w780{show_image_endpath}"
     return (show_text, show_image_path)
 
 ## Part 2: Search Feature
