@@ -97,16 +97,18 @@ def get_movie_data(api_key, movie_id, page=1):
     url_credits = f"https://api.themoviedb.org/3/movie/{movie_id}/credits?api_key={api_key}&language=en-US"
     r2 = requests.get(url_credits)
     r2_data = json.loads(r2.text)
-    cast_details = r2_data['cast']  # list of cast members
+    # cast_details = r2_data['cast']  # list of cast members
+    r1_data['cast_details'] = r2_data['cast']
 
     # reviews
     url_reviews = f"https://api.themoviedb.org/3/movie/{movie_id}/reviews?api_key={api_key}&language=en-US&page={page}"
     r3 = requests.get(url_reviews)
     r3_data = json.loads(r3.text)
-    reviews = r3_data['results']  # list of reviews
+    # reviews = r3_data['results']  # list of reviews
+    r1_data['reviews'] = r3_data['results']
 
-    # return details dict, cast members list, and reviews list
-    return r1_data, cast_details, reviews
+    # return details dict
+    return r1_data
 
 
 def get_tv_show_data(api_key, tv_id, page=1):
@@ -126,16 +128,18 @@ def get_tv_show_data(api_key, tv_id, page=1):
     url_credits = f"https://api.themoviedb.org/3/tv/{tv_id}/credits?api_key={api_key}&language=en-US"
     r2 = requests.get(url_credits)
     r2_data = json.loads(r2.text)
-    cast_details = r2_data['cast']  # list of cast members
+    # cast_details = r2_data['cast']  # list of cast members
+    r1_data['cast_details'] = r2_data['cast']
 
     # reviews
     url_reviews = f"https://api.themoviedb.org/3/tv/{tv_id}/reviews?api_key={api_key}&language=en-US&page={page}"
     r3 = requests.get(url_reviews)
     r3_data = json.loads(r3.text)
-    reviews = r3_data['results']  # list of reviews
+    # reviews = r3_data['results']  # list of reviews
+    r1_data['reviews'] = r3_data['results']
 
     # return details dict, cast members list, and reviews list
-    return r1_data, cast_details, reviews
+    return r1_data
 
 # return info for one cast member
 def get_actor_details(cast_dict):
@@ -182,13 +186,13 @@ if __name__ == "__main__":
     movie1 = search_for_movie(api_key, 'the shawshank redemption')[0]
     # movie1 = search_for_movie(api_key, 'asdsafasgdfhfd')
     pprint.pprint(movie1)
-    movie1details, movie1cast, movie1reviews = get_movie_data(api_key, movie1['id'])
-    # pprint.pprint(movie1details)
+    movie1details = get_movie_data(api_key, movie1['id'])
+    pprint.pprint(movie1details)
     # pprint.pprint(movie1reviews)
     # actor1 = movie1cast[0]
     # print(get_actor_details(actor1))
-    review1 = get_review_details(movie1reviews[2])
-    pprint.pprint(review1)
+    # review1 = get_review_details(movie1reviews[2])
+    # pprint.pprint(review1)
 
     # print("Search for a TV Show")
     # res1 = search_for_tv_show(api_key, 'riverdale')[0]
