@@ -23,6 +23,12 @@ p {
   color: white;
 }
 
+.result {
+  font-family: "Raleway";
+  font-weight: 400;
+  color: white;
+}
+
 /* Header */
 .container-title {
   display: flex;
