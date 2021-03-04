@@ -29,13 +29,31 @@
 
             <!-- TODO: convert to slideshow -->
             <div class="item">
+
                 <h3>Trending Movies</h3>
-                <img src="{{ movie_image_path }}">
-                <p class="caption">{{ movie_text }}</p>
+                <!-- insert slideshow, 5 slides per movie and 5 per tv show -->
+                <div class="myslide">
+                    <img src="{{ movie_image_paths[0] }}">
+                    <div class="caption">{{ movie_texts[0] }}</div>
+                </div>
+
+                <!-- <div class="myslide">
+                    <img src="{{ movie_image_paths[1] }}">
+                    <div class="caption">{{ movie_texts[1] }}</div>
+                </div>
+
+                <div class="myslide">
+                    <img src="{{ movie_image_paths[2] }}">
+                    <div class="caption">{{ movie_texts[2] }}</div>
+                </div> -->
+
+
+
+
             </div>
             <div class="item">
                 <h3>TV Shows On-Air Today</h3>
-                <img src="{{ show_image_path }}">
+                <img class="myslide" src="{{ show_image_path }}">
                 <p class="caption">{{ show_text }}</p>
             </div>
 
@@ -170,6 +188,8 @@
     </script>
     <script src="{{ url_for('static', filename='js/tabs.js') }}"></script>
     <script src="{{ url_for('static', filename='js/validateform.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/slides.js') }}"></script>
+
 
 </body>
 

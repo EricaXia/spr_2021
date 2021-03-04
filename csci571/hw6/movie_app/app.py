@@ -51,12 +51,22 @@ def index():
         return final_results
 
     # Get Trending Movie
-    movie_text, movie_image_path = get_trending_movie(api_key=api_key, page=1)
+    movie_texts = []
+    movie_image_paths = []
+    for i in range(5):
+        movie_text, movie_image_path = get_trending_movie(api_key=api_key, page=1)
+        movie_texts.append(movie_text)
+        movie_image_paths.append(movie_image_paths)
 
     # Get TV Show Airing Today
-    show_text, show_image_path = get_tv_show_airing_today(api_key=api_key)
+    tv_texts = []
+    tv_image_paths = []
+    for i in range(5):
+        tv_text, tv_image_path = get_tv_show_airing_today(api_key=api_key)
+        tv_texts.append(tv_text)
+        tv_image_paths.append(tv_image_paths)
 
-    return render_template('index.html', movie_text=movie_text, movie_image_path=movie_image_path, show_text=show_text, show_image_path=show_image_path)
+    return render_template('index.html', movie_texts=movie_texts, movie_image_paths=movie_image_paths, tv_texts=tv_texts, tv_image_paths=tv_image_paths)
 
 
 if __name__ == "__main__":
