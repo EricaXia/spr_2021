@@ -33,12 +33,12 @@
                 <!-- TODO: convert to slideshow -->
                 <div class="item">
                     <h3>Trending Movies</h3>
-                    <img class="main_img" src="{{ movie_image_path }}">
+                    <img src="{{ movie_image_path }}">
                     <p class="caption">{{ movie_text }}</p>
                 </div>
                 <div class="item">
                     <h3>TV Shows On-Air Today</h3>
-                    <img class="main_img" src="{{ show_image_path }}">
+                    <img src="{{ show_image_path }}">
                     <p class="caption">{{ show_text }}</p>
                 </div>
 
@@ -70,15 +70,9 @@
 
             </form>
 
-            <p>Results should be under here:</p>
-            <!-- <div id="result" class="result"></div> -->
-            <!-- <div id="name_1" class="result" ></div>
-            <div id="year_1" class="result" ></div>
-            <div id="genre_1" class="result" ></div>
-            <div id="rating_1" class="result" ></div>
-            <div id="votes_1" class="result" ></div>
-            <div id="desc_1" class="result" ></div>
-            <div id="img_1"></div> -->
+            <!-- <p>Results should be under here:</p> -->
+            <div id="results_container" class="results_container"></div>
+
 
 
         </div>
@@ -101,29 +95,58 @@
             var result = document.getElementById('result');
             req.onreadystatechange = function () {
                 if (this.readyState == 4 && this.status == 200) {
+                    // result.innerHTML = req.responseText;
 
                     // JSON response
                     search_results = JSON.parse(req.response);
                     console.log(search_results);
-                    // first_result_json.innerHTML = search_results[0];
-                    // result.innerHTML = req.responseText;
-                    
+
+                    // Populate results_container with search results
+                    var mainContainer = document.getElementById("results_container");
                     for (let i = 0; i < Object.keys(search_results).length; i++) {
                         var title = search_results[i]['title'];
-                        console.log(title);
+                        var year = search_results[i]['year'];
+                        var genres = search_results[i]['genre_names'].join(', ');
+                        var rating = search_results[i]['stars'];
+                        var rating2 = rating.toFixed(2);
+                        var vote_count = search_results[i]['vote_count'];
+                        var desc = search_results[i]['overview'];
+                        var img_path = search_results[i]['poster_path'];
+
+                        // add json elements to page dynamically
+                        var title1 = document.createElement("h2");
+                        title1.innerHTML = title;
+
+                        var year_genres = document.createElement("p");
+                        year_genres.innerHTML = year + " | " + genres; 
+
+                        var rating3 = document.createElement("p");
+                        rating3.innerHTML = "&#9733; " + rating2 + "/5";
+                        rating3.classList.add("star-rating");
+
+                        var vote_count1 = document.createElement("p");
+                        vote_count1.innerHTML = vote_count + " votes";
+                        vote_count1.classList.add("votes");
+
+                        var desc1 = document.createElement("p");
+                        desc1.innerHTML = desc;
+
+                        var poster = document.createElement("img");
+                        poster.src = "https://image.tmdb.org/t/p/w500" + img_path;
+                        poster.classList.add("poster-img");           
+
+                        mainContainer.append(title1, year_genres, rating3, vote_count1, poster, desc1);
                     }
 
 
                 } else {
                     console.log('ready state ' + this.readyState);
-                    // console.log(this.status);
                 }
             }
             req.open('POST', '/', true);
             req.setRequestHeader('content-type', 'application/x-www-form-urlencoded;charset=UTF-8');
             
             req.send("query=" + document.getElementById('keyword').value + "&" + "query2=" + document.getElementById('category').value);
-            // req.send("query2=" + document.getElementById('category').value);
         }
     </script>
     <script src="{{ url_for('static', filename='js/tabs.js') }}"></script>

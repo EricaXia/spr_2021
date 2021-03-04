@@ -3,11 +3,10 @@ import json
 import pprint
 from random import randint
 from .settings import api_key
-# from settings import api_key
+# from settings import api_key  # use this to test if name == __main__
 from datetime import datetime
 
 # base_url = "https://api.themoviedb.org/3/"
-
 
 # Part 1. Get Trending Movies this WEEK
 def get_trending_movie(api_key=api_key, page=1):  # always gets first page for now
@@ -92,6 +91,10 @@ def get_movie_data(api_key, movie_id, page=1):
     r1_data['genre_names'] = [g['name'] for g in r1_data['genres']]
     # get lang names
     r1_data['spoken_language_names'] = [l['english_name'] for l in r1_data['spoken_languages']]
+    # year of release
+    r1_data['year'] = r1_data['release_date'].split('-')[0]
+    # rating out of 5 stars
+    r1_data['stars'] = round(r1_data['vote_average']/2, 2)
 
     ## credits (cast)
     url_credits = f"https://api.themoviedb.org/3/movie/{movie_id}/credits?api_key={api_key}&language=en-US"
@@ -123,6 +126,10 @@ def get_tv_show_data(api_key, tv_id, page=1):
     r1_data['genre_names'] = [g['name'] for g in r1_data['genres']]
     # get lang names
     r1_data['spoken_language_names'] = [l['english_name'] for l in r1_data['spoken_languages']]
+    # year of release
+    r1_data['year'] = r1_data['first_air_date'].split('-')[0]
+    # rating out of 5
+    r1_data['stars'] = round(r1_data['vote_average']/2, 2)
 
     ## credits (cast)
     url_credits = f"https://api.themoviedb.org/3/tv/{tv_id}/credits?api_key={api_key}&language=en-US"
@@ -138,6 +145,8 @@ def get_tv_show_data(api_key, tv_id, page=1):
     # reviews = r3_data['results']  # list of reviews
     r1_data['reviews'] = r3_data['results']
 
+    # rename 'name' key to 'title' so search results display consistently
+    r1_data['title'] = r1_data.pop('name')
     # return details dict, cast members list, and reviews list
     return r1_data
 
@@ -181,13 +190,15 @@ if __name__ == "__main__":
 
 
     print("Search for a movie")
-    # movie1 = search_for_movie(api_key, 'the dark knight')[0]
+    movie1 = search_for_movie(api_key, 'the dark knight')[0]
     # movie1 = search_for_movie(api_key, 'toy story 4')[0]
-    movie1 = search_for_movie(api_key, 'the shawshank redemption')[0]
+    # movie1 = search_for_movie(api_key, 'the shawshank redemption')[0]
     # movie1 = search_for_movie(api_key, 'asdsafasgdfhfd')
-    pprint.pprint(movie1)
+    # pprint.pprint(movie1)
     movie1details = get_movie_data(api_key, movie1['id'])
     pprint.pprint(movie1details)
+    with open('test_res.json', 'w') as f:
+        f.write(json.dumps(movie1details))
     # pprint.pprint(movie1reviews)
     # actor1 = movie1cast[0]
     # print(get_actor_details(actor1))

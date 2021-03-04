@@ -10,6 +10,12 @@ h1 {
   color: red;
 }
 
+h2 {
+  font-family: "Raleway";
+  font-weight: 600;
+  color: white;
+}
+
 h3 {
   font-family: "Raleway";
   font-weight: 400;
@@ -166,5 +172,34 @@ select {
   width: auto;
   padding: 10px 18px;
   background-color: black;
+  color: white;
+}
+
+/* Search results */
+.results_container {
+  width: 700px;
+  padding: 10px;
+  /* margin: 10px; */
+}
+
+
+/* TODO: display image inline with descrips */
+.poster-img {
+  width: 200px;
+  height: auto;
+}
+
+.star-rating {
+  color: red;
+}
+
+.votes {
+  font-size: small;
+}
+
+.show-more-btn {
+  width: auto;
+  padding: 5px 20px;
+  background-color: red;
   color: white;
 }
