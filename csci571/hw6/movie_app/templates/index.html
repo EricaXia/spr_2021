@@ -7,40 +7,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>The Movie DB</title>
 
-    <link
-        rel="stylesheet"
-        href="{{ url_for('static', filename='css/styles.css') }}"
-    />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}" />
 </head>
 
 <body>
     <div class="container-title">
-            <div class="title-box">
-                <h1>THE MOVIE DB</h1>
-            </div>
+        <div class="title-box">
+            <h1>THE MOVIE DB</h1>
+        </div>
     </div>
     <!-- Container that wraps everything to show/hide INCLUDING the menu-->
     <div class=tabs>
         <div class="tabs__sidebar">
-                <button class="tabs__button" data-for-tab="1">Movies  &#8594; </button>
-                <button class="tabs__button" data-for-tab="2">Search  &#8594; </button>
+            <button class="tabs__button" data-for-tab="1">Movies &#8594; </button>
+            <button class="tabs__button" data-for-tab="2">Search &#8594; </button>
         </div>
 
         <!-- Panel 1: Home tab with trending stuff -->
         <div class="tabs__content tabs__content--active" data-tab="1">
             <!-- <div class="content"> -->
 
-                <!-- TODO: convert to slideshow -->
-                <div class="item">
-                    <h3>Trending Movies</h3>
-                    <img src="{{ movie_image_path }}">
-                    <p class="caption">{{ movie_text }}</p>
-                </div>
-                <div class="item">
-                    <h3>TV Shows On-Air Today</h3>
-                    <img src="{{ show_image_path }}">
-                    <p class="caption">{{ show_text }}</p>
-                </div>
+            <!-- TODO: convert to slideshow -->
+            <div class="item">
+                <h3>Trending Movies</h3>
+                <img src="{{ movie_image_path }}">
+                <p class="caption">{{ movie_text }}</p>
+            </div>
+            <div class="item">
+                <h3>TV Shows On-Air Today</h3>
+                <img src="{{ show_image_path }}">
+                <p class="caption">{{ show_text }}</p>
+            </div>
 
             <!-- </div> -->
         </div>
@@ -48,47 +45,56 @@
         <!-- Panel 2: Search feature tab-->
         <div class="tabs__content" data-tab="2">
 
-            <form class="search-form" name="searchForm" action="index" onsubmit="return validateInput()" method="post">
+            <div class="search-container">
+                <form class="search-form" name="searchForm" action="index" onsubmit="return validateInput()"
+                    method="post">
+                    <h3>Search</h3>
 
-                <label for="keyword">Keyword* </label>
-                <input type="text" name="keyword" id="keyword" value="" />
-
-            </br>
-            
-                <label for="category">Category*</label>
+                    <div class="search-line">
+                        <label for="keyword">Keyword* </label>
+                        <input type="text" name="keyword" id="keyword" value="" />
+                    </div>
+                    <div class="search-line">
+                    <label for="category">Category*</label>
                     <select id="category" name="category">
                         <option value=""></option>
                         <option value="movies">Movies</option>
                         <option value="tv-shows">TV Shows</option>
                         <option value="movies-and-tv-shows">Movies and TV Shows</option>
                     </select>
-
-                <!-- <input type="submit" value="Search" class="search-btn" onclick="do_ajax();"> -->
-                <button type="button" id="btn-post" class="search-btn" onclick="do_ajax();">Search</button>
-
-                <!-- TODO: add clear button -->
-
-            </form>
-
-            <!-- <p>Results should be under here:</p> -->
-            <div id="results_container" class="results_container"></div>
+                </div>
 
 
+                    <!-- <input type="submit" value="Search" class="search-btn" onclick="do_ajax();"> -->
+                    <button type="button" id="btn-post" class="search-btn" onclick="do_ajax();">Search</button>
+
+                    <!-- TODO: add clear button -->
+
+                </form>
+
+                <!-- <p>Results should be under here:</p> -->
+                <div id="results_container" class="results_container">
+                    <!-- results populate inside here -->
+                </div>
+
+            </div>
 
         </div>
 
 
 
-    <!-- Ends the shown/hidden content container -->
+        <!-- Ends the shown/hidden content container -->
     </div>
 
 
 
 
-<div class="footer"><p>Erica Xia - CSCI 571</p></div>
+    <div class="footer">
+        <p>Erica Xia - CSCI 571</p>
+    </div>
 
 
-<!-- Javascript here -->
+    <!-- Javascript here -->
     <script>
         function do_ajax() {
             var req = new XMLHttpRequest();
@@ -103,6 +109,11 @@
 
                     // Populate results_container with search results
                     var mainContainer = document.getElementById("results_container");
+
+                    var showing = document.createElement("h3");
+                    showing.innerHTML = "Showing results...";
+                    mainContainer.append(showing);
+
                     for (let i = 0; i < Object.keys(search_results).length; i++) {
                         var title = search_results[i]['title'];
                         var year = search_results[i]['year'];
@@ -113,12 +124,19 @@
                         var desc = search_results[i]['overview'];
                         var img_path = search_results[i]['poster_path'];
 
+
                         // add json elements to page dynamically
+                        // var br = document.createElement("br");
+                        var result_box = document.createElement("div");
+                        result_box.classList.add("result-box");
+
                         var title1 = document.createElement("h2");
                         title1.innerHTML = title;
+                        title1.classList.add("result-title");
 
                         var year_genres = document.createElement("p");
-                        year_genres.innerHTML = year + " | " + genres; 
+                        year_genres.innerHTML = year + " | " + genres;
+                        year_genres.classList.add("year-genre");
 
                         var rating3 = document.createElement("p");
                         rating3.innerHTML = "&#9733; " + rating2 + "/5";
@@ -133,9 +151,10 @@
 
                         var poster = document.createElement("img");
                         poster.src = "https://image.tmdb.org/t/p/w500" + img_path;
-                        poster.classList.add("poster-img");           
+                        poster.classList.add("poster-img");
 
-                        mainContainer.append(title1, year_genres, rating3, vote_count1, poster, desc1);
+                        result_box.append(title1, year_genres, rating3, vote_count1, poster, desc1)
+                        mainContainer.append(result_box);
                     }
 
 
@@ -145,7 +164,7 @@
             }
             req.open('POST', '/', true);
             req.setRequestHeader('content-type', 'application/x-www-form-urlencoded;charset=UTF-8');
-            
+
             req.send("query=" + document.getElementById('keyword').value + "&" + "query2=" + document.getElementById('category').value);
         }
     </script>
@@ -153,4 +172,5 @@
     <script src="{{ url_for('static', filename='js/validateform.js') }}"></script>
 
 </body>
+
 </html>
