@@ -142,7 +142,13 @@ p {
   position: relative;
   width: 400px;
   height: auto;
+}
 
+.tvslide {
+  display: none;
+  position: relative;
+  width: 400px;
+  height: auto; 
 }
 
 .slide .caption {
