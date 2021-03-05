@@ -55,15 +55,12 @@ def index():
         movies[i] = [text, img_path]
 
     # # Get TV Show Airing Today
-    # tv_texts = []
-    # tv_image_paths = []
-    # for i in range(5):
-    #     text, img_path = get_tv_show_airing_today(api_key=api_key)
-    #     tv_texts.append(text)
-    #     tv_image_paths.append(img_path)
+    tv_shows = {}
+    for i in range(5):
+        text, img_path = get_tv_show_airing_today(api_key=api_key)
+        tv_shows[i] = [text, img_path]
 
-
-    return render_template('index.html', movies=movies)
+    return render_template('index.html', movies=movies, tv_shows=tv_shows)
 
 
 if __name__ == "__main__":
