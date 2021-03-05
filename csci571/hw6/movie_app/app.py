@@ -35,7 +35,6 @@ def index():
 
         elif category == "movies-and-tv-shows":
             results = search_for_movie_and_tv_show(api_key, keyword, 1)
-            # final_results = {idx: get_movie_data(api_key, r['id']) if r['media_type'] == 'movie' else idx: get_tv_show_data(api_key, r['id']) for idx, r in enumerate(results)}
             final_results = {}
             for idx, r in enumerate(results):
                 if r['media_type'] == 'movie':
@@ -44,29 +43,27 @@ def index():
                 elif r['media_type'] == 'tv':
                     tv_dict = get_tv_show_data(api_key, r['id'])
                     final_results[idx] = tv_dict
-            
 
-        # res_string = "\n".join(res_str_l)
         # res_dict = json.dumps(results)
         return final_results
 
     # Get Trending Movie
-    movie_texts = []
-    movie_image_paths = []
+    movies = {}
     for i in range(5):
-        movie_text, movie_image_path = get_trending_movie(api_key=api_key, page=1)
-        movie_texts.append(movie_text)
-        movie_image_paths.append(movie_image_paths)
+        text, img_path = get_trending_movie(
+            api_key=api_key, page=1)
+        movies[i] = [text, img_path]
 
-    # Get TV Show Airing Today
-    tv_texts = []
-    tv_image_paths = []
-    for i in range(5):
-        tv_text, tv_image_path = get_tv_show_airing_today(api_key=api_key)
-        tv_texts.append(tv_text)
-        tv_image_paths.append(tv_image_paths)
+    # # Get TV Show Airing Today
+    # tv_texts = []
+    # tv_image_paths = []
+    # for i in range(5):
+    #     text, img_path = get_tv_show_airing_today(api_key=api_key)
+    #     tv_texts.append(text)
+    #     tv_image_paths.append(img_path)
 
-    return render_template('index.html', movie_texts=movie_texts, movie_image_paths=movie_image_paths, tv_texts=tv_texts, tv_image_paths=tv_image_paths)
+
+    return render_template('index.html', movies=movies)
 
 
 if __name__ == "__main__":

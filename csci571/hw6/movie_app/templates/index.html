@@ -31,33 +31,39 @@
             <div class="item">
 
                 <h3>Trending Movies</h3>
-                <!-- insert slideshow, 5 slides per movie and 5 per tv show -->
-                <div class="myslide">
-                    <img src="{{ movie_image_paths[0] }}">
-                    <div class="caption">{{ movie_texts[0] }}</div>
+                <!-- insert slideshow-->
+                <div class="slide">
+                    <img src="{{ movies[0][1] }}">
+                    <div class="caption">{{ movies[0][0] }}</div>
                 </div>
 
-                <!-- <div class="myslide">
-                    <img src="{{ movie_image_paths[1] }}">
-                    <div class="caption">{{ movie_texts[1] }}</div>
+                <div class="slide">
+                    <img src="{{ movies[1][1] }}">
+                    <div class="caption">{{ movies[1][0] }}</div>
                 </div>
 
-                <div class="myslide">
-                    <img src="{{ movie_image_paths[2] }}">
-                    <div class="caption">{{ movie_texts[2] }}</div>
-                </div> -->
+                <div class="slide">
+                    <img src="{{ movies[2][1] }}">
+                    <div class="caption">{{ movies[2][0] }}</div>
+                </div>
 
+                <div class="slide">
+                    <img src="{{ movies[3][1] }}">
+                    <div class="caption">{{ movies[3][0] }}</div>
+                </div>
 
-
-
+                <div class="slide">
+                    <img src="{{ movies[4][1] }}">
+                    <div class="caption">{{ movies[4][0] }}</div>
+                </div>
             </div>
-            <div class="item">
+
+            <!-- <div class="item">
                 <h3>TV Shows On-Air Today</h3>
                 <img class="myslide" src="{{ show_image_path }}">
                 <p class="caption">{{ show_text }}</p>
-            </div>
+            </div> -->
 
-            <!-- </div> -->
         </div>
 
         <!-- Panel 2: Search feature tab-->
@@ -73,20 +79,18 @@
                         <input type="text" name="keyword" id="keyword" value="" />
                     </div>
                     <div class="search-line">
-                    <label for="category">Category*</label>
-                    <select id="category" name="category">
-                        <option value=""></option>
-                        <option value="movies">Movies</option>
-                        <option value="tv-shows">TV Shows</option>
-                        <option value="movies-and-tv-shows">Movies and TV Shows</option>
-                    </select>
-                </div>
+                        <label for="category">Category*</label>
+                        <select id="category" name="category">
+                            <option value=""></option>
+                            <option value="movies">Movies</option>
+                            <option value="tv-shows">TV Shows</option>
+                            <option value="movies-and-tv-shows">Movies and TV Shows</option>
+                        </select>
+                    </div>
 
+                    <button type="button" id="btn-post" class="search-btn" onclick="send_request();">Search</button>
 
-                    <!-- <input type="submit" value="Search" class="search-btn" onclick="do_ajax();"> -->
-                    <button type="button" id="btn-post" class="search-btn" onclick="do_ajax();">Search</button>
-
-                    <!-- TODO: add clear button -->
+                    <button type="reset" class="search-btn">Clear</button>
 
                 </form>
 
@@ -97,9 +101,12 @@
 
             </div>
 
+            
         </div>
 
-
+        <div class="footer">
+            <p>Erica Xia - CSCI 571</p>
+        </div>
 
         <!-- Ends the shown/hidden content container -->
     </div>
@@ -107,85 +114,9 @@
 
 
 
-    <div class="footer">
-        <p>Erica Xia - CSCI 571</p>
-    </div>
-
 
     <!-- Javascript here -->
-    <script>
-        function do_ajax() {
-            var req = new XMLHttpRequest();
-            var result = document.getElementById('result');
-            req.onreadystatechange = function () {
-                if (this.readyState == 4 && this.status == 200) {
-                    // result.innerHTML = req.responseText;
-
-                    // JSON response
-                    search_results = JSON.parse(req.response);
-                    console.log(search_results);
-
-                    // Populate results_container with search results
-                    var mainContainer = document.getElementById("results_container");
-
-                    var showing = document.createElement("h3");
-                    showing.innerHTML = "Showing results...";
-                    mainContainer.append(showing);
-
-                    for (let i = 0; i < Object.keys(search_results).length; i++) {
-                        var title = search_results[i]['title'];
-                        var year = search_results[i]['year'];
-                        var genres = search_results[i]['genre_names'].join(', ');
-                        var rating = search_results[i]['stars'];
-                        var rating2 = rating.toFixed(2);
-                        var vote_count = search_results[i]['vote_count'];
-                        var desc = search_results[i]['overview'];
-                        var img_path = search_results[i]['poster_path'];
-
-
-                        // add json elements to page dynamically
-                        // var br = document.createElement("br");
-                        var result_box = document.createElement("div");
-                        result_box.classList.add("result-box");
-
-                        var title1 = document.createElement("h2");
-                        title1.innerHTML = title;
-                        title1.classList.add("result-title");
-
-                        var year_genres = document.createElement("p");
-                        year_genres.innerHTML = year + " | " + genres;
-                        year_genres.classList.add("year-genre");
-
-                        var rating3 = document.createElement("p");
-                        rating3.innerHTML = "&#9733; " + rating2 + "/5";
-                        rating3.classList.add("star-rating");
-
-                        var vote_count1 = document.createElement("p");
-                        vote_count1.innerHTML = vote_count + " votes";
-                        vote_count1.classList.add("votes");
-
-                        var desc1 = document.createElement("p");
-                        desc1.innerHTML = desc;
-
-                        var poster = document.createElement("img");
-                        poster.src = "https://image.tmdb.org/t/p/w500" + img_path;
-                        poster.classList.add("poster-img");
-
-                        result_box.append(title1, year_genres, rating3, vote_count1, poster, desc1)
-                        mainContainer.append(result_box);
-                    }
-
-
-                } else {
-                    console.log('ready state ' + this.readyState);
-                }
-            }
-            req.open('POST', '/', true);
-            req.setRequestHeader('content-type', 'application/x-www-form-urlencoded;charset=UTF-8');
-
-            req.send("query=" + document.getElementById('keyword').value + "&" + "query2=" + document.getElementById('category').value);
-        }
-    </script>
+    <script src="{{ url_for('static', filename='js/search.js') }}"></script>
     <script src="{{ url_for('static', filename='js/tabs.js') }}"></script>
     <script src="{{ url_for('static', filename='js/validateform.js') }}"></script>
     <script src="{{ url_for('static', filename='js/slides.js') }}"></script>
