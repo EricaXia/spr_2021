@@ -10,6 +10,7 @@ from datetime import datetime
 
 # Part 1. Get Trending Movies this WEEK
 
+
 def get_trending_movie(api_key=api_key, page=1):  # always gets first page for now
     media_type = "movie"
     time_window = "week"
@@ -21,10 +22,13 @@ def get_trending_movie(api_key=api_key, page=1):  # always gets first page for n
     movie_title = movie['title']
     movie_date = movie['release_date']
     movie_year = movie_date.split('-')[0]
-    movie_image_endpath = movie['backdrop_path']
+    if movie['backdrop_path'] == None:
+        movie_image_path = "/static/images/movie-placeholder.jpg"
+    else:
+        # movie_image_endpath = movie['backdrop_path']
+        movie_image_path = f"https://image.tmdb.org/t/p/w780{movie['backdrop_path']}"
+
     movie_text = f"{movie_title} ({movie_year})"
-    # movie_image_path = f"https://image.tmdb.org/t/p/w500{movie_image_endpath}"
-    movie_image_path = f"https://image.tmdb.org/t/p/w780{movie_image_endpath}"
 
     return (movie_text, movie_image_path)
 
@@ -38,53 +42,105 @@ def get_tv_show_airing_today(api_key=api_key, page=1):
     show_title = show['name']
     show_year = show['first_air_date'].split('-')[0]
     show_text = f"{show_title} ({show_year})"
-    show_image_endpath = show['backdrop_path']
-    # show_image_path = f"https://image.tmdb.org/t/p/w500{show_image_endpath}"
-    show_image_path = f"https://image.tmdb.org/t/p/w780{show_image_endpath}"
+    if show['backdrop_path'] == None:
+        show_image_path = "/static/images/movie-placeholder.jpg"
+    else:
+        show_image_path = f"https://image.tmdb.org/t/p/w780{show['backdrop_path']}"
     return (show_text, show_image_path)
 
 # Part 2: Search Feature
 
+# display search result details of one movie
 
-def search_for_movie(api_key, search_query, page=1):
+
+def display_one_movie_result(api_key, movie_id):
+    url_details = f"https://api.themoviedb.org/3/movie/{movie_id}?api_key={api_key}&language=en-US"
+    r1 = requests.get(url_details)
+    r1_data = json.loads(r1.text)  # dict of movie details
+    # get genres
+    r1_data['genre_names'] = [g['name'] for g in r1_data['genres']]
+    # get lang names
+    r1_data['spoken_language_names'] = [l['english_name']
+                                        for l in r1_data['spoken_languages']]
+    # year of release
+    r1_data['year'] = r1_data['release_date'].split('-')[0]
+    # rating out of 5 stars
+    r1_data['stars'] = round(r1_data['vote_average'] / 2, 2)
+    return r1_data
+
+
+def display_one_show_result(api_key, tv_id):
+    # details of show (e.g. seasons)
+    url_details = f"https://api.themoviedb.org/3/tv/{tv_id}?api_key={api_key}&language=en-US"
+    r1 = requests.get(url_details)
+    r1_data = json.loads(r1.text)  # dict of show details
+    # get genres
+    r1_data['genre_names'] = [g['name'] for g in r1_data['genres']]
+    # get lang names
+    r1_data['spoken_language_names'] = [l['english_name']
+                                        for l in r1_data['spoken_languages']]
+    # year of release
+    r1_data['year'] = r1_data['first_air_date'].split('-')[0]
+    # rating out of 5
+    r1_data['stars'] = round(r1_data['vote_average'] / 2, 2)
+    # r1_data['title'] = r1_data['name']
+    r1_data['title'] = r1_data.pop('name')
+    return r1_data
+
+
+# search for movies and return dict of details for each result
+def search_for_movies(api_key, search_query, page=1):
     search_query_f = search_query.replace(' ', '%20')
     url = f"https://api.themoviedb.org/3/search/movie?api_key={api_key}&language=en-US&query={search_query_f}&page={page}"
     r = requests.get(url)
     r_data = json.loads(r.text)
     # array of movie dicts
-    movie_results = r_data['results']
-    if movie_results:
-        return movie_results  # returns a dict of movie details
+    results = r_data['results']
+    if results:
+        final_results = {idx: display_one_movie_result(
+            api_key, r['id']) for idx, r in enumerate(results)}
     else:
-        return "No results found."
+        final_results = {"error": "No results found."}
+    return final_results
 
 
-def search_for_tv_show(api_key, search_query, page=1):
+def search_for_tv_shows(api_key, search_query, page=1):
     search_query = search_query.replace(' ', '%20')
     url = f"https://api.themoviedb.org/3/search/tv?api_key={api_key}&language=en-US&query={search_query}&page={page}"
     r = requests.get(url)
     r_data = json.loads(r.text)
-    tv_show_results = r_data['results']
-    if tv_show_results:
-        return tv_show_results
+    results = r_data['results']
+    if results:
+        final_results = {idx: display_one_show_result(
+            api_key, r['id']) for idx, r in enumerate(results)}
     else:
-        return "No results found."
+        final_results = {"error": "No results found."}
+    return final_results
 
 
-def search_for_movie_and_tv_show(api_key, search_query, page=1):
+## TODO: fix "AttributeError: 'NoneType' object has no attribute 'split'"
+def search_for_movies_and_shows(api_key, search_query, page=1):
     search_query = search_query.replace(' ', '%20')
     url = f"https://api.themoviedb.org/3/search/multi?api_key={api_key}&language=en-US&query={search_query}&page={page}"
     r = requests.get(url)
     r_data = json.loads(r.text)
-    all_results = r_data['results']
-    if all_results:
-        return all_results
+    results = r_data['results']
+    final_results = {}
+    if results:
+        for idx, r in enumerate(results):
+            if r['media_type'] == 'movie':
+                movie_dict = display_one_movie_result(api_key, r['id'])
+                final_results[idx] = movie_dict
+            elif r['media_type'] == 'tv':
+                tv_dict = display_one_show_result(api_key, r['id'])
+                final_results[idx] = tv_dict
     else:
-        return "No results found."
+        final_results = {"error": "No results found."}
+    return final_results
 
 
 def get_movie_data(api_key, movie_id, page=1):
-    # details of movie
+    # details of one movie
     url_details = f"https://api.themoviedb.org/3/movie/{movie_id}?api_key={api_key}&language=en-US"
     r1 = requests.get(url_details)
     r1_data = json.loads(r1.text)  # dict of movie details
@@ -218,25 +274,27 @@ if __name__ == "__main__":
     # actor1 = res1_cast[1]
     # print(get_actor_details(actor1))
 
-    # Get Trending Movie
-    movies = {}
-    for i in range(5):
-        text, img_path = get_trending_movie(
-            api_key=api_key, page=1)
-        movies[i] = [text, img_path]
+    # # Get Trending Movie
+    # movies = {}
+    # for i in range(5):
+    #     text, img_path = get_trending_movie(
+    #         api_key=api_key, page=1)
+    #     movies[i] = [text, img_path]
 
-    print(movies)
+    # print(movies)
 
-    # Get TV Show Airing Today
-    tv_texts = []
-    tv_image_paths = []
-    for i in range(5):
-        text, img_path = get_tv_show_airing_today(api_key=api_key)
-        tv_texts.append(text)
-        tv_image_paths.append(img_path)
+    # # Get TV Show Airing Today
+    # tv_texts = []
+    # tv_image_paths = []
+    # for i in range(5):
+    #     text, img_path = get_tv_show_airing_today(api_key=api_key)
+    #     tv_texts.append(text)
+    #     tv_image_paths.append(img_path)
 
-    # print(movie_image_paths[0])
-    # print(tv_texts[0])
+    # # print(movie_image_paths[0])
+    # # print(tv_texts[0])
 
-    print(movies[0][0])
-    print(movies[0][1])
+    # res = get_movie_data(api_key, 235071, 1)
+
+    res = search_for_movies(api_key, "the dark knight", page=1)
+    pprint.pprint(res)

@@ -1,4 +1,4 @@
-function validateInput() {
+function validateForm() {
   var x = document.forms["searchForm"]["keyword"].value;
   var y = document.forms["searchForm"]["category"].value;
   if (x == "") {

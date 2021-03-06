@@ -112,13 +112,21 @@
                         </select>
                     </div>
 
-                    <button type="button" id="btn-post" class="search-btn" onclick="send_request();">Search</button>
+                    <button type="button" id="btn-post" class="search-btn" onclick="validateForm();sendRequest();">Search</button>
 
-                    <button type="reset" class="search-btn">Clear</button>
+                    <button type="reset" class="search-btn" onclick="clearResults();">Clear</button>
 
                 </form>
 
-                <!-- <p>Results should be under here:</p> -->
+
+                <!-- <btn class="show-more" id="show-more">Show More</btn>
+                <div id="modal-box" class="modal-box">
+                    <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <p>Some text in the Modal..</p>
+                    </div>
+                </div> -->
+
                 <div id="results_container" class="results_container">
                     <!-- results populate inside here -->
                 </div>
@@ -144,6 +152,7 @@
     <script src="{{ url_for('static', filename='js/tabs.js') }}"></script>
     <script src="{{ url_for('static', filename='js/validateform.js') }}"></script>
     <script src="{{ url_for('static', filename='js/slides.js') }}"></script>
+    <!-- <script src="{{ url_for('static', filename='js/modal.js') }}"></script> -->
 
 
 </body>
