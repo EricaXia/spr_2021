@@ -62,8 +62,9 @@ def display_one_movie_result(api_key, movie_id):
     # get lang names
     r1_data['spoken_language_names'] = [l['english_name']
                                         for l in r1_data['spoken_languages']]
-    # year of release
-    r1_data['year'] = r1_data['release_date'].split('-')[0]
+    if r1_data['release_date']:
+        # year of release
+        r1_data['year'] = r1_data['release_date'].split('-')[0]
     # rating out of 5 stars
     r1_data['stars'] = round(r1_data['vote_average'] / 2, 2)
     return r1_data
@@ -79,8 +80,9 @@ def display_one_show_result(api_key, tv_id):
     # get lang names
     r1_data['spoken_language_names'] = [l['english_name']
                                         for l in r1_data['spoken_languages']]
-    # year of release
-    r1_data['year'] = r1_data['first_air_date'].split('-')[0]
+    if r1_data['first_air_date']:
+        # year of release
+        r1_data['year'] = r1_data['first_air_date'].split('-')[0]
     # rating out of 5
     r1_data['stars'] = round(r1_data['vote_average'] / 2, 2)
     # r1_data['title'] = r1_data['name']
