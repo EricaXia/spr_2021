@@ -1,0 +1,473 @@
+{
+    "adult": false,
+    "backdrop_path": "/sthDtZfswdU0d0U8SImsy5eEYy4.jpg",
+    "belongs_to_collection": null,
+    "budget": 2000000,
+    "genres": [
+        {
+            "id": 18,
+            "name": "Drama"
+        }
+    ],
+    "homepage": "https://a24films.com/films/minari",
+    "id": 615643,
+    "imdb_id": "tt10633456",
+    "original_language": "en",
+    "original_title": "Minari",
+    "overview": "A Korean-American family moves to Arkansas in search of their own American Dream. With the arrival of their sly, foul-mouthed, but incredibly loving grandmother, the stability of their relationships is challenged even more in this new life in the rugged Ozarks, testing the undeniable resilience of family and what really makes a home.",
+    "popularity": 74.988,
+    "poster_path": "/9Bb6K6HINl3vEKCu8WXEZyHvvpq.jpg",
+    "production_companies": [
+        {
+            "id": 81,
+            "logo_path": "/8wOfUhA7vwU2gbPjQy7Vv3EiF0o.png",
+            "name": "Plan B Entertainment",
+            "origin_country": "US"
+        }
+    ],
+    "production_countries": [
+        {
+            "iso_3166_1": "US",
+            "name": "United States of America"
+        }
+    ],
+    "release_date": "2021-02-12",
+    "revenue": 485158,
+    "runtime": 115,
+    "spoken_languages": [
+        {
+            "english_name": "English",
+            "iso_639_1": "en",
+            "name": "English"
+        },
+        {
+            "english_name": "Korean",
+            "iso_639_1": "ko",
+            "name": "\ud55c\uad6d\uc5b4/\uc870\uc120\ub9d0"
+        }
+    ],
+    "status": "Released",
+    "tagline": "Hope takes root.",
+    "title": "Minari",
+    "video": false,
+    "vote_average": 7.7,
+    "vote_count": 66,
+    "tmdb_url": "https://www.themoviedb.org/movie/615643-minari",
+    "genre_names": [
+        "Drama"
+    ],
+    "spoken_language_names": [
+        "English",
+        "Korean"
+    ],
+    "year": "2021",
+    "stars": 3.85,
+    "cast": [
+        {
+            "adult": false,
+            "gender": 2,
+            "id": 215055,
+            "known_for_department": "Acting",
+            "name": "Steven Yeun",
+            "original_name": "Steven Yeun",
+            "popularity": 4.802,
+            "profile_path": "/cnzyTmVMeyt9rIkR4bYFarAFEbD.jpg",
+            "cast_id": 1,
+            "character": "Jacob",
+            "credit_id": "5d2c0187caab6d4c3498400e",
+            "order": 0
+        },
+        {
+            "adult": false,
+            "gender": 1,
+            "id": 1057068,
+            "known_for_department": "Acting",
+            "name": "Han Ye-ri",
+            "original_name": "Han Ye-ri",
+            "popularity": 5.032,
+            "profile_path": "/2NOYIaNcjzkfUXGultTdlJZGbuH.jpg",
+            "cast_id": 2,
+            "character": "Monica",
+            "credit_id": "5d2c0195a294f00012356c74",
+            "order": 1
+        },
+        {
+            "adult": false,
+            "gender": 1,
+            "id": 1080935,
+            "known_for_department": "Acting",
+            "name": "Youn Yuh-jung",
+            "original_name": "Youn Yuh-jung",
+            "popularity": 2.447,
+            "profile_path": "/4T5Av2PmvrVL7vtFLOmdxWHkpJU.jpg",
+            "cast_id": 3,
+            "character": "Soonja",
+            "credit_id": "5d2c01b8a294f042db2f3bfb",
+            "order": 2
+        },
+        {
+            "adult": false,
+            "gender": 2,
+            "id": 883,
+            "known_for_department": "Acting",
+            "name": "Will Patton",
+            "original_name": "Will Patton",
+            "popularity": 7.422,
+            "profile_path": "/iDW1L8HAbj8y6L9GlEMWPeI1zpK.jpg",
+            "cast_id": 4,
+            "character": "Paul",
+            "credit_id": "5d2c01d7caab6d1e819b82e1",
+            "order": 3
+        },
+        {
+            "adult": false,
+            "gender": 2,
+            "id": 2476742,
+            "known_for_department": "Acting",
+            "name": "Alan Kim",
+            "original_name": "Alan Kim",
+            "popularity": 1.4,
+            "profile_path": "/mE7eLjp7rRqMTguX2BcLzEiV7RV.jpg",
+            "cast_id": 15,
+            "character": "David",
+            "credit_id": "5deaab4d158c8500187ded46",
+            "order": 4
+        },
+        {
+            "adult": false,
+            "gender": 1,
+            "id": 2476741,
+            "known_for_department": "Acting",
+            "name": "Noel Kate Cho",
+            "original_name": "Noel Kate Cho",
+            "popularity": 1.216,
+            "profile_path": "/sSBsdu6Kc2aAQd0oNs7xXFt1sEK.jpg",
+            "cast_id": 14,
+            "character": "Anne",
+            "credit_id": "5deaab2edaf57c0013e7cc4f",
+            "order": 5
+        },
+        {
+            "adult": false,
+            "gender": 2,
+            "id": 87954,
+            "known_for_department": "Acting",
+            "name": "Scott Haze",
+            "original_name": "Scott Haze",
+            "popularity": 2.744,
+            "profile_path": "/6cd3Jt8Vo52j8cRKbNf1j7cERhs.jpg",
+            "cast_id": 5,
+            "character": "Billy",
+            "credit_id": "5d2c01edb84f9400144a6a79",
+            "order": 6
+        },
+        {
+            "adult": false,
+            "gender": 2,
+            "id": 97391,
+            "known_for_department": "Acting",
+            "name": "Darryl Cox",
+            "original_name": "Darryl Cox",
+            "popularity": 0.694,
+            "profile_path": "/2LdiOyoUXl5aEIBHdIsTexPmhLJ.jpg",
+            "cast_id": 27,
+            "character": "Mr. Harlan",
+            "credit_id": "5f9287d455c1f4003825a7bd",
+            "order": 7
+        },
+        {
+            "adult": false,
+            "gender": 1,
+            "id": 2527851,
+            "known_for_department": "Acting",
+            "name": "Esther Moon",
+            "original_name": "Esther Moon",
+            "popularity": 0.828,
+            "profile_path": "/eJS60HFBRKc7Ito1yOurIK2YfP4.jpg",
+            "cast_id": 21,
+            "character": "Mrs. Oh",
+            "credit_id": "5e3711af0c2710001a7208d4",
+            "order": 8
+        },
+        {
+            "adult": false,
+            "gender": 2,
+            "id": 1486237,
+            "known_for_department": "Acting",
+            "name": "Ben Hall",
+            "original_name": "Ben Hall",
+            "popularity": 0.6,
+            "profile_path": "/kz9OvAxM8n6ouUeireS7W0IlHEO.jpg",
+            "cast_id": 158,
+            "character": "Dowsing Dan",
+            "credit_id": "5ff6590e1dcb77003d992811",
+            "order": 10
+        },
+        {
+            "adult": false,
+            "gender": 2,
+            "id": 126199,
+            "known_for_department": "Acting",
+            "name": "Eric Starkey",
+            "original_name": "Eric Starkey",
+            "popularity": 0.994,
+            "profile_path": "/uVyvYCysuesnsLcjUtDFT5Xa6xZ.jpg",
+            "cast_id": 20,
+            "character": "Randy Boomer",
+            "credit_id": "5e3711910c2710001871f599",
+            "order": 11
+        },
+        {
+            "adult": false,
+            "gender": 2,
+            "id": 2736439,
+            "known_for_department": "Acting",
+            "name": "Jacob Wade",
+            "original_name": "Jacob Wade",
+            "popularity": 0.6,
+            "profile_path": "/8jjy2R62aQ8iHOy1iyOD1uW0Iaq.jpg",
+            "cast_id": 36,
+            "character": "Johnnie",
+            "credit_id": "5ff4cbe709dda40040331e06",
+            "order": 12
+        },
+        {
+            "adult": false,
+            "gender": 2,
+            "id": 1949439,
+            "known_for_department": "Acting",
+            "name": "James Carroll",
+            "original_name": "James Carroll",
+            "popularity": 0.6,
+            "profile_path": "/vFhoJerQSlwuYhUHfDpyYs9wst3.jpg",
+            "cast_id": 37,
+            "character": "Brother Roy",
+            "credit_id": "5ff4cbfda84a47003e825b35",
+            "order": 13
+        },
+        {
+            "adult": false,
+            "gender": 1,
+            "id": 1500802,
+            "known_for_department": "Acting",
+            "name": "Jenny Phagan",
+            "original_name": "Jenny Phagan",
+            "popularity": 0.84,
+            "profile_path": "/pztGuvHcXrUHD8OlVlKNi458kkT.jpg",
+            "cast_id": 38,
+            "character": "Bonnie",
+            "credit_id": "5ff4cc0cc525c4003fd4ad54",
+            "order": 14
+        },
+        {
+            "adult": false,
+            "gender": 1,
+            "id": 147085,
+            "known_for_department": "Acting",
+            "name": "Tina Parker",
+            "original_name": "Tina Parker",
+            "popularity": 2.557,
+            "profile_path": "/qa4BFhrCGQKwqdTgLJ8S2rr95hD.jpg",
+            "cast_id": 39,
+            "character": "Debbie",
+            "credit_id": "5ff4cc188a84d2003e1400f4",
+            "order": 15
+        },
+        {
+            "adult": false,
+            "gender": 1,
+            "id": 2341889,
+            "known_for_department": "Acting",
+            "name": "Chloe Lee",
+            "original_name": "Chloe Lee",
+            "popularity": 0.6,
+            "profile_path": "/ficlpnnXRRi35VueaZYNikKaeL0.jpg",
+            "cast_id": 40,
+            "character": "June",
+            "credit_id": "5ff4cc27963864003fe06ade",
+            "order": 16
+        },
+        {
+            "adult": false,
+            "gender": 2,
+            "id": 2924664,
+            "known_for_department": "Acting",
+            "name": "Joel Telford",
+            "original_name": "Joel Telford",
+            "popularity": 0.6,
+            "profile_path": "/1udTDWHLGIoSt18Ofpg9YikavOU.jpg",
+            "cast_id": 41,
+            "character": "Older Kid",
+            "credit_id": "5ff4cc3437b3a9003f7d4f11",
+            "order": 17
+        },
+        {
+            "adult": false,
+            "gender": 1,
+            "id": 1944127,
+            "known_for_department": "Acting",
+            "name": "Kaye Brownlee-France",
+            "original_name": "Kaye Brownlee-France",
+            "popularity": 0.6,
+            "profile_path": "/TIhalBAOE57NIXQhkg9vy7pfPO.jpg",
+            "cast_id": 42,
+            "character": "Lab Tech",
+            "credit_id": "5ff4cc4737b3a900417d5bc8",
+            "order": 18
+        },
+        {
+            "adult": false,
+            "gender": 2,
+            "id": 2618591,
+            "known_for_department": "Acting",
+            "name": "Skip Schwink",
+            "original_name": "Skip Schwink",
+            "popularity": 0.6,
+            "profile_path": "/vDiicDZwb82JE8rzy9gCJeXHyuG.jpg",
+            "cast_id": 43,
+            "character": "Doctor",
+            "credit_id": "5ff4cc53c7176d003ff45bbf",
+            "order": 19
+        },
+        {
+            "adult": false,
+            "gender": 2,
+            "id": 2924668,
+            "known_for_department": "Acting",
+            "name": "Tea Oh",
+            "original_name": "Tea Oh",
+            "popularity": 0.6,
+            "profile_path": null,
+            "cast_id": 44,
+            "character": "Grocery Store Owner",
+            "credit_id": "5ff4cc65a410c800417d5d74",
+            "order": 20
+        }
+    ],
+    "reviews": [
+        {
+            "author": "SWITCH.",
+            "author_details": {
+                "name": "SWITCH.",
+                "username": "maketheSWITCH",
+                "avatar_path": "/klZ9hebmc8biG1RC4WmzNFnciJN.jpg",
+                "rating": 8.0
+            },
+            "content": "'Minari' is an emotionally beautiful film. For me personally, the only downfall are very small parts of its narrative. Some things are brought up but never really touched on again, which didn't bug me in the moment but after the film, I asked myself what happened with those threads. It's such a small issue, but that doesn't stop me from saying that the film is a breathtaking delight. \r\n\r\nSoon-ja sang it best: \u201cMinari, minari... wonderful, wonderful.\u201c\r\n- Chris dos Santos\r\n\r\nRead Chris' full article...\r\nhttps://www.maketheswitch.com.au/article/review-minari-equal-parts-heartwarming-and-heartbreaking",
+            "created_at": "2021-02-04T00:55:45.170Z",
+            "id": "601b461181a7fc003f01d9ac",
+            "updated_at": "2021-02-12T23:49:15.748Z",
+            "url": "https://www.themoviedb.org/review/601b461181a7fc003f01d9ac"
+        }
+    ],
+    "cast_details": [
+        {
+            "real_name": "Steven Yeun",
+            "role_name": "Jacob",
+            "image_path": "https://image.tmdb.org/t/p/w500/cnzyTmVMeyt9rIkR4bYFarAFEbD.jpg"
+        },
+        {
+            "real_name": "Han Ye-ri",
+            "role_name": "Monica",
+            "image_path": "https://image.tmdb.org/t/p/w500/2NOYIaNcjzkfUXGultTdlJZGbuH.jpg"
+        },
+        {
+            "real_name": "Youn Yuh-jung",
+            "role_name": "Soonja",
+            "image_path": "https://image.tmdb.org/t/p/w500/4T5Av2PmvrVL7vtFLOmdxWHkpJU.jpg"
+        },
+        {
+            "real_name": "Will Patton",
+            "role_name": "Paul",
+            "image_path": "https://image.tmdb.org/t/p/w500/iDW1L8HAbj8y6L9GlEMWPeI1zpK.jpg"
+        },
+        {
+            "real_name": "Alan Kim",
+            "role_name": "David",
+            "image_path": "https://image.tmdb.org/t/p/w500/mE7eLjp7rRqMTguX2BcLzEiV7RV.jpg"
+        },
+        {
+            "real_name": "Noel Kate Cho",
+            "role_name": "Anne",
+            "image_path": "https://image.tmdb.org/t/p/w500/sSBsdu6Kc2aAQd0oNs7xXFt1sEK.jpg"
+        },
+        {
+            "real_name": "Scott Haze",
+            "role_name": "Billy",
+            "image_path": "https://image.tmdb.org/t/p/w500/6cd3Jt8Vo52j8cRKbNf1j7cERhs.jpg"
+        },
+        {
+            "real_name": "Darryl Cox",
+            "role_name": "Mr. Harlan",
+            "image_path": "https://image.tmdb.org/t/p/w500/2LdiOyoUXl5aEIBHdIsTexPmhLJ.jpg"
+        },
+        {
+            "real_name": "Esther Moon",
+            "role_name": "Mrs. Oh",
+            "image_path": "https://image.tmdb.org/t/p/w500/eJS60HFBRKc7Ito1yOurIK2YfP4.jpg"
+        },
+        {
+            "real_name": "Ben Hall",
+            "role_name": "Dowsing Dan",
+            "image_path": "https://image.tmdb.org/t/p/w500/kz9OvAxM8n6ouUeireS7W0IlHEO.jpg"
+        },
+        {
+            "real_name": "Eric Starkey",
+            "role_name": "Randy Boomer",
+            "image_path": "https://image.tmdb.org/t/p/w500/uVyvYCysuesnsLcjUtDFT5Xa6xZ.jpg"
+        },
+        {
+            "real_name": "Jacob Wade",
+            "role_name": "Johnnie",
+            "image_path": "https://image.tmdb.org/t/p/w500/8jjy2R62aQ8iHOy1iyOD1uW0Iaq.jpg"
+        },
+        {
+            "real_name": "James Carroll",
+            "role_name": "Brother Roy",
+            "image_path": "https://image.tmdb.org/t/p/w500/vFhoJerQSlwuYhUHfDpyYs9wst3.jpg"
+        },
+        {
+            "real_name": "Jenny Phagan",
+            "role_name": "Bonnie",
+            "image_path": "https://image.tmdb.org/t/p/w500/pztGuvHcXrUHD8OlVlKNi458kkT.jpg"
+        },
+        {
+            "real_name": "Tina Parker",
+            "role_name": "Debbie",
+            "image_path": "https://image.tmdb.org/t/p/w500/qa4BFhrCGQKwqdTgLJ8S2rr95hD.jpg"
+        },
+        {
+            "real_name": "Chloe Lee",
+            "role_name": "June",
+            "image_path": "https://image.tmdb.org/t/p/w500/ficlpnnXRRi35VueaZYNikKaeL0.jpg"
+        },
+        {
+            "real_name": "Joel Telford",
+            "role_name": "Older Kid",
+            "image_path": "https://image.tmdb.org/t/p/w500/1udTDWHLGIoSt18Ofpg9YikavOU.jpg"
+        },
+        {
+            "real_name": "Kaye Brownlee-France",
+            "role_name": "Lab Tech",
+            "image_path": "https://image.tmdb.org/t/p/w500/TIhalBAOE57NIXQhkg9vy7pfPO.jpg"
+        },
+        {
+            "real_name": "Skip Schwink",
+            "role_name": "Doctor",
+            "image_path": "https://image.tmdb.org/t/p/w500/vDiicDZwb82JE8rzy9gCJeXHyuG.jpg"
+        },
+        {
+            "real_name": "Tea Oh",
+            "role_name": "Grocery Store Owner",
+            "image_path": "https://image.tmdb.org/t/p/w500None"
+        }
+    ],
+    "review_details": [
+        {
+            "reviewer": "SWITCH.",
+            "review_date": "02/04/2021",
+            "rating": 4.0,
+            "review_text": "'Minari' is an emotionally beautiful film. For me personally, the only downfall are very small parts of its narrative. Some things are brought up but never really touched on again, which didn't bug me in the moment but after the film, I asked myself what happened with those threads. It's such a small issue, but that doesn't stop me from saying that the film is a breathtaking delight. \r\n\r\nSoon-ja sang it best: \u201cMinari, minari... wonderful, wonderful.\u201c\r\n- Chris dos Santos\r\n\r\nRead Chris' full article...\r\nhttps://www.maketheswitch.com.au/article/review-minari-equal-parts-heartwarming-and-heartbreaking"
+        }
+    ]
+}

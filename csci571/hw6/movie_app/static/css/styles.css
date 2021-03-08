@@ -314,3 +314,13 @@ select {
   text-decoration: none;
   cursor: pointer;
 }
+
+/* Modal content element styles*/
+.result-title2 {
+  color: black !important;
+  font-weight: 400 !important;
+}
+
+.year-genre2 {
+  color: black !important;
+}

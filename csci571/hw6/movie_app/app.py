@@ -17,8 +17,10 @@ def index():
         keyword = request.form.get("query", False)
         category = request.form.get("query2", False)
         item_id = request.form.get("item_id", False)
+        item_type = request.form.get("item_type", False)
 
-        if keyword and category:  # if search query entered
+        # When search query is entered
+        if keyword and category:  
             if category == "movies":
                 # returns list of 20 results
                 final_results = search_for_movies(api_key, keyword, 1)
@@ -28,27 +30,17 @@ def index():
                 final_results = search_for_movies_and_shows(api_key, keyword, 1)
             return final_results
 
-    ## Show Modal Box details
+        ## Show Modal Box details when Show More is clicked
+        if item_id and item_type: 
+            if item_type == "movie":
+                print('movie with id', item_id)
+                movie = get_movie_data(api_key, item_id)
+                movie['cast_details'] = [get_actor_details(cast_dict) for cast_dict in movie['cast']]
+                movie['review_details'] = [get_review_details(review_dict) for review_dict in movie['reviews']]
+                movie['is_detail'] = True
+                return movie
 
-        if item_id: # if Show More button clicked and item_id passed
-            # if it's a movie:
-            print('movie with id', item_id)
-            movie = get_movie_data(api_key, item_id)
-
-            movie['cast_details'] = [get_actor_details(cast_dict) for cast_dict in movie['cast']]
-            movie['review_details'] = [get_review_details(review_dict) for review_dict in movie['reviews']]
-
-            print(movie['cast_details'])
-            print(movie['review_details'])
-            # for cast_dict in movie['cast']:
-            #     a = get_actor_details(cast_dict)
-            #     movie['cast_details'].append(a)
-
-            # for review_dict in movie['reviews']:
-            #     r = get_review_details(review_dict)
-            #     movie['review_details'].append(r)
-            # return movie
-
+    ## Homepage display
     # Get Trending Movie
     movies = {}
     for i in range(5):

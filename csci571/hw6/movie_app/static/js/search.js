@@ -24,22 +24,65 @@ function sendRequest() {
   req.onreadystatechange = function () {
     if (this.readyState == 4 && this.status == 200) {
       // result.innerHTML = req.responseText;
+      console.log("Got response");
 
       // JSON response
-      search_results = JSON.parse(req.response);
-      console.log(search_results);
+      results = JSON.parse(req.response);
 
+      // if Modal is opened
+      if (results.hasOwnProperty('is_detail')) {
+        console.log('Show modal details:');
+        console.log(results);
+        var item_id = results['id'];
+        var modal_id = "modal-contents-" + item_id; 
+        var modalContents = document.getElementById(modal_id);
+
+        // Parse response and create HTML elements for modal
+        var img_path = results['backdrop_path']
+        var title = results["title"];
+        var year = results["year"];
+        var genres = results["genre_names"].join(", ");
+        var rating = results["stars"];
+        var rating2 = rating.toFixed(2);
+        var vote_count = results["vote_count"];
+        var desc = results["overview"];
+
+        var title1 = document.createElement("h2");
+        title1.innerHTML = title;
+        title1.classList.add("result-title2");
+
+        var year_genres = document.createElement("p");
+        year_genres.innerHTML = year + " | " + genres;
+        year_genres.classList.add("year-genre2");
+
+        var backdrop = document.createElement("img");
+        if (img_path == null) {
+          backdrop.src = "/static/images/movie-placeholder.png";
+        } else {
+          backdrop.src = "https://image.tmdb.org/t/p/w500" + img_path;
+        }
+
+        // poster.classList.add("poster-img");
+
+
+        
+
+        // modalContents.innerHTML = backdrop_img;
+        modalContents.append(backdrop, title1, year_genres);
+
+
+      } else {
       // Populate results_container with search results
       var mainContainer = document.getElementById("results_container");
       // Delete existing results, if any
       clearResults();
 
       // If no results found
-      if (search_results.hasOwnProperty("error")) {
+      if (results.hasOwnProperty("error")) {
         var result_box0 = document.createElement("div");
         result_box0.classList.add("result-box");
         var no_results = document.createElement("p");
-        no_results.innerHTML = search_results["error"];
+        no_results.innerHTML = results["error"];
         result_box0.append(no_results);
         mainContainer.append(result_box0);
       } else {
@@ -48,16 +91,17 @@ function sendRequest() {
         showing.innerHTML = "Showing results...";
         mainContainer.append(showing);
 
-        for (let i = 0; i < Object.keys(search_results).length; i++) {
-          var item_id = search_results[i]["id"];
-          var title = search_results[i]["title"];
-          var year = search_results[i]["year"];
-          var genres = search_results[i]["genre_names"].join(", ");
-          var rating = search_results[i]["stars"];
+        for (let i = 0; i < Object.keys(results).length; i++) {
+          var item_id = results[i]["id"];
+          var item_type = results[i]["item_type"]
+          var title = results[i]["title"];
+          var year = results[i]["year"];
+          var genres = results[i]["genre_names"].join(", ");
+          var rating = results[i]["stars"];
           var rating2 = rating.toFixed(2);
-          var vote_count = search_results[i]["vote_count"];
-          var desc = search_results[i]["overview"];
-          var img_path = search_results[i]["poster_path"];
+          var vote_count = results[i]["vote_count"];
+          var desc = results[i]["overview"];
+          var img_path = results[i]["poster_path"];
 
           // add json elements to page dynamically
           // var br = document.createElement("br");
@@ -107,7 +151,9 @@ function sendRequest() {
           // add inner contents to modal
           const modal_contents = document.createElement("div");
           modal_contents.classList.add("modal-content");
-          modal_contents.innerHTML = "Test!!!";
+          var modal_id = "modal-contents-" + item_id; 
+          modal_contents.setAttribute("id", modal_id);
+          // modal_contents.innerHTML = "Test!!!";
 
           // add close button to modal
           const closeModal = document.createElement("span");
@@ -128,7 +174,7 @@ function sendRequest() {
               "application/x-www-form-urlencoded;charset=UTF-8"
             );
             req.send(
-              "item_id=" + item_id
+              "item_id=" + item_id + "&" + "item_type=" + item_type
             );
             // Show Modal
             modal.style.display = "block";
@@ -153,7 +199,7 @@ function sendRequest() {
           );
           mainContainer.append(result_box);
         }
-      }
+      }}
     } else {
       console.log("ready state " + this.readyState);
     }

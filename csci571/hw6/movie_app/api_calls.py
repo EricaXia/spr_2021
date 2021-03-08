@@ -67,6 +67,7 @@ def display_one_movie_result(api_key, movie_id):
         r1_data['year'] = r1_data['release_date'].split('-')[0]
     # rating out of 5 stars
     r1_data['stars'] = round(r1_data['vote_average'] / 2, 2)
+    r1_data['item_type'] = "movie"
     return r1_data
 
 
@@ -87,6 +88,7 @@ def display_one_show_result(api_key, tv_id):
     r1_data['stars'] = round(r1_data['vote_average'] / 2, 2)
     # r1_data['title'] = r1_data['name']
     r1_data['title'] = r1_data.pop('name')
+    r1_data['item_type'] = "tv-show"
     return r1_data
 
 
@@ -253,38 +255,12 @@ if __name__ == "__main__":
     # pprint.pprint(search_for_movie_and_tv_show(api_key, 'the office'))
     # res = search_for_movie(api_key, 'dawsfsergertdshgrtfh')
 
-    # print("Search for a movie")
-    # movie1 = search_for_movie(api_key, 'the dark knight')[0]
-    # movie1 = search_for_movie(api_key, 'toy story 4')[0]
-    # movie1 = search_for_movie(api_key, 'the shawshank redemption')[0]
-    # movie1 = search_for_movie(api_key, 'asdsafasgdfhfd')
-    # pprint.pprint(movie1)
-    # movie1details = get_movie_data(api_key, movie1['id'])
-    # pprint.pprint(movie1details)
-    # with open('test_res.json', 'w') as f:
-    #     f.write(json.dumps(movie1details))
-    # pprint.pprint(movie1reviews)
-    # actor1 = movie1cast[0]
-    # print(get_actor_details(actor1))
-    # review1 = get_review_details(movie1reviews[2])
-    # pprint.pprint(review1)
-
-    # print("Search for a TV Show")
-    # res1 = search_for_tv_show(api_key, 'riverdale')[0]
-    # res1_details, res1_cast, res1_reviews = get_tv_show_data(api_key, res1['id'])
-    # pprint.pprint(res1_details)
-    # actor1 = res1_cast[1]
-    # print(get_actor_details(actor1))
-
     # # Get Trending Movie
     # movies = {}
     # for i in range(5):
     #     text, img_path = get_trending_movie(
     #         api_key=api_key, page=1)
     #     movies[i] = [text, img_path]
-
-    # print(movies)
-
     # # Get TV Show Airing Today
     # tv_texts = []
     # tv_image_paths = []
@@ -296,8 +272,15 @@ if __name__ == "__main__":
     # # print(movie_image_paths[0])
     # # print(tv_texts[0])
 
-    item_id = 615643
-    res = get_movie_data(api_key, item_id, 1)
-    pprint.pprint(res)
+    # item_id = 615643
+    # res = get_movie_data(api_key, item_id, 1)
+    # pprint.pprint(res)
     # res = search_for_movies(api_key, "the dark knight", page=1)
     # pprint.pprint(res)
+
+    q = "minari"
+    res = search_for_movies(api_key, q)
+    res1 = res[0]
+    # pprint.pprint(res1.keys())
+    pprint.pprint(res1)
+    
