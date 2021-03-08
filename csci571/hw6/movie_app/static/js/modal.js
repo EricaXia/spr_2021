@@ -1,3 +1,5 @@
+// Logic to open the modal itself
+
 var modal = document.getElementById("modal-box");
 var btn = document.getElementById("show-more");
 var span = document.getElementsByClassName("close")[0];  // close button

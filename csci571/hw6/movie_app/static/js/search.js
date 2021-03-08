@@ -1,3 +1,13 @@
+// When Enter key is pressed, activate the button
+/* var input = document.getElementById("keyword");
+input.addEventListener("keyup", function(event) {
+    if (event.keyCode === 13) {
+        console.log('Enter pressed');
+        event.preventDefault();
+        document.getElementById("btn-post").click();
+    }
+}); */
+
 function clearResults() {
   var mainContainer = document.getElementById("results_container");
   if (mainContainer.innerHTML.trim().length > 0) {
@@ -107,28 +117,28 @@ function sendRequest() {
           modal.append(modal_contents, closeModal);
 
           // Modal box code logic:
-
-          // var modal = document.getElementById("modal-box");
-          // // Get the button that opens the modal
-          // var btn = document.getElementById("show-more");
-
-          // // Get the <span> element that closes the modal
-          // var firstClose = document.getElementsByClassName("closeModal")[0];
-
           console.log("button loaded");
 
           // When the user clicks the button, open the modal
           showMore.onclick = function () {
+            // send item_id to Python backend
+            req.open("POST", "/", true);
+            req.setRequestHeader(
+              "content-type",
+              "application/x-www-form-urlencoded;charset=UTF-8"
+            );
+            req.send(
+              "item_id=" + item_id
+            );
+            // Show Modal
             modal.style.display = "block";
+
           };
           // When the user clicks on <span> (x), close the modal
           // firstClose.onclick = function () {
           closeModal.onclick = function () {
             modal.style.display = "none";
-          };
-
-          // TODO: Add Content to Modal
-
+          };          
 
           // Add all to each result box
           result_box.append(
@@ -154,6 +164,7 @@ function sendRequest() {
     "application/x-www-form-urlencoded;charset=UTF-8"
   );
 
+  // if search query entered
   req.send(
     "query=" +
       document.getElementById("keyword").value +
@@ -161,4 +172,5 @@ function sendRequest() {
       "query2=" +
       document.getElementById("category").value
   );
+
 }

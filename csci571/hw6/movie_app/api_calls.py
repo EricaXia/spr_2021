@@ -164,7 +164,7 @@ def get_movie_data(api_key, movie_id, page=1):
     r2 = requests.get(url_credits)
     r2_data = json.loads(r2.text)
     # cast_details = r2_data['cast']  # list of cast members
-    r1_data['cast_details'] = r2_data['cast']
+    r1_data['cast'] = r2_data['cast']
 
     # reviews
     url_reviews = f"https://api.themoviedb.org/3/movie/{movie_id}/reviews?api_key={api_key}&language=en-US&page={page}"
@@ -296,7 +296,8 @@ if __name__ == "__main__":
     # # print(movie_image_paths[0])
     # # print(tv_texts[0])
 
-    # res = get_movie_data(api_key, 235071, 1)
-
-    res = search_for_movies(api_key, "the dark knight", page=1)
+    item_id = 615643
+    res = get_movie_data(api_key, item_id, 1)
     pprint.pprint(res)
+    # res = search_for_movies(api_key, "the dark knight", page=1)
+    # pprint.pprint(res)
