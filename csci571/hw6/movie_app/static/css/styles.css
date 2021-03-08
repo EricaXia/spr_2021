@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@400;800&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 body {
   background-color: black;
@@ -6,7 +6,7 @@ body {
 
 h1 {
   font-family: "Raleway";
-  font-weight: 800;
+  font-weight: 600;
   color: red;
 }
 
@@ -25,7 +25,7 @@ h3 {
 
 p {
   font-family: "Raleway";
-  font-weight: 400;
+  font-weight: 500;
   color: white;
 }
 
@@ -81,21 +81,24 @@ p {
 
 .tabs__sidebar {
   margin-left: 15%;
-  width: 150px;
-  /* width: 125px; */
+  width: 180px;
   flex-shrink: 0;
   border-right: 1px solid white;
 }
 
 .tabs__button {
+  /* justify-content: left !important; */
+  text-align: left;
+  font-size: 1.2em;
+  font-family: "Raleway";
+  font-weight: 400;
+  color: white;
   display: block;
-  padding: 20px;
+  padding: 25px 5px 25px 10px;
   width: 100%;
   border: none;
   background: none;
   outline: none;
-  color: white;
-  text-align: right;
   cursor: pointer;
 }
 
@@ -107,7 +110,7 @@ p {
 /*When button is selectd, the text should be bold & red, and the bottom border should be a white line  */
 .tabs__button--active {
   color: red;
-  font-weight: bold;
+  font-weight: 600;
   border-bottom: 1px solid white;
 }
 
@@ -251,6 +254,7 @@ select {
 .star-rating {
   color: red;
   display: inline;
+  padding-right: 8px;
 }
 
 .votes {
@@ -323,4 +327,22 @@ select {
 
 .year-genre2 {
   color: black !important;
+}
+
+.votes2 {
+  font-size: small;
+  display: inline;
+  color: black;
+
+}
+
+.desc-modal {
+  color: black !important;
+}
+
+.langs {
+  display: block;
+  color: black !important;
+  font-style: italic;
+  font-size: small;
 }

@@ -46,6 +46,7 @@ function sendRequest() {
         var rating2 = rating.toFixed(2);
         var vote_count = results["vote_count"];
         var desc = results["overview"];
+        var langs = "Spoken languages: " + results["spoken_language_names"].join(", ");
 
         var title1 = document.createElement("h2");
         title1.innerHTML = title;
@@ -55,20 +56,33 @@ function sendRequest() {
         year_genres.innerHTML = year + " | " + genres;
         year_genres.classList.add("year-genre2");
 
+        var rating3 = document.createElement("p");
+        rating3.innerHTML = "&#9733; " + rating2 + "/5";
+        rating3.classList.add("star-rating");
+
+        var vote_count1 = document.createElement("p");
+        vote_count1.innerHTML = vote_count + " votes";
+        vote_count1.classList.add("votes2");
+
+        var desc1 = document.createElement("p");
+        desc1.innerHTML = desc;
+        desc1.classList.add("desc-modal");
+
+        var langs2 = document.createElement("p");
+        langs2.innerHTML = langs;
+        langs2.classList.add("langs");
+
         var backdrop = document.createElement("img");
         if (img_path == null) {
           backdrop.src = "/static/images/movie-placeholder.png";
         } else {
-          backdrop.src = "https://image.tmdb.org/t/p/w500" + img_path;
+          backdrop.src = "https://image.tmdb.org/t/p/w780" + img_path;
         }
-
-        // poster.classList.add("poster-img");
-
 
         
 
         // modalContents.innerHTML = backdrop_img;
-        modalContents.append(backdrop, title1, year_genres);
+        modalContents.append(backdrop, title1, year_genres, rating3, vote_count1, desc1, langs2);
 
 
       } else {
