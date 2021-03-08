@@ -97,8 +97,8 @@ def search_for_movies(api_key, search_query, page=1):
     r = requests.get(url)
     r_data = json.loads(r.text)
     # array of movie dicts
-    results = r_data['results']
-    if results:
+    if r_data['results']:
+        results = r_data['results']
         final_results = {idx: display_one_movie_result(
             api_key, r['id']) for idx, r in enumerate(results)}
     else:

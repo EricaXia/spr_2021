@@ -1,16 +1,26 @@
 var modal = document.getElementById("modal-box");
-
-// Get the button that opens the modal
 var btn = document.getElementById("show-more");
+var span = document.getElementsByClassName("close")[0];  // close button
 
-// Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0];
+// console.log("button loaded");
 
-console.log("button loaded");
+
+// call this when Show More button is clicked
+function getDetails() {
+  var req = new XMLHttpRequest();
+  req.onreadystatechange = function () {
+    if (this.readyState == 4 && this.status == 200) {
+      
+    }
+}
+} 
+
 
 // When the user clicks the button, open the modal
 btn.onclick = function () {
+  // call function to get the movie/show details
   modal.style.display = "block";
+  
 };
 
 // When the user clicks on <span> (x), close the modal
