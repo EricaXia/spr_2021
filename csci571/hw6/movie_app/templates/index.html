@@ -1,140 +1,146 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>The Movie DB</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}" />
-</head>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/styles.css') }}"
+    />
+  </head>
 
-<body>
+  <body>
     <div class="container-title">
-        <div class="title-box">
-            <h1>THE MOVIE DB</h1>
-        </div>
+      <div class="title-box">
+        <h1>THE MOVIE DB</h1>
+      </div>
     </div>
     <!-- Container that wraps everything to show/hide INCLUDING the menu-->
-    <div class=tabs>
-        <div class="tabs__sidebar">
-            <button class="tabs__button" data-for-tab="1">Home &emsp;&emsp;&nbsp;&nbsp; &#10230; </button>
-            <button class="tabs__button" data-for-tab="2">Search &emsp;&emsp;&nbsp; &#10230; </button>
+    <div class="tabs">
+      <div class="tabs__sidebar">
+        <button class="tabs__button" data-for-tab="1">Home <span class="arrow">&#10230;</span>
+        </button>
+        <button class="tabs__button" data-for-tab="2">Search<span class="arrow">&#10230;</span>
+        </button>
+      </div>
+
+      <!-- Panel 1: Home tab with trending stuff -->
+      <div class="tabs__content tabs__content--active" data-tab="1">
+        <!-- <div class="content"> -->
+
+        <!-- TODO: convert to slideshow -->
+        <div class="item">
+          <h3>Trending Movies</h3>
+          <!-- insert slideshow-->
+          <div class="slide">
+            <img src="{{ movies[0][1] }}" />
+            <div class="caption">{{ movies[0][0] }}</div>
+          </div>
+
+          <div class="slide">
+            <img src="{{ movies[1][1] }}" />
+            <div class="caption">{{ movies[1][0] }}</div>
+          </div>
+
+          <div class="slide">
+            <img src="{{ movies[2][1] }}" />
+            <div class="caption">{{ movies[2][0] }}</div>
+          </div>
+
+          <div class="slide">
+            <img src="{{ movies[3][1] }}" />
+            <div class="caption">{{ movies[3][0] }}</div>
+          </div>
+
+          <div class="slide">
+            <img src="{{ movies[4][1] }}" />
+            <div class="caption">{{ movies[4][0] }}</div>
+          </div>
         </div>
 
-        <!-- Panel 1: Home tab with trending stuff -->
-        <div class="tabs__content tabs__content--active" data-tab="1">
-            <!-- <div class="content"> -->
+        <div class="item">
+          <h3>TV Shows On-Air Today</h3>
+          <!-- insert slideshow-->
+          <div class="tvslide">
+            <img src="{{ tv_shows[0][1] }}" />
+            <div class="caption">{{ tv_shows[0][0] }}</div>
+          </div>
 
-            <!-- TODO: convert to slideshow -->
-            <div class="item">
+          <div class="tvslide">
+            <img src="{{ tv_shows[1][1] }}" />
+            <div class="caption">{{ tv_shows[1][0] }}</div>
+          </div>
 
-                <h3>Trending Movies</h3>
-                <!-- insert slideshow-->
-                <div class="slide">
-                    <img src="{{ movies[0][1] }}">
-                    <div class="caption">{{ movies[0][0] }}</div>
-                </div>
+          <div class="tvslide">
+            <img src="{{ tv_shows[2][1] }}" />
+            <div class="caption">{{ tv_shows[2][0] }}</div>
+          </div>
 
-                <div class="slide">
-                    <img src="{{ movies[1][1] }}">
-                    <div class="caption">{{ movies[1][0] }}</div>
-                </div>
+          <div class="tvslide">
+            <img src="{{ tv_shows[3][1] }}" />
+            <div class="caption">{{ tv_shows[3][0] }}</div>
+          </div>
 
-                <div class="slide">
-                    <img src="{{ movies[2][1] }}">
-                    <div class="caption">{{ movies[2][0] }}</div>
-                </div>
+          <div class="tvslide">
+            <img src="{{ tv_shows[4][1] }}" />
+            <div class="caption">{{ tv_shows[4][0] }}</div>
+          </div>
+        </div>
+      </div>
 
-                <div class="slide">
-                    <img src="{{ movies[3][1] }}">
-                    <div class="caption">{{ movies[3][0] }}</div>
-                </div>
+      <!-- Panel 2: Search feature tab-->
+      <div class="tabs__content" data-tab="2">
+        <div class="search-container">
+          <form
+            class="search-form"
+            name="searchForm"
+            action="index"
+            onsubmit="return validateInput()"
+            method="post"
+          >
+            <h3>Search</h3>
 
-                <div class="slide">
-                    <img src="{{ movies[4][1] }}">
-                    <div class="caption">{{ movies[4][0] }}</div>
-                </div>
+            <div class="search-line">
+              <label for="keyword">Keyword* </label>
+              <input type="text" name="keyword" id="keyword" value="" />
+            </div>
+            <div class="search-line">
+              <label for="category">Category*</label>
+              <select id="category" name="category">
+                <option value=""></option>
+                <option value="movies">Movies</option>
+                <option value="tv-shows">TV Shows</option>
+                <option value="movies-and-tv-shows">Movies and TV Shows</option>
+              </select>
             </div>
 
-            <div class="item">
-                <h3>TV Shows On-Air Today</h3>
-                <!-- insert slideshow-->
-                <div class="tvslide">
-                    <img src="{{ tv_shows[0][1] }}">
-                    <div class="caption">{{ tv_shows[0][0] }}</div>
-                </div>
+            <button
+              type="button"
+              id="btn-post"
+              class="search-btn"
+              onclick="validateForm();sendRequest();"
+            >
+              Search
+            </button>
 
-                <div class="tvslide">
-                    <img src="{{ tv_shows[1][1] }}">
-                    <div class="caption">{{ tv_shows[1][0] }}</div>
-                </div>
-
-                <div class="tvslide">
-                    <img src="{{ tv_shows[2][1] }}">
-                    <div class="caption">{{ tv_shows[2][0] }}</div>
-                </div>
-
-                <div class="tvslide">
-                    <img src="{{ tv_shows[3][1] }}">
-                    <div class="caption">{{ tv_shows[3][0] }}</div>
-                </div>
-
-                <div class="tvslide">
-                    <img src="{{ tv_shows[4][1] }}">
-                    <div class="caption">{{ tv_shows[4][0] }}</div>
-                </div>
-
-            </div>
-
+            <button type="reset" class="search-btn" onclick="clearResults();">
+              Clear
+            </button>
+          </form>
+          <div id="results_container" class="results_container">
+            <!-- results populate inside here -->
+          </div>
         </div>
+      </div>
 
-        <!-- Panel 2: Search feature tab-->
-        <div class="tabs__content" data-tab="2">
+      <div class="footer">
+        <p>Erica Xia - CSCI 571</p>
+      </div>
 
-            <div class="search-container">
-                <form class="search-form" name="searchForm" action="index" onsubmit="return validateInput()"
-                    method="post">
-                    <h3>Search</h3>
-
-                    <div class="search-line">
-                        <label for="keyword">Keyword* </label>
-                        <input type="text" name="keyword" id="keyword" value="" />
-                    </div>
-                    <div class="search-line">
-                        <label for="category">Category*</label>
-                        <select id="category" name="category">
-                            <option value=""></option>
-                            <option value="movies">Movies</option>
-                            <option value="tv-shows">TV Shows</option>
-                            <option value="movies-and-tv-shows">Movies and TV Shows</option>
-                        </select>
-                    </div>
-
-                    <button type="button" id="btn-post" class="search-btn" onclick="validateForm();sendRequest();">Search</button>
-
-                    <button type="reset" class="search-btn" onclick="clearResults();">Clear</button>
-
-                </form>
-                <div id="results_container" class="results_container">
-                    <!-- results populate inside here -->
-                </div>
-
-            </div>
-
-            
-        </div>
-
-        <div class="footer">
-            <p>Erica Xia - CSCI 571</p>
-        </div>
-
-        <!-- Ends the shown/hidden content container -->
+      <!-- Ends the shown/hidden content container -->
     </div>
-
-
-
-
 
     <!-- Javascript here -->
     <script src="{{ url_for('static', filename='js/search.js') }}"></script>
@@ -142,8 +148,5 @@
     <script src="{{ url_for('static', filename='js/validateform.js') }}"></script>
     <script src="{{ url_for('static', filename='js/slides.js') }}"></script>
     <!-- <script src="{{ url_for('static', filename='js/modal.js') }}"></script> -->
-
-
-</body>
-
+  </body>
 </html>

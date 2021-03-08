@@ -87,7 +87,6 @@ p {
 }
 
 .tabs__button {
-  /* justify-content: left !important; */
   text-align: left;
   font-size: 1.2em;
   font-family: "Raleway";
@@ -100,6 +99,11 @@ p {
   background: none;
   outline: none;
   cursor: pointer;
+}
+
+.arrow {
+  display: inline;
+  padding-left: 70px;
 }
 
 /* When hover over button font color should turn red */
