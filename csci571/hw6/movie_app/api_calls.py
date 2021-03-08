@@ -126,9 +126,9 @@ def search_for_movies_and_shows(api_key, search_query, page=1):
     url = f"https://api.themoviedb.org/3/search/multi?api_key={api_key}&language=en-US&query={search_query}&page={page}"
     r = requests.get(url)
     r_data = json.loads(r.text)
-    results = r_data['results']
     final_results = {}
-    if results:
+    if r_data['results']:
+        results = r_data['results']
         for idx, r in enumerate(results):
             if r['media_type'] == 'movie':
                 movie_dict = display_one_movie_result(api_key, r['id'])

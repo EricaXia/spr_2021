@@ -10,8 +10,24 @@ function getDetails() {
   var req = new XMLHttpRequest();
   req.onreadystatechange = function () {
     if (this.readyState == 4 && this.status == 200) {
-      
+      // return details
     }
+    else {
+      console.log("ready state " + this.readyState);
+    }
+    req.open("POST", "/", true);
+    req.setRequestHeader(
+      "content-type",
+      "application/x-www-form-urlencoded;charset=UTF-8"
+    );
+  
+    req.send(
+      "item_id=" +
+      // TODO: get the movie/show id when show more button is clicked
+        // document.getElementById("keyword").value
+    );
+  }
+
 }
 } 
 

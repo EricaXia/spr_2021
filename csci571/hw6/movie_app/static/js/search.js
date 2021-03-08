@@ -39,6 +39,7 @@ function sendRequest() {
         mainContainer.append(showing);
 
         for (let i = 0; i < Object.keys(search_results).length; i++) {
+          var item_id = search_results[i]["id"];
           var title = search_results[i]["title"];
           var year = search_results[i]["year"];
           var genres = search_results[i]["genre_names"].join(", ");

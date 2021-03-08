@@ -16,8 +16,8 @@ def index():
     if request.method == "POST":
         keyword = request.form.get("query", False)
         category = request.form.get("query2", False)
+        item_id = request.form.get("item_id", False)
 
-    # TODO: call get movie/show details for the modal boxes
         if category == "movies":
             # returns list of 20 results
             final_results = search_for_movies(api_key, keyword, 1)
@@ -29,6 +29,21 @@ def index():
             final_results = search_for_movies_and_shows(api_key, keyword, 1)
 
         return final_results
+
+    ## Show Modal Box details
+    # elif request.method == "POST" and something else:
+        movie_id = request.form.get('movie_id', False)
+        movie = get_movie_data(api_key, movie_id)
+        movie['cast_details'] = []
+        movie['review_details'] = []
+        for cast_dict in movie['cast']:
+            a = get_actor_details(cast_dict)
+            movie['cast_details'].append(a)
+
+        for review_dict in movie['reviews']:
+            r = get_review_details(review_dict)
+            movie['review_details'].append(r)
+        return movie
 
     # Get Trending Movie
     movies = {}
