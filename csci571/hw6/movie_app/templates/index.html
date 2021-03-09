@@ -88,6 +88,13 @@
             <div class="caption">{{ tv_shows[4][0] }}</div>
           </div>
         </div>
+
+        <div class="footer">
+          <div class="f-text">
+          <p><i>Designed and developed by Akansha, Pranav & Yash</i></p>
+          <p><i>Powered by TMDB</i></p>
+        </div>
+        </div>
       </div>
 
       <!-- Panel 2: Search feature tab-->
@@ -100,14 +107,14 @@
             onsubmit="return validateInput()"
             method="post"
           >
-            <h3>Search</h3>
+            <h2 class="search-title">Search</h2>
 
             <div class="search-line">
-              <label for="keyword">Keyword* </label>
+              <label for="keyword">Keyword<span style="color:red">*</span> </label>
               <input type="text" name="keyword" id="keyword" value="" />
             </div>
             <div class="search-line">
-              <label for="category">Category*</label>
+              <label for="category">Category<span style="color:red">*</span> </label>
               <select id="category" name="category">
                 <option value=""></option>
                 <option value="movies">Movies</option>
@@ -116,6 +123,7 @@
               </select>
             </div>
 
+            <div class="btns">
             <button
               type="button"
               id="btn-post"
@@ -128,16 +136,20 @@
             <button type="reset" class="search-btn" onclick="clearResults();">
               Clear
             </button>
+          </div>
           </form>
           <div id="results_container" class="results_container">
             <!-- results populate inside here -->
           </div>
         </div>
+
+        <div class="footer">
+          <p><i>Designed and developed by Akansha, Pranav & Yash</i></p>
+          <p><i>Powered by TMDB</i></p>
+        </div>
       </div>
 
-      <div class="footer">
-        <p>Erica Xia - CSCI 571</p>
-      </div>
+
 
       <!-- Ends the shown/hidden content container -->
     </div>

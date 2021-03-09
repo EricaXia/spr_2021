@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
 body {
   background-color: black;
@@ -60,15 +60,21 @@ p {
 }
 
 /* Footer */
-.footer {
-  /* position: relative; */
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  padding: 5px;
-  background-color: #470807;
+.f-text{
+  font-size: small;
   color: gray;
-  text-align: right;
+}
+.footer {
+    /* position: relative; */
+    position: absolute;
+    bottom: 100;
+    width: 72%;
+    padding: 5px 20px 5px 0px;
+    background-color: #470807;
+    color: gray;
+    text-align: right;
+    margin-top: 15%;
+    margin-bottom: 0;
 }
 
 /* Show/Hide Tabs */
@@ -80,7 +86,7 @@ p {
 }
 
 .tabs__sidebar {
-  margin-left: 15%;
+  margin-left: 10%;
   width: 180px;
   flex-shrink: 0;
   border-right: 1px solid white;
@@ -135,6 +141,8 @@ p {
   margin-top: 0;
 } */
 
+
+
 /* For each item on homepage */
 .item {
   padding-top: 5%;
@@ -177,14 +185,17 @@ p {
 
 /* TAB 2 */
 .search-container {
-  width: 100%;
+  width: 105%;
   /* background-color: red; */
 }
 
+.search-title {
+  text-align: center;
+  font-weight: 800;
+}
 /* Search form */
 .search-form {
-  /* max-width: 1000px; */
-  padding: 25px 100px 75px 100px;
+  padding: 1% 30% 10% 30%;
   background-image: linear-gradient(red, black);
 }
 
@@ -200,7 +211,7 @@ p {
 }
 
 input[type="text"] {
-  width: 100%;
+  width: 70%;
   padding: 5px 10px;
   margin: 5px 0;
   display: inline-block;
@@ -210,13 +221,19 @@ input[type="text"] {
 }
 
 select {
-  width: 50%;
+  width: 25%;
   padding: 5px 10px;
   margin: 5px 0;
   display: inline-block;
   border: 1px solid #black;
   box-sizing: border-box;
   border-radius: 5px;
+}
+
+.btns {
+  /* margin-left: 22%; */
+  margin-top: 5%;
+  text-align: center;
 }
 
 .search-btn {
@@ -228,14 +245,16 @@ select {
   outline: none;
   border: none;
   cursor: pointer;
+  margin-left: 4%;
+  margin-right: 4%;
 }
 
 .search-btn:hover {
-  background-color: #B40C0D;
+  background-color: #b40c0d;
 }
 
 .search-btn:active: {
-  background-color: #B40C0D;
+  background-color: #b40c0d;
 }
 
 /* Search results */
@@ -296,8 +315,7 @@ select {
 }
 
 .show-more:active {
-  background-color: #C2C3C3;
-
+  background-color: #c2c3c3;
 }
 
 /* The Modal (background) */
@@ -322,12 +340,11 @@ select {
   color: black;
   background-color: #c2c2c2;
   margin: auto;
-  padding: 30px;
+  padding: 10px 50px 150px 50px;
   border: 1px solid #888;
   width: 50%;
-  /* ability to scroll down modal */
-  max-height: calc(100vh - 210px);
-  overflow-y: auto;
+  /* max-height: calc(100vh - 210px);
+  overflow-y: auto; */
 }
 
 /* The Close Button */
@@ -351,9 +368,24 @@ select {
 }
 
 /* Modal content element styles*/
+.modal-backdrop {
+  width: 95%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
 .result-title2 {
   color: black !important;
   font-weight: 400 !important;
+  display: inline;
+  margin-top: 20px;
+}
+
+.info-sym {
+  text-decoration: none;
+  color: red;
+  padding-left: 10px;
+  display: inline;
 }
 
 .year-genre2 {
@@ -364,10 +396,10 @@ select {
   font-size: small;
   display: inline;
   color: black;
-
 }
 
 .desc-modal {
+  padding-top:10px;
   color: black !important;
 }
 
@@ -376,8 +408,77 @@ select {
   color: black !important;
   font-style: italic;
   font-size: small;
+  font-weight: 600;
+}
+
+/* Cast container */
+.cast-box {
+  display: grid;
+  /* /* grid-template-columns: 180px 180px 180px 180px; */
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: auto;
+  /* padding-top: 100px; */
+}
+
+.cast-heading {
+  display: block;
+  color: black !important;
+  font-weight: 800;
+  padding-top: 30px;
+  margin-bottom: 5px;
+
+}
+
+.cast-item {
+  align-self: start;
+  text-align: center;
 }
 
 .cast-img {
-  width: 50%;
+  width: 95%;
+  padding-top: 10px;
 }
+
+.cast-text {
+  color: black !important;
+  font-size: small;
+  margin: 0;
+}
+
+.real-name {
+  font-weight: 600;
+  margin: 0;
+
+}
+
+
+/* reviews */
+
+.review-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto;
+}
+
+.review-item {
+  padding-top: 10px;
+  padding-bottom: 5px;
+}
+
+.reviewer-info {
+  color: black !important;
+  font-size: small;
+}
+.review-text {
+  color: black !important;
+  font-size: small;
+}
+
+.review-border {
+  width: 80%;
+  text-align: center;
+  border: 1px solid gray;
+  background-color: gray;
+  opacity: 0.5;
+}
+

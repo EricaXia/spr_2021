@@ -33,12 +33,19 @@ def index():
         ## Show Modal Box details when Show More is clicked
         if item_id and item_type: 
             if item_type == "movie":
-                print('movie with id', item_id)
+                # print('movie with id', item_id)
                 movie = get_movie_data(api_key, item_id)
                 movie['cast_details'] = [get_actor_details(cast_dict) for cast_dict in movie['cast']]
                 movie['review_details'] = [get_review_details(review_dict) for review_dict in movie['reviews']]
                 movie['is_detail'] = True
                 return movie
+            elif item_type == "tv":
+                show = get_tv_show_data(api_key, item_id)
+                show['cast_details'] = [get_actor_details(cast_dict) for cast_dict in show['cast']]
+                show['review_details'] = [get_review_details(review_dict) for review_dict in show['reviews']]
+                show['is_detail'] = True
+
+            
 
     ## Homepage display
     # Get Trending Movie
