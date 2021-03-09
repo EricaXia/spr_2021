@@ -29,13 +29,18 @@ function sendRequest() {
       // JSON response
       results = JSON.parse(req.response);
 
-      // if Modal is opened
+      // if Show More Button is clicked, request sent, and response returned
       if (results.hasOwnProperty('is_detail')) {
-        console.log('Show modal details:');
+        console.log('Show modal results:');
         console.log(results);
-        var item_id = results['id'];
-        var modal_id = "modal-contents-" + item_id; 
-        var modalContents = document.getElementById(modal_id);
+
+        // var item_id = results['id'];
+        let modal_id = "modal-" + results['id'];
+        let modal_box_id = "modal-box-" + results['id'];
+        console.log(modal_id);
+        console.log(modal_box_id);
+        let modal = document.getElementById(modal_box_id);
+        let modalContents = document.getElementById(modal_id);
 
         // Parse response and create HTML elements for modal
         var img_path = results['backdrop_path']
@@ -80,10 +85,24 @@ function sendRequest() {
         }
 
         
+        // add close button to modal
+        console.log('append close btn to modal');
+        const closeModal = document.createElement("span");
+        closeModal.classList.add("close");
+        closeModal.innerHTML = "&times;";
 
-        // modalContents.innerHTML = backdrop_img;
-        modalContents.append(backdrop, title1, year_genres, rating3, vote_count1, desc1, langs2);
+        // modal.append(closeModal);
+        
+         // Show Modal
+        modal.style.display = "block";
+        console.log('append details to modal');
+        modalContents.append(closeModal, backdrop, title1, year_genres, rating3, vote_count1, desc1, langs2);
 
+        // When the user clicks, close the modal
+        closeModal.onclick = function () {
+          console.log('close btn clicked');
+          modal.style.display = "none";
+        };
 
       } else {
       // Populate results_container with search results
@@ -155,50 +174,32 @@ function sendRequest() {
           var showMore = document.createElement("btn");
           showMore.innerHTML = "Show More";
           showMore.classList.add("show-more");
-          showMore.setAttribute("id", "show-more"); //add id
+          let showMoreId = item_id;
+          // showMore.setAttribute("id", "show-more"); //add id
+          showMore.setAttribute("id", showMoreId); //add id
 
           // background div for modal
           var modal = document.createElement("div");
           modal.classList.add("modal-box");
-          modal.setAttribute("id", "modal-box"); //add id
+          var modal_box_id = "modal-box-" + item_id; 
+          modal.setAttribute("id", modal_box_id); //add id
 
           // add inner contents to modal
           const modal_contents = document.createElement("div");
           modal_contents.classList.add("modal-content");
-          var modal_id = "modal-contents-" + item_id; 
+          var modal_id = "modal-" + item_id; 
           modal_contents.setAttribute("id", modal_id);
           // modal_contents.innerHTML = "Test!!!";
 
-          // add close button to modal
-          const closeModal = document.createElement("span");
-          closeModal.classList.add("close");
-          closeModal.innerHTML = "&times;";
+          // // add close button to modal
+          // const closeModal = document.createElement("span");
+          // closeModal.classList.add("close");
+          // closeModal.innerHTML = "&times;";
 
-          modal.append(modal_contents, closeModal);
+          modal.append(modal_contents);
 
           // Modal box code logic:
           console.log("button loaded");
-
-          // When the user clicks the button, open the modal
-          showMore.onclick = function () {
-            // send item_id to Python backend
-            req.open("POST", "/", true);
-            req.setRequestHeader(
-              "content-type",
-              "application/x-www-form-urlencoded;charset=UTF-8"
-            );
-            req.send(
-              "item_id=" + item_id + "&" + "item_type=" + item_type
-            );
-            // Show Modal
-            modal.style.display = "block";
-
-          };
-          // When the user clicks on <span> (x), close the modal
-          // firstClose.onclick = function () {
-          closeModal.onclick = function () {
-            modal.style.display = "none";
-          };          
 
           // Add all to each result box
           result_box.append(
@@ -212,6 +213,24 @@ function sendRequest() {
             modal
           );
           mainContainer.append(result_box);
+
+           // When the user clicks the button, open the modal
+          // current Show More button
+          var currentShowMore = document.getElementById(showMoreId);
+          currentShowMore.onclick = function () {
+            // send item_id to Python backend
+            req.open("POST", "/", true);
+            req.setRequestHeader(
+              "content-type",
+              "application/x-www-form-urlencoded;charset=UTF-8"
+            );
+            console.log("Sending item_id=" + showMoreId);
+            req.send(
+              "item_id=" + showMoreId + "&" + "item_type=" + item_type
+            );
+           
+          };
+          
         }
       }}
     } else {

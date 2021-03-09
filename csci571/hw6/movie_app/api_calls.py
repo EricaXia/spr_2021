@@ -236,7 +236,10 @@ def get_review_details(review_dict):
         review_dict['created_at'], "%Y-%m-%dT%H:%M:%S.%f%z")
     review_date2 = review_date1.strftime("%m/%d/%Y")
     # convert to rating out of 5
-    rating = round(review_dict['author_details']['rating'] / 2, 1)
+    if review_dict['author_details']['rating']:
+        rating = round(review_dict['author_details']['rating'] / 2, 1)
+    else:
+        rating = None
     review = {
         'reviewer': review_dict['author'],
         'review_date': review_date2,
