@@ -101,6 +101,14 @@ function sendRequest() {
         // When the user clicks, close the modal
         closeModal.onclick = function () {
           console.log('close btn clicked');
+          // clear contents
+          if (modalContents.innerHTML.trim().length > 0) {
+            console.log('results in modal to be cleared');
+            while (modalContents.firstChild) {
+              modalContents.firstChild.remove();
+            }
+          }
+          // hides modal
           modal.style.display = "none";
         };
 
