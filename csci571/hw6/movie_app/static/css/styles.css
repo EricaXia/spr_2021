@@ -221,9 +221,21 @@ select {
 
 .search-btn {
   width: auto;
-  padding: 10px 18px;
+  padding: 8px 20px;
   background-color: black;
   color: white;
+  border-radius: 5px;
+  outline: none;
+  border: none;
+  cursor: pointer;
+}
+
+.search-btn:hover {
+  background-color: #B40C0D;
+}
+
+.search-btn:active: {
+  background-color: #B40C0D;
 }
 
 /* Search results */
@@ -237,6 +249,10 @@ select {
   padding: 10px;
 }
 
+.no-results {
+  text-align: center;
+  padding-left: 20px;
+}
 /* TODO: display image inline with descrips */
 .poster-img {
   width: 200px;
@@ -277,6 +293,11 @@ select {
   display: inline-block;
   border-radius: 4px;
   cursor: pointer;
+}
+
+.show-more:active {
+  background-color: #C2C3C3;
+
 }
 
 /* The Modal (background) */

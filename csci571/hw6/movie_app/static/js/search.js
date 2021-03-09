@@ -124,6 +124,7 @@ function sendRequest() {
         result_box0.classList.add("result-box");
         var no_results = document.createElement("p");
         no_results.innerHTML = results["error"];
+        no_results.classList.add("no-results");
         result_box0.append(no_results);
         mainContainer.append(result_box0);
       } else {
