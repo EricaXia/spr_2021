@@ -37,8 +37,8 @@ function sendRequest() {
         // var item_id = results['id'];
         let modal_id = "modal-" + results['id'];
         let modal_box_id = "modal-box-" + results['id'];
-        console.log(modal_id);
-        console.log(modal_box_id);
+        // console.log(modal_id);
+        // console.log(modal_box_id);
         let modal = document.getElementById(modal_box_id);
         let modalContents = document.getElementById(modal_id);
 
@@ -90,13 +90,40 @@ function sendRequest() {
         const closeModal = document.createElement("span");
         closeModal.classList.add("close");
         closeModal.innerHTML = "&times;";
-
-        // modal.append(closeModal);
-        
          // Show Modal
         modal.style.display = "block";
         console.log('append details to modal');
         modalContents.append(closeModal, backdrop, title1, year_genres, rating3, vote_count1, desc1, langs2);
+
+        // Append cast details
+        var cast_details = results['cast_details'];
+        for (i = 0; i < 9; i++) {  //cast_details.length
+          let cast_img_path = cast_details[i]['image_path'];
+          let real_name = cast_details[i]['real_name'];
+          let role_name = cast_details[i]['role_name'];
+
+          let cast_img = document.createElement("img");
+          if (cast_img_path == null) {
+            cast_img.src = "/static/images/person-placeholder.png";
+          } else {
+            cast_img.src = cast_img_path;
+          }
+          cast_img.classList.add("cast-img");
+
+          let cast_text = real_name + "\nAS\n" + role_name;
+          modalContents.append(cast_img, cast_text); 
+        }
+
+        // Append reviews
+        var review_details = results['review_details'];
+        for (i = 0; i < review_details.length; i++) {
+          let rating = review_details[i]['rating'];
+          let review_date = review_details[i]['review_date'];
+          let reviewer = review_details[i]['reviewer'];
+          let review_text = review_details[i]['review_text'];
+          modalContents.append(rating, review_date, reviewer, review_text);
+        }
+
 
         // When the user clicks, close the modal
         closeModal.onclick = function () {

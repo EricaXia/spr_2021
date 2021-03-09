@@ -377,3 +377,7 @@ select {
   font-style: italic;
   font-size: small;
 }
+
+.cast-img {
+  width: 50%;
+}
