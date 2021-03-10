@@ -247,7 +247,7 @@ function sendRequest() {
             var img_path = results[i]["poster_path"];
 
             // add json elements to page dynamically
-            // var br = document.createElement("br");
+            const br_tag = document.createElement("br");
             var result_box = document.createElement("div");
             result_box.classList.add("result-box");
 
@@ -314,6 +314,7 @@ function sendRequest() {
             // Add all to each result box
             result_box.append(
               title1,
+              // br_tag,
               year_genres,
               rating3,
               vote_count1,
@@ -347,6 +348,7 @@ function sendRequest() {
     }
   };
   req.open("POST", "/", true);
+  console.log("Sending request");
   req.setRequestHeader(
     "content-type",
     "application/x-www-form-urlencoded;charset=UTF-8"
