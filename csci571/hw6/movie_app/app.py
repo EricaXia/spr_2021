@@ -39,11 +39,13 @@ def index():
                 movie['review_details'] = [get_review_details(review_dict) for review_dict in movie['reviews']]
                 movie['is_detail'] = True
                 return movie
+
             elif item_type == "tv":
                 show = get_tv_show_data(api_key, item_id)
                 show['cast_details'] = [get_actor_details(cast_dict) for cast_dict in show['cast']]
                 show['review_details'] = [get_review_details(review_dict) for review_dict in show['reviews']]
                 show['is_detail'] = True
+                return show
 
             
 

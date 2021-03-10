@@ -2,8 +2,8 @@ import requests
 import json
 import pprint
 from random import randint
-from .settings import api_key
-# from settings import api_key  # use this to test if name == __main__
+# from .settings import api_key
+from settings import api_key  # use this to test if name == __main__
 from datetime import datetime
 
 # base_url = "https://api.themoviedb.org/3/"
@@ -285,9 +285,13 @@ if __name__ == "__main__":
     # res = search_for_movies(api_key, "the dark knight", page=1)
     # pprint.pprint(res)
 
-    q = "minari"
-    res = search_for_movies(api_key, q)
-    res1 = res[0]
-    # pprint.pprint(res1.keys())
-    pprint.pprint(res1)
+    # q = "minari"
+    # res = search_for_movies(api_key, q)
+    # res1 = res[0]
+    # # pprint.pprint(res1.keys())
+    # pprint.pprint(res1)
     
+    res = get_tv_show_data(api_key, 2316)
+    pprint.pprint(res)
+    res2 = get_actor_details(res['cast_details'])
+    pprint.pprint(res2)

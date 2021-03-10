@@ -338,7 +338,7 @@ select {
 .star-rating {
   color: red;
   display: inline-block;
-  /* padding-right: 8px; */
+  padding-right: 8px;
   margin: 0;
 }
 

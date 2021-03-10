@@ -77,7 +77,7 @@ function sendRequest() {
 
         var rating3 = document.createElement("p");
         rating3.innerHTML = "&#9733; " + rating2 + "/5";
-        rating3.classList.add("star-rating2");
+        rating3.classList.add("star-rating");
 
         var vote_count1 = document.createElement("p");
         vote_count1.innerHTML = vote_count + " votes";
@@ -131,10 +131,11 @@ function sendRequest() {
           //cast_details.length
           let cast_item = document.createElement("div");
           cast_item.classList.add("cast-item");
+
           if (cast_details[i]["image_path"] == null) {
-            let cast_img_path = "/static/images/person-placeholder.png";
+            var cast_img_path = "/static/images/person-placeholder.png";
           } else {
-            let cast_img_path = cast_details[i]["image_path"];
+            var cast_img_path = cast_details[i]["image_path"];
           }
           let real_name = cast_details[i]["real_name"];
           let role_name = cast_details[i]["role_name"];
