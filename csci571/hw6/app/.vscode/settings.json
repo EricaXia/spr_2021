@@ -32,5 +32,5 @@
     ],
     "appService.defaultWebAppToDeploy": "/subscriptions/54c7a526-c613-47a2-9221-f45c8e34d95d/resourceGroups/appsvc_linux_centralus_basic/providers/Microsoft.Web/sites/csci-movie-app-gjsi3956",
     "appService.deploySubpath": ".",
-    "python.pythonPath": "C:\\Users\\erica\\AppData\\Local\\Programs\\Python\\Python38\\python.exe"
+    "python.pythonPath": "C:\\Users\\erica\\anaconda3\\python.exe"
 }
