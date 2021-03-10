@@ -1,2 +1,2 @@
-FLASK_APP=movie_app
+FLASK_APP=app
 FLASK_ENV=development
