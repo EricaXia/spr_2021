@@ -128,14 +128,18 @@
               Search
             </button>
 
-            <button type="reset" class="search-btn" onclick="clearResults();">
+            <button type="reset" class="search-btn" onclick="clearResults();addBlank();">
               Clear
             </button>
           </div>
           </form>
           <div id="results_container" class="results_container">
+            <div class="blank" id="blank"></div> 
             <!-- results populate inside here -->
           </div>
+
+          <!-- delete this when results appear -->
+          
         </div>
 
         <!-- <div class="footer">

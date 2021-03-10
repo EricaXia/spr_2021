@@ -220,10 +220,14 @@ def get_tv_show_data(api_key, tv_id, page=1):
 
 
 def get_actor_details(cast_dict):
+    if cast_dict['profile_path']:
+        image_path = f"https://image.tmdb.org/t/p/w500{cast_dict['profile_path']}"
+    else:
+        image_path = None
     actor = {
         'real_name': cast_dict['name'],
         'role_name': cast_dict['character'],
-        'image_path': f"https://image.tmdb.org/t/p/w500{cast_dict['profile_path']}"
+        'image_path': image_path
     }
     return actor
 

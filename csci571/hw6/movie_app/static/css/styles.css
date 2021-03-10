@@ -76,16 +76,18 @@ p {
     background-color: #470807;
     color: gray;
     text-align: right;
-    /* margin-top: 15%;
-    margin-bottom: 0; */
+    height: 7vh;
+    margin-top: 10%;
+    margin-bottom: 0;
+
 }
 
 /* Show/Hide Tabs */
 
 .tabs {
   display: flex;
-  height: 1500px;
-  /* height: 100%; */
+  /* height: 1500px; */
+  height: 100%;
 }
 
 .tabs__sidebar {
@@ -285,20 +287,31 @@ select {
 
 /* Search results */
 .results_container {
-  width: 700px;
+  /* width: 700px; */
+  width: 100%;
   padding: 10px;
-  display: grid;
+  /* display: grid; */
 }
 
 .result-box {
-  padding: 10px;
+  padding: 20px 10px 20px 10px;  
+  display: flex;
+}
+
+.result-details {
+  display: flex;
+  flex-direction: column;
 }
 
 .no-results {
   text-align: center;
   padding-left: 20px;
 }
-/* TODO: display image inline with descrips */
+
+.blank {
+  height: 500px;
+}
+
 .poster-img {
   width: 200px;
   height: auto;
@@ -310,30 +323,36 @@ select {
 }
 
 .result-title {
+  font-weight: 800;
   display: inline-block;
-  padding: 5px;
+  margin: 0;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 .year-genre {
   display: inline-block;
+  margin:0;
 }
 
 .star-rating {
   color: red;
   display: inline-block;
-  padding-right: 8px;
+  /* padding-right: 8px; */
+  margin: 0;
 }
 
 .votes {
   font-size: small;
   display: inline;
+  margin: 0;
 }
 
 /* Show more button */
 .show-more {
   font-family: "Raleway";
   font-weight: 400;
-  width: auto;
+  width: 90px;  
   padding: 5px 12px;
   background-color: red;
   color: white;
@@ -496,6 +515,7 @@ select {
 .reviewer-info {
   color: black !important;
   font-size: small;
+  margin: 1%;
 }
 .review-text {
   color: black !important;
@@ -510,3 +530,8 @@ select {
   opacity: 0.5;
 }
 
+.star-rating2 {
+  color: red;
+  display: inline-block;
+  /* padding-right: 8px; */
+}

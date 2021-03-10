@@ -18,6 +18,13 @@ function clearResults() {
   }
 }
 
+function addBlank() {
+  var mainContainer = document.getElementById("results_container");
+  var blank = document.createElement("div");
+  blank.classList.add("blank");
+  mainContainer.append(blank);
+}
+
 function sendRequest() {
   var req = new XMLHttpRequest();
   var result = document.getElementById("result");
@@ -70,7 +77,7 @@ function sendRequest() {
 
         var rating3 = document.createElement("p");
         rating3.innerHTML = "&#9733; " + rating2 + "/5";
-        rating3.classList.add("star-rating");
+        rating3.classList.add("star-rating2");
 
         var vote_count1 = document.createElement("p");
         vote_count1.innerHTML = vote_count + " votes";
@@ -86,7 +93,7 @@ function sendRequest() {
 
         var backdrop = document.createElement("img");
         if (img_path == null) {
-          backdrop.src = "/static/images/movie-placeholder.png";
+          backdrop.src = "/static/images/movie-placeholder.jpg";
         } else {
           backdrop.src = "https://image.tmdb.org/t/p/w780" + img_path;
         }
@@ -124,15 +131,15 @@ function sendRequest() {
           //cast_details.length
           let cast_item = document.createElement("div");
           cast_item.classList.add("cast-item");
-          let cast_img_path = cast_details[i]["image_path"];
+          if (cast_details[i]["image_path"] == null) {
+            let cast_img_path = "/static/images/person-placeholder.png";
+          } else {
+            let cast_img_path = cast_details[i]["image_path"];
+          }
           let real_name = cast_details[i]["real_name"];
           let role_name = cast_details[i]["role_name"];
           let cast_img = document.createElement("img");
-          if (cast_img_path == null) {
-            cast_img.src = "/static/images/person-placeholder.png";
-          } else {
-            cast_img.src = cast_img_path;
-          }
+          cast_img.src = cast_img_path;
           cast_img.classList.add("cast-img");
 
           let real_name2 = document.createElement("p");
@@ -187,11 +194,11 @@ function sendRequest() {
           review_text2.innerText = review_text;
 
           let border = document.createElement("HR");
-          border.classList.add('review-border');
+          border.classList.add("review-border");
 
           review_item.append(reviewer_info, rating3, review_text2, border);
           review_container.append(review_item);
-          console.log('review added');
+          console.log("review added");
         }
         modalContents.append(
           cast_heading,
@@ -216,6 +223,11 @@ function sendRequest() {
       } else {
         // Populate results_container with search results
         var mainContainer = document.getElementById("results_container");
+
+        // // Delete blank space
+        // document.getElementById("blank").remove();
+
+
         // Delete existing results, if any
         clearResults();
 
@@ -247,9 +259,12 @@ function sendRequest() {
             var img_path = results[i]["poster_path"];
 
             // add json elements to page dynamically
-            const br_tag = document.createElement("br");
+            // const br_tag = document.createElement("br");
             var result_box = document.createElement("div");
             result_box.classList.add("result-box");
+
+            var result_details = document.createElement("div");
+            result_details.classList.add("result-details");
 
             var title1 = document.createElement("h2");
             title1.innerHTML = title;
@@ -260,12 +275,12 @@ function sendRequest() {
             year_genres.classList.add("year-genre");
 
             var rating3 = document.createElement("p");
-            rating3.innerHTML = "&#9733; " + rating2 + "/5";
-            rating3.classList.add("star-rating");
+            rating3.innerHTML = '<span style="color:red">' + '&#9733; ' + rating2 + '/5' + "</span>" + " &nbsp;" + vote_count + " votes";
+            rating3.classList.add("votes");
 
-            var vote_count1 = document.createElement("p");
-            vote_count1.innerHTML = vote_count + " votes";
-            vote_count1.classList.add("votes");
+            // var vote_count1 = document.createElement("p");
+            // vote_count1.innerHTML = vote_count + " votes";
+            // vote_count1.classList.add("votes");
 
             var desc1 = document.createElement("p");
             desc1.innerHTML = desc;
@@ -312,17 +327,16 @@ function sendRequest() {
             console.log("button loaded");
 
             // Add all to each result box
-            result_box.append(
+            result_details.append(
               title1,
-              // br_tag,
               year_genres,
               rating3,
-              vote_count1,
-              poster,
+              // vote_count1,
               desc1,
-              showMore,
-              modal
+              showMore
             );
+
+            result_box.append(poster, result_details, modal);
             mainContainer.append(result_box);
 
             // When the user clicks the button, open the modal
