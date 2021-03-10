@@ -2,8 +2,8 @@ import requests
 import json
 import pprint
 from random import randint
-# from .settings import api_key
-from settings import api_key  # use this to test if name == __main__
+from .settings import api_key
+# from settings import api_key  # use this to test if name == __main__
 from datetime import datetime
 
 # base_url = "https://api.themoviedb.org/3/"
