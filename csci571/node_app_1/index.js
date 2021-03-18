@@ -1,21 +1,11 @@
-/* How to read a text file (3 ways) */
-// const { readFile, readFileSync } = require("fs");
+const express = require("express");
+const app = express();
+const port = 3000;
 
-// Method 1 - readFileSync
-// const txt = readFileSync('./hello.txt', 'utf8');
-// console.log(txt);
-// console.log("I want this done now");
+app.get("/", (req, res) => {
+  res.send("Hello world!! 🕶 😀❤💌🌱🌍");
+});
 
-// Method 2 - callback
-// readFile("./hello.txt", "utf8", (err, txt) => {
-//   console.log(txt);
-// });
-// console.log("I want this done now"); //runs first
-
-// Method 3 - promises
-const { readFile } = require("fs").promises;
-async function hello() {
-  const file = await readFile("./hello.txt", "utf8");
-  console.log(file);
-}
-hello();
+app.listen(port, () => {
+  console.log(`My app is listening at http://localhost:${port}`);
+});
