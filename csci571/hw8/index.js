@@ -1,7 +1,6 @@
 const express = require("express");
 const axios = require("axios");
 
-/* This Express-Object is essential and used to set up the application itself, add routes and rest-endpoints initialize middleware. */
 const app = express();
 const port = 3000;
 
