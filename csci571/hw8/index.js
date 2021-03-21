@@ -18,12 +18,6 @@ const getMovieData = () => {
   }
 };
 
-let res = getMovieData();
-
-res.then(
-    (result) => console.log("This is the result:\n", result.data)
-);
-
 // const logMovieData = async () => {
 //   const m = getMovieData()
 //     .then((response) => {
@@ -40,7 +34,21 @@ res.then(
 
 // Define homepage endpoint to listen for GET request
 app.get("/", (req, res) => {
-  res.send("USC Films");
+  let movie = getMovieData();
+  movie
+    .then(
+      //   (result) => console.log("This is the result:\n", result.data)
+      (result) => res.send(result.data)
+    )
+    .catch((error) => console.log(error));
+
+  // res.send("test");
+});
+
+app.get("/aboutme", (req, res) => {
+  res.send(
+    "Welcome to my secret test page -\nMy favorite foods:\n\n🍕 Pizza\n 🍫 Chocolate\n 🍠 Yams"
+  );
 });
 
 app.listen(port, () => {
