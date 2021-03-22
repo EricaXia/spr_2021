@@ -5,11 +5,12 @@ const app = express();
 const port = 3000;
 
 const API_KEY = "a0f44b5888d8f94e608f47c1eb5575a4";
-let movie_id = "682254";
-const myurl =
-  "https://api.themoviedb.org/3/movie/" + movie_id + "?api_key=" + API_KEY;
 
-const getMovieData = () => {
+let movie_id = "791373";
+
+const getMovieDetails = (movie_id) => {
+  const myurl =
+    "https://api.themoviedb.org/3/movie/" + movie_id + "?api_key=" + API_KEY;
   try {
     return axios.get(myurl);
   } catch (error) {
@@ -17,38 +18,78 @@ const getMovieData = () => {
   }
 };
 
-// const logMovieData = async () => {
-//   const m = getMovieData()
-//     .then((response) => {
-//       if (response.data.message) {
-//         console.log(`${Object.entries(response.data.message).length}`);
-//       }
-//     })
-//     .catch((error) => {
-//       console.log(error);
-//     });
-// };
+const getCurrPlayingMovies = () => {
+  const url =
+    "https://api.themoviedb.org/3/movie/now_playing?api_key=" +
+    API_KEY +
+    "&language=en-US&page=1";
+  try {
+    return axios.get(url);
+  } catch (error) {
+    console.error(error);
+  }
+};
 
-// logMovieData();
+const getPopularMovies = () => {
+  const url =
+    "https://api.themoviedb.org/3/movie/popular?api_key=" +
+    API_KEY +
+    "&language=en-US&page=1";
+  try {
+    return axios.get(url);
+  } catch (error) {
+    console.error(error);
+  }
+};
 
+/* HOMEPAGE code */
 // Define homepage endpoint to listen for GET request
-app.get("/", (req, res) => {
-  let movie = getMovieData();
-  movie
-    .then(
-      //   (result) => console.log("This is the result:\n", result.data)
-      (result) => res.send(result.data)
-    )
+app.get("/", (req, resp) => {
+  /* Currently Playing Movies */
+  curr_playing_movies = getCurrPlayingMovies();
+  curr_playing_movies
+    .then((result) => {
+      let first_five = result.data["results"]
+        .slice(0, 5)
+        .map(({ id, title, poster_path }) => ({ id, title, poster_path }));
+      // resp.send(first_five);
+    })
     .catch((error) => console.log(error));
 
-  // res.send("test");
+  /* Continue Watching */
+  // TODO: implement watch list using localstorage
+
+  /* Popular Movies */
+  popular_movies = getPopularMovies();
+  popular_movies
+    .then((result) => {
+      let popular_list = result.data["results"]
+        .map(({ id, title, poster_path }) => ({ id, title, poster_path }));
+      // resp.send(popular_list); // 20 movies
+    })
+    .catch((error) => console.log(error));
+  
+  /* Top Rated Movies */
+
+  /* Trending Movies */
+
+  /* Popular TV Shows */
+
+  /* Top Rated TV Shows */
+
+  /* Trending TV Shows */
+
+  // let movie = getMovieDetails(movie_id);
+  // movie
+  //   .then((result) => resp.send(result.data))
+  //   .catch((error) => console.log(error));
 });
 
-app.get("/aboutme", (req, res) => {
-  res.send(
-    "Welcome to my secret test page -\nMy favorite foods:\n\n🍕 Pizza\n 🍫 Chocolate\n 🍠 Yams"
-  );
-});
+// app.get("/aboutme", (req, res) => {
+//   res.send(
+//     "Welcome to my secret test page -\nMy favorite foods:\n\n🍕 Pizza\n 🍫 Chocolate\n 🍠 Yams"
+//   );
+// });
 
 app.listen(port, () => {
   console.log(`My app is listening at http://localhost:${port}`);
