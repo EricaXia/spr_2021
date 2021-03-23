@@ -1,0 +1,62 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800&display=swap');
+
+body {
+    background-color: ghostwhite;
+}
+
+h1 {
+    font-family: "Nunito";
+    font-weight: 800;
+    /* color: whitesmoke; */
+}
+
+h3, p {
+    font-family: "Nunito";
+    font-weight: 400;
+}
+
+#header {
+    background-color: #957DAD;
+    padding: 10px 30px 10px 30px;
+    border-radius: 40px;
+    border: 3px solid #665677;
+    text-align: center;
+    color: whitesmoke;
+}
+
+#container {
+    width: 80%;
+    height: 700px;
+    background-color: #fffff7;
+    color: darkblue;
+    margin: auto;
+    padding: 30px 50px 30px 50px;
+}
+
+#horoscope-text {
+    height: 400px;
+    padding: 10px 30px 10px 30px;
+    border: 1px solid lavender;
+    color: slategray;
+    background-color: azure;
+    border-radius: 20px;
+
+}
+
+#zodiac, option {
+    cursor: pointer;
+    font-family: "Nunito";
+    border: 1px solid black;
+    border-radius: 4px;
+}
+
+#restart-btn {
+    border-radius: 5px;
+    padding: 3px;
+    font-family: "Nunito";
+    font-size: 14px;
+    /* font-weight: 700; */
+    background-color: cornflowerblue;
+    color: white;
+    cursor: pointer;
+}

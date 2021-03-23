@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Daily Horoscope</title>
+</head>
+
+<body>
+    <div id="container">
+        <div id="header">
+            <h1>✨ Your Daily Online Horoscope ✨</h1>
+        </div>
+
+        <div id="selectionarea">
+            <p>Please select your Zodiac sign!</p>
+
+            <select id="zodiac" name="zodiac" onchange="getInfo()">
+                <option value="default">Please select:</option>
+                <option value="aquarius">Aquarius (Jan 20 - Feb 18)</option>
+                <option value="pisces">Pisces (Feb 19 - Mar 20)</option>
+                <option value="aries">Aries (Mar 21 - Apr 19)</option>
+                <option value="taurus">Taurus (Apr 20 - May 20)</option>
+                <option value="gemini">Gemini (May 21 - Jun 20)</option>
+                <option value="cancer">Cancer (Jun 21 - Jul 22)</option>
+                <option value="leo">Leo (Jul 23 - Aug 22)</option>
+                <option value="virgo">Virgo (Aug 23 - Sep 22)</option>
+                <option value="libra">Libra (Sep 23 - Oct 22)</option>
+                <option value="scorpio">Scorpio (Oct 23 - Nov 21)</option>
+                <option value="sagittarius">Sagittarius (Nov 22 - Dec 21)</option>
+                <option value="capricorn">Capricorn (Dec 22 - Jan 19)</option>
+            
+            </select>
+            <input type="button" value="Restart" onclick="window.location.reload()" id="restart-btn" style="visibility:hidden">
+
+        </div>
+
+        <br />
+
+        <div id="horoscope-text">
+            <h3 id="text-row-1"></h3>
+                <p id="text-row-2"></p>
+        </div>
+
+    <br />
+
+    <!-- close the container -->
+    </div> 
+
+    <script type="text/javascript" src="script.js"></script>
+</body>
+</html>
