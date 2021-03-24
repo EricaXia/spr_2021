@@ -1,0 +1,15 @@
+Angular
+---
+Made of Components and Moduels (defined by Typescript files)
+
+Based on Components (organized by subfolders) - the basic building blocks of the app
+
+Each Component has
+1. Data
+- Gathered from backend (API calls)
+2. HTML template and CSS styles
+- Stored in .html and .css files
+3. Logic for view (what's show to the user) 
+- Stored in .ts file 
+
+Each Component must be registered in a Module. 
