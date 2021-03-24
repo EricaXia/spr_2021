@@ -1,14 +1,13 @@
-const express = require("express");
-const axios = require("axios");
-let c = require("./mycalls");
-const app = express();
+/* ORIGINAL backend code with API calls, before adding any Angular shit */
+import "express";
+import "axios";
+let c = require("../mycalls");
+
+// const express = require("express");
+// const axios = require("axios");
+
 const port = 3000;
-
-const logger = () => {
-  console.log("App started");
-};
-
-// app.use(logger);
+const app = express();
 
 // let movie_id = "791373";
 
