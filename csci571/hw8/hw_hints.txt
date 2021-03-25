@@ -1,3 +1,0 @@
-Serve frontend Angular app (in movie-app folder) and the backend Express server (in movie-app-server folder) on DIFFERENT PORTS
-
-Then Angular app can 'call the api' from the backend server
