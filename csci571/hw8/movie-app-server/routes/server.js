@@ -20,7 +20,6 @@ app.get("/", (req, resp) => {
       let first_five = result.data["results"]
         .slice(0, 5)
         .map(({ id, title, poster_path }) => ({ id, title, poster_path }));
-      // console.log(first_five);
       resp.send(first_five);
     })
     .catch((error) => console.log(error));

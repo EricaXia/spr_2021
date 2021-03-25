@@ -1,0 +1,5 @@
+TODO: Express tutorial
+
+Qs:
+How to send multiple requests? I.e. how do we send all the pieces of info needed to serve to the home page( e.g. data from the different calls to get popular, trending, top rated, etc.)
+
