@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { fromEventPattern } from 'rxjs';
-import { HomeComponent } from './home/home.component';
-import { MovieComponent } from './movie/movie.component';
-import { TvComponent } from './tv/tv.component';
-import { MylistComponent } from './mylist/mylist.component';
+import { HomeComponent } from './components/home/home.component';
+import { MovieComponent } from './components/movie/movie.component';
+import { TvComponent } from './components/tv/tv.component';
+import { MylistComponent } from './components/mylist/mylist.component';
 
 // const routes: Routes = [];
 
