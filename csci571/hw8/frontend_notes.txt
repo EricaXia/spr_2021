@@ -11,5 +11,7 @@ Each Component has
 - Stored in .html and .css files
 3. Logic for view (what's show to the user) 
 - Stored in .ts file 
+- Services (e.g. for making the requests) stored in separte service .ts file (built from a class)
 
-Each Component must be registered in a Module. 
+Each Component must be registered in a Module under "declarations" section. 
+Every Service must be registered in a Module under the "providers" section.
