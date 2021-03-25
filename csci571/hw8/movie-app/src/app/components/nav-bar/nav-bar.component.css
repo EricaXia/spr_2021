@@ -1,0 +1,26 @@
+.usc-navbar{
+    background-color: #040C22;
+}
+
+.nav-text {
+    color: white;
+}
+
+a.nav-link-text:link {
+    color: #6C7085;
+}
+
+a.nav-link-text:active, a.nav-link-text:visited  {
+    color: white;
+}
+
+a.nav-link-text:hover {
+    color: #555D73;
+}
+
+.my-search-bar {
+    background-color: transparent;
+    border-style: none none solid none;
+    border-bottom: 1px solid white;
+    border-radius: 0 !important;
+}

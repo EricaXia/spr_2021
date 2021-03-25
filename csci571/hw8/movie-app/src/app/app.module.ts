@@ -8,6 +8,7 @@ import { MovieComponent } from './components/movie/movie.component';
 import { TvComponent } from './components/tv/tv.component';
 import { MylistComponent } from './components/mylist/mylist.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     HomeComponent,
     MovieComponent,
     TvComponent,
-    MylistComponent
+    MylistComponent,
+    NavBarComponent
   ],
   imports: [
     BrowserModule,
