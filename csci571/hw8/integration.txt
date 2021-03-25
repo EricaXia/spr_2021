@@ -1,5 +1,8 @@
 Serve frontend Angular app (in movie-app folder) and the backend Express server (in movie-app-server folder) on DIFFERENT PORTS
 
+-> Client (Angular frontend app) runs on port 4200
+-> Server (Express backend server) runs on port 3000
+
 Angular guide: 
 https://angular.io/guide/http
 
@@ -8,5 +11,6 @@ We should be able to using HttpClient service to do API calls and get data from 
 E.g. "Use the HttpClient.get() method to fetch data from a server". 
 
 We should be able to use 
-1. Express/node backend to make API calls to TMDB, get JSON data
+1. Express/node backend to make calls to TMDB's REST API (in the form of HTTP requests), get JSON data
 2. Angular frontend to make HTTP requests to backend server, get JSON data 
+
