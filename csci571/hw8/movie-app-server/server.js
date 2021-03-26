@@ -7,20 +7,21 @@ const c = require("./mycalls");
 
 const port = 3000;
 const app = express();
+
 // TODO: Look up why use router.get() for endpoints instead of app.get()?
 // var router = express.Router();
 
+
+
 /* HOMEPAGE code */
 app.get("/", (req, resp) => {
-  /* TODO: refactor code so the Promise all works and we can send all the homepage data in one go */
-  
+  /* TODO: refactor code so the Promise.all works and we can send all the homepage data in one go */
+
   // res = c.getCurrPlayingMovies();
   // console.log("this is res");
   // console.log(typeof(res));  // undefined
 
 
-
-  // res = c.getPopularMovies();
   // {
   //   Promise.all([
   //     c.getCurrPlayingMovies(),
@@ -41,10 +42,7 @@ app.get("/", (req, resp) => {
   // }
 
   /* Currently Playing Movies */
-  // curr_playing_movies = c.getCurrPlayingMovies();
-
   /* Continue Watching TODO: implement watch list using localstorage */
-
   /* Popular Movies */
   /* Top Rated Movies */
   /* Trending Movies */
