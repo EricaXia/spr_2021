@@ -7,7 +7,8 @@ var logger = require("morgan");
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
 var movieDetailsRouter = require("./routes/movie_details");
-// var tvDetailsRouter = require("./routes/tv_details");
+var tvDetailsRouter = require("./routes/tv_details");
+var searchRouter = require("./routes/search");
 var myListRouter = require("./routes/my_list");
 
 var app = express();
@@ -26,7 +27,8 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
 app.use("/watch/movie/:movie_id", movieDetailsRouter);
-// app.use("/watch/tv/:tv_id", tvDetailsRouter);
+app.use("/watch/tv/:tv_id", tvDetailsRouter);
+app.use("/:query", searchRouter);
 app.use("/mylist", myListRouter);
 
 // catch 404 and forward to error handler
