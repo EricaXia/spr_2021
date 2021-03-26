@@ -1,3 +1,4 @@
+/* HOMEPAGE code */
 const express = require("express");
 const axios = require("axios");
 
@@ -43,7 +44,7 @@ let top_rated_tv = axios.get(url6);
 const url7 = "https://api.themoviedb.org/3/trending/tv/day?api_key=" + API_KEY;
 let trending_tv = axios.get(url7);
 
-/* HOMEPAGE code */
+/* Send data to Homepage */
 router.get("/", (req, res) => {
   axios
     .all([
@@ -95,10 +96,6 @@ router.get("/", (req, res) => {
 });
 
 module.exports = router;
-
-// app.listen(port, () => {
-//   console.log(`My app is listening at http://localhost:${port}`);
-// });
 
 /* Other endpoints for movie details, etc */
 // TODO: figure out how to pass in custom ID for details page
