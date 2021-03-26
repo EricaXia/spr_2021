@@ -14,3 +14,20 @@ Backend Project file structure - Express / Node JS
 6] Views:- So this folder contains all your views i.e. HTML/ejs files. Drop this folder if you are building rest API’s.
 
 7] config.js:- This file should contain all your configuration e.g. PORT number, secrets, keys etc. Do not commit this file to Git.
+
+Links
+https://expressjs.com/en/starter/basic-routing.html
+
+---
+TODO: figure out how to have route parameters for Router objects
+---
+To have route parameters (e.g. for movie or tv ID)
+```
+Route path: /watch/movie/:movieid
+Request URL: http://localhost:3000/watch/movie/123456
+req.params: { "movieid": 123456 }
+
+app.get('/watch/movie/:movieid', function (req, res) {
+  res.send(req.params)
+})
+```

@@ -4,10 +4,11 @@ var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 
-// var indexRouter = require('./routes/index-OLD');
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
 var movieDetailsRouter = require("./routes/movie_details");
+// var tvDetailsRouter = require("./routes/tv_details");
+var myListRouter = require("./routes/my_list");
 
 var app = express();
 const port = 3000;
@@ -24,7 +25,9 @@ app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
-app.use("/watch/movie", movieDetailsRouter);
+app.use("/watch/movie/:movie_id", movieDetailsRouter);
+// app.use("/watch/tv/:tv_id", tvDetailsRouter);
+app.use("/mylist", myListRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
