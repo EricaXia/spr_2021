@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "dev": "nodemon ./routes/server.js"
+    "dev": "nodemon ./server.js"
   },
   "dependencies": {
     "axios": "^0.21.1",
