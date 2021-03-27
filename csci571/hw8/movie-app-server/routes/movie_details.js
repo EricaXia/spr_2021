@@ -10,7 +10,8 @@ movieDetailsRouter.get("/", (req, res) => {
   const movie_id = req.params.movie_id;
   // res.send("You clicked on movie with id " + movie_id);
 
-  // E.g. Go to http://localhost:3000/watch/movie/10625 to see details for the movie mean girls;
+  // E.g. Go to http://localhost:3000/watch/movie/10625 to see details for the movie Mean girls;
+
   const details_url =
     "https://api.themoviedb.org/3/movie/" +
     movie_id +
@@ -19,7 +20,7 @@ movieDetailsRouter.get("/", (req, res) => {
     "&language=en-US&";
   let details = axios.get(details_url);
 
-  const vid_url =
+  const video_url =
     "https://api.themoviedb.org/3/movie/" +
     movie_id +
     "/videos?api_key=" +
