@@ -7,8 +7,6 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
-  // images = [944, 1011, 984].map((n) => `https://picsum.photos/id/${n}/900/500`);
-
   public continue_watching: any = ['movie1', 'movie2'];
   public home_data: any = {};
   public curr_movies: any = [];
@@ -20,6 +18,10 @@ export class HomeComponent implements OnInit {
   public trending_tv: any = [];
   public img_path: string = "https://image.tmdb.org/t/p/w500";
 
+  
+  images = [944, 1011, 984].map((n) => `https://picsum.photos/id/${n}/900/500`);
+  // TODO: Get array of just image paths. Then replace paths on home html carousel with curr_movies paths
+  // curr_movies_images = [array of image paths from curr_movies].map((n) => `https://image.tmdb.org/t/p/w500{poster_path}`);
 
   constructor(private homeService: HomeService) {}
 
