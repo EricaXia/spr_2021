@@ -1,7 +1,27 @@
 <!-- <h1>Popular Movies</h1> -->
 
+<!-- As a test, display data received from backend here -->
+<p>Home Data here:</p>
+<!-- {{ home_data }} -->
+<!-- <div *ngIf="home_data"> -->
+  <!-- <div *ngFor="let elem of home_data">
+    <p>Elem here</p>
+    {{ elem }}
+  </div> -->
+<!-- </div> -->
+
+<div *ngIf="curr_movies">
+  {{ curr_movies }}
+  <div *ngFor="let movie of curr_movies">
+    <!-- <p>Curr movies loaded</p> -->
+
+    {{movie.id}}
+    {{movie.title}}
+  </div>
+</div>
+
 <!-- bootstrap slideshows and carousels go here -->
-<ngb-carousel *ngIf="images" #carousel [interval]="5000">
+<!-- <ngb-carousel *ngIf="images" #carousel [interval]="5000">
     <ng-template ngbSlide>
       <div class="picsum-img-wrapper">
         <img [src]="images[0]" alt="Random first slide">
@@ -29,11 +49,14 @@
         <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
       </div>
     </ng-template>
-  </ngb-carousel>
-
+  </ngb-carousel> -->
 
 <!-- TODO: Bootstrap - put each in divs, make carousels, cards, etc -->
 <h2 *ngIf="continue_watching">Continue Watching</h2>
+
+<div *ngFor="let movie of continue_watching">
+  <p>{{ movie }}</p>
+</div>
 
 <h2>Popular Movies</h2>
 

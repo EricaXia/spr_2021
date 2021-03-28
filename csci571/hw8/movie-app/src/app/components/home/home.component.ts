@@ -1,3 +1,4 @@
+import { HomeService } from './../../services/home.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -8,9 +9,22 @@ import { Component, OnInit } from '@angular/core';
 export class HomeComponent implements OnInit {
   images = [944, 1011, 984].map((n) => `https://picsum.photos/id/${n}/900/500`);
 
-  continue_watching = ['movie1', 'movie2'];
+  public continue_watching: any = ['movie1', 'movie2'];
+  public home_data: any = {};
+  public curr_movies: any = [];
 
-  constructor() {}
+  constructor(private homeService: HomeService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.fetchHomeData();
+    
+  }
+
+  fetchHomeData() {
+    this.homeService.getHomeData().subscribe((res) => {
+      this.home_data = res;
+      console.log(this.home_data);
+      this.curr_movies = this.home_data.curr_movies;
+    });
+  }
 }
