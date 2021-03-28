@@ -1,36 +1,29 @@
-<!-- <h1>Popular Movies</h1> -->
-
-<!-- As a test, display data received from backend here -->
-<p>Home Data here:</p>
-<!-- {{ home_data }} -->
-<!-- <div *ngIf="home_data"> -->
-  <!-- <div *ngFor="let elem of home_data">
-    <p>Elem here</p>
-    {{ elem }}
-  </div> -->
-<!-- </div> -->
-
-<div *ngIf="curr_movies">
-  {{ curr_movies }}
+<!-- <div *ngIf="curr_movies">
   <div *ngFor="let movie of curr_movies">
-    <!-- <p>Curr movies loaded</p> -->
-    <p>{{movie.id}}</p>
-    <p>{{movie.title}}</p>
+    <p>{{ movie.id }}</p>
+    <p>{{ movie.title }}</p>
+    <img src="{{ img_path + movie.poster_path }}" />
   </div>
-</div>
+</div> -->
 
 <!-- bootstrap slideshows and carousels go here -->
-<!-- <ngb-carousel *ngIf="images" #carousel [interval]="5000">
+<h1>CAROUSEL</h1>
+<div *ngIf="curr_movies">
+<ngb-carousel #carousel [interval]="5000">
+  <div *ngFor="let movie of curr_movies">
     <ng-template ngbSlide>
       <div class="picsum-img-wrapper">
-        <img [src]="images[0]" alt="Random first slide">
+        <img src="{{ img_path + movie.poster_path }}" alt="{{ movie.title }}">
       </div>
       <div class="carousel-caption">
-        <h3>First slide label</h3>
-        <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+        <h3>{{movie.title}}</h3>
+        <p>MOVIE HERE</p>
       </div>
     </ng-template>
-    <ng-template ngbSlide>
+ </div>
+</ngb-carousel>
+</div>
+    <!-- <ng-template ngbSlide>
       <div class="picsum-img-wrapper">
         <img [src]="images[1]" alt="Random second slide">
       </div>
@@ -47,15 +40,14 @@
         <h3>Third slide label</h3>
         <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
       </div>
-    </ng-template>
-  </ngb-carousel> -->
+    </ng-template> -->
+
 
 <!-- TODO: Bootstrap - put each in divs, make carousels, cards, etc -->
-<h2 *ngIf="continue_watching">Continue Watching</h2>
-
-<div *ngFor="let movie of continue_watching">
+<!-- <h2 *ngIf="continue_watching">Continue Watching</h2> -->
+<!-- <div *ngFor="let movie of continue_watching">
   <p>{{ movie }}</p>
-</div>
+</div> -->
 
 <h2>Popular Movies</h2>
 

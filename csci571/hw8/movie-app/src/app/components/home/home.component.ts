@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
-  images = [944, 1011, 984].map((n) => `https://picsum.photos/id/${n}/900/500`);
+  // images = [944, 1011, 984].map((n) => `https://picsum.photos/id/${n}/900/500`);
 
   public continue_watching: any = ['movie1', 'movie2'];
   public home_data: any = {};
@@ -18,6 +18,7 @@ export class HomeComponent implements OnInit {
   public popular_tv: any = [];
   public top_rated_tv: any = [];
   public trending_tv: any = [];
+  public img_path: string = "https://image.tmdb.org/t/p/w500";
 
 
   constructor(private homeService: HomeService) {}
@@ -30,7 +31,6 @@ export class HomeComponent implements OnInit {
   fetchHomeData() {
     this.homeService.getHomeData().subscribe((res) => {
       this.home_data = res;
-      console.log(this.home_data);
       this.curr_movies = this.home_data.curr_movies;
       this.popular_movies = this.home_data.popular_movies;
       this.top_rated_movies = this.home_data.top_rated_movies;
