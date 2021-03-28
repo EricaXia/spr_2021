@@ -11,12 +11,11 @@ import { MylistComponent } from './components/mylist/mylist.component';
 const routes: Routes = [
   { path: '', component: HomeComponent },
   {
-    path: 'movie/:id',
-    component: MovieComponent,
-  },
-  {
-    path: 'tv/:id',
-    component: TvComponent,
+    path: 'watch',
+    children: [
+      {path: 'movie/:id',component: MovieComponent},
+      {path: 'tv/:id', component: TvComponent}
+    ]
   },
   {
     path: 'mylist',
