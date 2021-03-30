@@ -60,7 +60,7 @@ router.get("/", (req, res) => {
       axios.spread((...responses) => {
         const curr_movies2 = responses[0].data["results"]
           .slice(0, 5)
-          .map(({ id, title, poster_path }) => ({ id, title, poster_path }));
+          .map(({ id, title, backdrop_path }) => ({ id, title, backdrop_path }));
         const popular_movies2 = responses[1].data[
           "results"
         ].map(({ id, title, poster_path }) => ({ id, title, poster_path }));
