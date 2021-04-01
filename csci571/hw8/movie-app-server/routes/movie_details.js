@@ -71,8 +71,12 @@ axios
       const video2 = responses[1].data;
       // console.log(video2);
 
-      const cast2 = responses[2].data;
-      // console.log(cast2);
+      const cast2 = responses[2].data.cast;
+
+      console.log(cast2);
+      /* 
+      remove the element in the array if the element['prof_path'] value is empty */
+
 
       //TODO: where to get reviewer user's profile pic?
       const reviews2 = responses[3].data;
@@ -82,7 +86,7 @@ axios
       // console.log(recs2);
 
       const sim2 = responses[5].data;
-      console.log(sim2);
+      // console.log(sim2);
 
       // Send everything in one json to the client
       res.json({
