@@ -11,6 +11,7 @@ var movieDetailsRouter = require("./routes/movie_details");
 var tvDetailsRouter = require("./routes/tv_details");
 var searchRouter = require("./routes/search");
 var myListRouter = require("./routes/my_list");
+var castDetailsRouter = require("./routes/cast");
 
 const port = 3000;
 var app = express();
@@ -32,6 +33,7 @@ app.use("/watch/movie/:movie_id", movieDetailsRouter);
 app.use("/watch/tv/:tv_id", tvDetailsRouter);
 app.use("/search/:query", searchRouter);
 app.use("/mylist", myListRouter);
+app.use("/cast/:cast_id", castDetailsRouter)
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

@@ -60,7 +60,18 @@ movieDetailsRouter.get("/", (req, res) => {
     "&language=en-US&page=1";
   let sim = axios.get(sim_url);
 
-  /* TODO: look up from HW requirements to specify which pieces of each JSON (e.g. name, rating, video url, etc) we need to pass to the frontend client. We can use the .map(({attribute_names}) => ({attribute_names})) method */
+  const options = {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+    hour: '2-digit',
+    minute: 'numeric',
+    second: 'numeric',
+    hour12: true
+  };
+
+
+
   axios
     .all([details, video, cast, reviews, recs, sim])
     .then(
@@ -79,7 +90,7 @@ movieDetailsRouter.get("/", (req, res) => {
         remove the element in the array if the element['prof_path'] value is empty */
         for (var i = 0; i < cast2.length; i++) {
           if (cast2[i]["profile_path"]) {
-            console.log(cast2[i]["name"], cast2[i]["profile_path"])
+            // console.log(cast2[i]["name"], cast2[i]["profile_path"])
             cast2[i]["img_path"] = "https://image.tmdb.org/t/p/w500" + cast2[i]["profile_path"];
             cast3.push({
               "img_path": cast2[i]["img_path"],
@@ -87,14 +98,39 @@ movieDetailsRouter.get("/", (req, res) => {
               "character": cast2[i]["character"],
               "id": cast2[i]["id"]
             });
-          }}
+          }
+        }
 
-        
+
 
 
         //TODO: where to get reviewer user's profile pic?
-        const reviews2 = responses[3].data;
+        const reviews2 = responses[3].data.results;
         // console.log(reviews2);
+
+        for (let i = 0; i < reviews2.length; i++) {
+          let review_date = new Date(reviews2[i]["created_at"]);
+          // reviews2[i]["review_month"] = review_date.toLocaleString('default', { month: 'long' });
+          reviews2[i]["review_date"] = new Intl.DateTimeFormat('en-us', options).format(review_date);
+
+          if (!reviews2[i]["author_details"]["avatar_path"]) {
+            reviews2[i]["img_path"] =
+              "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRHnPmUvFLjjmoYWAbLTEmLLIRCPpV_OgxCVA&usqp=CAU";
+          } else if (
+            reviews2[i]["author_details"]["avatar_path"].includes("https")
+          ) {
+            let path = reviews2[i]["author_details"]["avatar_path"]
+              .split("/")
+              .slice(1)
+              .join("/");
+            reviews2[i]["img_path"] = path;
+          } else {
+            reviews2[i]["img_path"] =
+              "https://image.tmdb.org/t/p/original" +
+              reviews2[i]["author_details"]["avatar_path"];
+          }
+        }
+
 
         const recs2 = responses[4].data;
         // console.log(recs2);
