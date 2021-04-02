@@ -33,7 +33,7 @@ app.use("/watch/movie/:movie_id", movieDetailsRouter);
 app.use("/watch/tv/:tv_id", tvDetailsRouter);
 app.use("/search/:query", searchRouter);
 app.use("/mylist", myListRouter);
-app.use("/cast/:cast_id", castDetailsRouter)
+app.use("/cast/:cast_id", castDetailsRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
