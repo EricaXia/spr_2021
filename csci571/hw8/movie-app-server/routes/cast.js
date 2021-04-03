@@ -38,6 +38,11 @@ castDetailsRouter.get("/", (req, res) => {
                 if (cast[0]["profile_path"]) {
                     cast[0]["img_path"] = "https://image.tmdb.org/t/p/w500" + cast[0]["profile_path"];
                 }
+                if (cast[0]["gender"] === 1) {
+                    cast[0]["gender_str"] = "Female"
+                } else {
+                    cast[0]["gender_str"] = "Male"
+                }
                 const cast2 = cast[0];
 
                 const cast_ext = [responses[1].data].map(({ imdb_id, facebook_id, instagram_id, twitter_id }) => ({ imdb_id, facebook_id, instagram_id, twitter_id }));
