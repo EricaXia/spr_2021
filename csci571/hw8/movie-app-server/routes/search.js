@@ -13,7 +13,15 @@ searchRouter.get("/", (req, res) => {
     axios
         .get(url)
         .then((resp) => {
-        let search_data = resp.data;
+        let search_data = resp.data.results.map(({ id, name, poster_path }) => ({ id, name, poster_path }));
+
+        for (var i = 0; i < search_data.length; i++) {
+            if (search_data[i]["poster_path"]) {
+              search_data[i]["img_path"] = "https://image.tmdb.org/t/p/w500" + search_data[i]["poster_path"];
+            }
+          }
+
+        // console.log(search_data)
         res.send(search_data);
         })
         .catch((error) => console.log(error));
