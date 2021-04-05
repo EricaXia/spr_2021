@@ -13,18 +13,39 @@ searchRouter.get("/", (req, res) => {
     axios
         .get(url)
         .then((resp) => {
-        let search_data = resp.data.results.map(({ id, name, poster_path }) => ({ id, name, poster_path }));
+            let search_data = resp.data.results
 
-        for (var i = 0; i < search_data.length; i++) {
-            if (search_data[i]["poster_path"]) {
-              search_data[i]["img_path"] = "https://image.tmdb.org/t/p/w500" + search_data[i]["poster_path"];
+            // .map(({ id, title, name, backdrop_path }) => ({ id, title, name, backdrop_path }));
+
+            let search_data2 = [];
+
+            for (var i = 0; i < search_data.length; i++) {
+                if (search_data[i]['name']) {
+                    search_data[i]['title'] = search_data[i]['name']
+                }
+
+                if (search_data[i]["backdrop_path"]) {
+                    search_data[i]["img_path"] = "https://image.tmdb.org/t/p/w500" + search_data[i]["backdrop_path"];
+
+                    if (search_data[i]["media_type"] === "movie") {
+                        search_data[i]["weblink"] = "/watch/movie/" + search_data[i]["id"];
+                    } else if (search_data[i]["media_type"] === "tv") {
+                        search_data[i]["weblink"] = "/watch/tv/" + search_data[i]["id"];
+                    }
+
+                    search_data2.push({
+                        "img_path": search_data[i]["img_path"],
+                        "title": search_data[i]["title"],
+                        "id": search_data[i]["id"],
+                        "weblink": search_data[i]["weblink"]
+                    });
+                }
+
             }
-          }
 
-        // console.log(search_data)
-        res.send(search_data);
+            res.send(search_data2);
         })
         .catch((error) => console.log(error));
-    });
+});
 
 module.exports = searchRouter;
