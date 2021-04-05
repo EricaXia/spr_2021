@@ -96,11 +96,3 @@ router.get("/", (req, res) => {
 });
 
 module.exports = router;
-
-/* Other endpoints for movie details, etc */
-// TODO: figure out how to pass in custom ID for details page
-// app.route('/watch/movie/:id').get((req, res) => {})
-// app.route('/watch/tv/:id').get((req, res) => {})
-
-/* Lower priority: watchlist for 1 pt */
-// app.route('/mylist').get((req, res) => {})
