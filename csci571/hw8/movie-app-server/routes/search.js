@@ -43,7 +43,9 @@ searchRouter.get("/", (req, res) => {
 
             }
 
-            res.send(search_data2);
+            let search_data3 = search_data2.slice(0,10);
+
+            res.send(search_data3);
         })
         .catch((error) => console.log(error));
 });
