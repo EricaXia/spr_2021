@@ -74,6 +74,10 @@ tvDetailsRouter.get("/", (req, res) => {
     .then(
       axios.spread((...responses) => {
         const details2 = responses[0].data; // add ".map() method to specify which k:v pairs to get"
+        if (details2['name']) {
+          details2['title'] = details2['name'];
+          // console.log(details2['title']);
+        }
 
         const video2 = responses[1].data;
         // console.log(video2);

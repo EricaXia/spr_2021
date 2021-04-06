@@ -30,7 +30,7 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
 app.use("/watch/movie/:movie_id", movieDetailsRouter);
-app.use("/watch/tv/:tv_id", tvDetailsRouter);
+app.use("/watch/tv/:movie_id", tvDetailsRouter);
 app.use("/search/:query", searchRouter);
 app.use("/mylist", myListRouter);
 app.use("/cast/:cast_id", castDetailsRouter);
