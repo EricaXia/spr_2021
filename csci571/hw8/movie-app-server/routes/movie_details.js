@@ -10,8 +10,6 @@ movieDetailsRouter.get("/", (req, res) => {
   const movie_id = req.params.movie_id;
   // res.send("You clicked on movie with id " + movie_id);
 
-  // E.g. Go to http://localhost:3000/watch/movie/10625 to see details for the movie Mean girls;
-
   const details_url =
     "https://api.themoviedb.org/3/movie/" +
     movie_id +
@@ -101,16 +99,11 @@ movieDetailsRouter.get("/", (req, res) => {
           }
         }
 
-
-
-
-        //TODO: where to get reviewer user's profile pic?
         const reviews2 = responses[3].data.results;
         // console.log(reviews2);
 
         for (let i = 0; i < reviews2.length; i++) {
           let review_date = new Date(reviews2[i]["created_at"]);
-          // reviews2[i]["review_month"] = review_date.toLocaleString('default', { month: 'long' });
           reviews2[i]["review_date"] = new Intl.DateTimeFormat('en-us', options).format(review_date);
 
           if (!reviews2[i]["author_details"]["avatar_path"]) {

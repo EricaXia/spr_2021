@@ -70,15 +70,34 @@ router.get("/", (req, res) => {
         const trending_movies2 = responses[3].data[
           "results"
         ].map(({ id, title, poster_path }) => ({ id, title, poster_path }));
+
+
         const popular_tv2 = responses[4].data[
           "results"
         ].map(({ id, name, poster_path }) => ({ id, name, poster_path }));
+
+        for (var i = 0; i < popular_tv2.length; i++) {
+          if (popular_tv2[i]['name']) {
+            popular_tv2[i]['title'] = popular_tv2[i]['name']
+          }
+        }
         const top_rated_tv2 = responses[5].data[
           "results"
         ].map(({ id, name, poster_path }) => ({ id, name, poster_path }));
+
+        for (var i = 0; i < top_rated_tv2.length; i++) {
+          if (top_rated_tv2[i]['name']) {
+            top_rated_tv2[i]['title'] = popular_tv2[i]['name']
+          }
+        }
         const trending_tv2 = responses[6].data[
           "results"
         ].map(({ id, name, poster_path }) => ({ id, name, poster_path }));
+        for (var i = 0; i < trending_tv2.length; i++) {
+          if (trending_tv2[i]['name']) {
+            trending_tv2[i]['title'] = trending_tv2[i]['name']
+          }
+        }
 
         // Send everything in one json to the client
         res.json({
