@@ -72,30 +72,36 @@ router.get("/", (req, res) => {
         ].map(({ id, title, poster_path }) => ({ id, title, poster_path }));
 
 
+        let popular_tv3 = [];
         const popular_tv2 = responses[4].data[
           "results"
         ].map(({ id, name, poster_path }) => ({ id, name, poster_path }));
-
         for (var i = 0; i < popular_tv2.length; i++) {
-          if (popular_tv2[i]['name']) {
-            popular_tv2[i]['title'] = popular_tv2[i]['name']
+          if (popular_tv2[i]['name'] && popular_tv2[i]['poster_path']) {
+            popular_tv2[i]['title'] = popular_tv2[i]['name'];
+            popular_tv3.push(popular_tv2[i]);
           }
         }
+        let top_rated_tv3 = [];
         const top_rated_tv2 = responses[5].data[
           "results"
         ].map(({ id, name, poster_path }) => ({ id, name, poster_path }));
 
         for (var i = 0; i < top_rated_tv2.length; i++) {
-          if (top_rated_tv2[i]['name']) {
-            top_rated_tv2[i]['title'] = popular_tv2[i]['name']
+          if (top_rated_tv2[i]['name'] && top_rated_tv2[i]['poster_path']) {
+            top_rated_tv2[i]['title'] = popular_tv2[i]['name'];
+            top_rated_tv3.push(top_rated_tv2[i]);
           }
         }
+        let trending_tv3 = [];
         const trending_tv2 = responses[6].data[
           "results"
         ].map(({ id, name, poster_path }) => ({ id, name, poster_path }));
         for (var i = 0; i < trending_tv2.length; i++) {
-          if (trending_tv2[i]['name']) {
-            trending_tv2[i]['title'] = trending_tv2[i]['name']
+          if (trending_tv2[i]['name'] && trending_tv2[i]['poster_path']) {
+            trending_tv2[i]['title'] = trending_tv2[i]['name'];
+            trending_tv3.push(trending_tv2[i]);
+
           }
         }
 
@@ -105,9 +111,9 @@ router.get("/", (req, res) => {
           popular_movies: popular_movies2,
           top_rated_movies: top_rated_movies2,
           trending_movies: trending_movies2,
-          popular_tv: popular_tv2,
-          top_rated_tv: top_rated_tv2,
-          trending_tv: trending_tv2,
+          popular_tv: popular_tv3,
+          top_rated_tv: top_rated_tv3,
+          trending_tv: trending_tv3,
         });
       })
     )
