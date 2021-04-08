@@ -54,5 +54,5 @@ app.use(function (err, req, res, next) {
 module.exports = app;
 
 app.listen(port, () => {
-  console.log(`My app is listening at http://localhost:${port}`);
+  console.log(`Backend app is listening at http://localhost:${port}`);
 });
