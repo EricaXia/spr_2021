@@ -13,7 +13,6 @@ var searchRouter = require("./routes/search");
 var myListRouter = require("./routes/my_list");
 var castDetailsRouter = require("./routes/cast");
 
-// const port = process.env.PORT || 8080;
 const port = process.env.PORT || 3000;
 var app = express();
 app.use(cors());
