@@ -53,9 +53,9 @@ app.use(function (err, req, res, next) {
 
 module.exports = app;
 
-// redirect all other traffic to homepage
-app.use("/*", indexRouter);
-
 app.listen(port, () => {
   console.log(`Backend app is listening at http://localhost:${port}`);
 });
+
+// redirect all other traffic to homepage
+app.use("/*", indexRouter);
